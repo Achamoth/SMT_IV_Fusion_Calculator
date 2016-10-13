@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547225</millis>
+  <sequence>1</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547225</millis>
+  <sequence>2</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547226</millis>
+  <sequence>3</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547226</millis>
+  <sequence>4</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readFusionCombinations</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547226</millis>
+  <sequence>5</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547226</millis>
+  <sequence>6</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547227</millis>
+  <sequence>7</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547227</millis>
+  <sequence>8</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547227</millis>
+  <sequence>9</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547227</millis>
+  <sequence>10</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547227</millis>
+  <sequence>11</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547227</millis>
+  <sequence>12</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readFusionCombinations</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>13</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>14</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>15</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>16</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>17</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>18</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>19</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547228</millis>
+  <sequence>20</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readFusionCombinations</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>21</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>22</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>23</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>24</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>25</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>26</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547229</millis>
+  <sequence>27</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>28</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readFusionCombinations</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>29</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>30</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>31</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>32</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>33</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547230</millis>
+  <sequence>34</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547231</millis>
+  <sequence>35</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547231</millis>
+  <sequence>36</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readFusionCombinations</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547231</millis>
+  <sequence>37</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readDemonList</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547231</millis>
+  <sequence>38</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>ENTRY</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547231</millis>
+  <sequence>39</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>readElementRules</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+<record>
+  <date>2016-10-11T18:59:07</date>
+  <millis>1476183547231</millis>
+  <sequence>40</sequence>
+  <logger>FileOps</logger>
+  <level>FINER</level>
+  <class>FileOps</class>
+  <method>populateRaceData</method>
+  <thread>1</thread>
+  <message>RETURN</message>
+</record>
+</log>
