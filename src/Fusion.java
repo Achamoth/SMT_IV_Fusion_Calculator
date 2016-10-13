@@ -163,4 +163,25 @@ public class Fusion {
       logger.exiting("Fusion","fusionObtainsSkills");
       return true;
     }
+
+    /**
+      * Given a specification for a demon, find all fusion chains that will produce specified demon
+      * @param demon the demon desired as the end result of fusion
+      * @return a list of demon pair lists, with each list containing one valid fusion chain
+      */
+    List<List<Demon[]>> findFusionChains(Demon demon) {
+      //TODO: Complete
+    }
+
+    /**
+      * Given a demon, return the set of all skills that can be acquired from that demon's possible fusions
+      * @param demon the demon to be fused
+      * @param depth since this method is called recursively, we will need to terminate at a specific depth. This parameter passes along the current depth
+      * @return a set of all skills that can be required from valid fusion chains for that demon
+      */
+      Set<String> findPossibleSkills(Demon demon, int curDepth) {
+        //TODO: Complete
+        //TODO: The difficulty here is in setting termination flags. This could technically go on infinitely
+        //TODO: Should set some sort of depth limit
+      }
 }
