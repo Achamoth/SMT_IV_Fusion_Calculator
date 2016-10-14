@@ -1,5 +1,6 @@
 import java.util.logging.*;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class FileOps {
 
   private static final String COMMA_DELIMITER = ",";
   private static final String COLON_DELIMITER = ":";
+  private static final String LINE_DELIMITER = "|";
   private static final String NEWLINE_DELIMITER = "\n";
   private static final Logger logger = Logger.getLogger("FileOps");
 
@@ -44,7 +46,6 @@ public class FileOps {
     *@param eUp a list of strings to be populated, containing the names of elements that result in up-fusing for this race
     *@param eDown a list of strings to be popluated, containing the names of elements that result in down-fusion for this race
     *@param demons a list of strings to be popluated, containing the names of all demons belonging to this race
-    *@throws
     */
   public static void populateRaceData(String race, List<String[]> fCombination, List<String> eUp, List<String> eDown, List<Demon> demons) {
     //Log entry
@@ -239,4 +240,63 @@ public class FileOps {
   public static void readCompendium(Set<Demon> compendium) {
     //TODO
   }
+
+  /**
+    * Reads in file containing all special fusions, and stores them in
+    * internal data structures, for use with SpecialFusion class
+    * @param specials the list in which to store all special fusions found
+    * @throws NullPointer exception if parameter specials is null
+    * @throws IOException if IO error occurs while reading file
+    * @throws FileNotFoundException if file can't be located in expected location
+    */
+    public static void populateSpecialFusions(List<SpecialFusion> specials)
+    throws IOException, NullPointerException, NumberFormatException, FileNotFoundException {
+      //Log entry
+      logger.entering("populateSpecialFusions", "FileOps");
+
+      //Open file containing special fusions
+      File f = new File("../Special/SpecialFusions");
+      if(!f.exists()) {
+        System.out.println("The file containing all special fusions wasn't found");
+        System.exit(1);
+      }
+      BufferedReader br = new BufferedReader(new FileReader(f));
+
+      //Read file line by line. Start by reading header
+      String line = br.readLine();
+      while(line != null) {
+        //Tokenize string
+        String tokens[] = line.split(COMMA_DELIMITER);
+        //Read in race, name and level of demon
+        String race = tokens[0];
+        String name = tokens[1];
+        int level = Integer.valueOf(tokens[2]);
+        //Read in special fusion components
+        List<Demon> components = new ArrayList<Demon>();
+        String componentNames[] = tokens[3].split(COLON_DELIMITER);
+        for(int i=0; i<componentNames.length; i++) {
+          //Find demon race
+          String raceDemonPair[] = componentNames[i].split(LINE_DELIMITER);
+          Race curComponentRace = Race.fromString(raceDemonPair[0]);
+          String demonName = raceDemonPair[1];
+          Demon curDemon = curComponentRace.getDemon(demonName);
+          components.add(curDemon);
+        }
+        //Read in demon's skills
+        String skills[] = tokens[4].split(COLON_DELIMITER);
+        Set<String> skillset = new HashSet<String>();
+        for(int i=0; i<skills.length; i++) {
+          skillset.add(skills[i]);
+        }
+        //Create demon and special fusion
+        Demon finalDemon = new Demon(race, name, level, skillset);
+        SpecialFusion special = new SpecialFusion(finalDemon, components);
+
+        //Add special fusion to list
+        specials.add(special);
+      }
+      br.close();
+
+      logger.exiting("populateSpecialFusions","fileOps");
+    }
 }

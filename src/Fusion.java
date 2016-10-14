@@ -136,16 +136,11 @@ public class Fusion {
       //Find the demon's set of innate skills
       Set<String> innateSkills = null;
       Race race = Race.fromString(desired.getRace());
-      List<Demon> demonsInRace = race.getDemons();
-      String desiredDemonName = desired.getName();
-      for(Demon curDemon : demonsInRace) {
-        if (curDemon.getName().equalsIgnoreCase(desiredDemonName)) {
-          innateSkills = curDemon.getSkills();
-          break;
-        }
-      }
+      Demon demon = race.getDemon(desired.getName());
+      innateSkills = demon.getSkills();
+
       if(innateSkills == null) {
-        logger.warning("Couldn't find demon's innate skills");
+        logger.warning("Couldn't find demon's innate skills. Demon is " + demon.getName());
         System.exit(1);
       }
 
@@ -171,6 +166,7 @@ public class Fusion {
       */
     List<List<Demon[]>> findFusionChains(Demon demon) {
       //TODO: Complete
+      return null;
     }
 
     /**
@@ -183,5 +179,6 @@ public class Fusion {
         //TODO: Complete
         //TODO: The difficulty here is in setting termination flags. This could technically go on infinitely
         //TODO: Should set some sort of depth limit
+        return null;
       }
 }

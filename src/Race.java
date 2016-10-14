@@ -17,6 +17,7 @@ public enum Race {
   private List<String> elementsUp;
   private List<String> elementsDown;
   private List<Demon> demons;
+  private Map<String, Demon> stringToDemon;
 
   //Static string to enum map
   private static Map<String, Race> stringToEnum = new HashMap<String, Race>();
@@ -45,6 +46,11 @@ public enum Race {
     elementsDown = new ArrayList<String>();
     demons = new ArrayList<Demon>();
     FileOps.populateRaceData(race, fusionCombination, elementsUp, elementsDown, demons);
+    //Populate string to demon map for race
+    stringToDemon = new HashMap<String, Demon>();
+    for(Demon d : demons) {
+      stringToDemon.put(d.getName(), d);
+    }
   }
 
   /**
@@ -70,6 +76,15 @@ public enum Race {
 
   public List<Demon> getDemons() {
     return this.demons;
+  }
+
+  /**
+    * Given a demon name, find and return the corresponding demon
+    * @param name the desired demon's name
+    * @return the corresponding demon object
+    */
+  public Demon getDemon(String name) {
+    return stringToDemon.get(name);
   }
 
   /**
