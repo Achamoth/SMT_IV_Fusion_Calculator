@@ -2,6 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.logging.*;
 import java.io.IOException;
 
@@ -24,6 +25,7 @@ public class Fusion {
     * Find all possible combinations to fuse desired Demon
     * @param desiredDemon the demon result that is desired
     * @return a list array demon pairs. Each pair is a possible fusion resulting in desired demon
+    * @return returns null if the desiredDemon can only be obtained through special fusion
     */
   public static List<Demon[]> fuse(Demon desiredDemon) {
     //Log entry
@@ -31,7 +33,14 @@ public class Fusion {
     //Create list that stores results
     List<Demon[]> possibleFusionPairs = new ArrayList<Demon[]>();
     //First, find demon's race
-    Race desiredRace = Race.fromString(desiredDemon.getRace());
+    Race desiredRace = Race.fromString(desiredDemon.getRace().toLowerCase());
+
+    //Check if demon is a special fusion or not
+    Map<String, SpecialFusion> specials = SpecialFusion.getSpecialFusions();
+    if(specials.contains(desiredDemon.getName())) {
+      //Perform special fusion method
+      return null;
+    }
 
     //Now, find the up-fusion through elements that can result in this demon
     List<String> eUp = desiredRace.getElementsUp();
@@ -52,8 +61,8 @@ public class Fusion {
     //For each combination of races, find possible fusions
     for(String[] curRacePair : racesNeeded) {
       //Now, for each race, get its list of demons
-      Race r1 = Race.fromString(curRacePair[0]);
-      Race r2 = Race.fromString(curRacePair[1]);
+      Race r1 = Race.fromString(curRacePair[0].toLowerCase());
+      Race r2 = Race.fromString(curRacePair[1].toLowerCase());
       //Get demon lists
       List<Demon> dlist1 = r1.getDemons();
       List<Demon> dlist2 = r2.getDemons();
@@ -135,7 +144,7 @@ public class Fusion {
 
       //Find the demon's set of innate skills
       Set<String> innateSkills = null;
-      Race race = Race.fromString(desired.getRace());
+      Race race = Race.fromString(desired.getRace().toLowerCase());
       Demon demon = race.getDemon(desired.getName());
       innateSkills = demon.getSkills();
 
@@ -179,6 +188,7 @@ public class Fusion {
         //TODO: Complete
         //TODO: The difficulty here is in setting termination flags. This could technically go on infinitely
         //TODO: Should set some sort of depth limit
+        //TODO: May need to return list of sets instead, since each possible fusion of demon could have a different set of skills, so one set for each fusion combination
         return null;
       }
 }

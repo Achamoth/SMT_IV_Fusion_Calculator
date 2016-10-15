@@ -7,11 +7,15 @@ import java.io.IOException;
 import java.lang.NullPointerException;
 
 public enum Race {
-  Fury("fury"),
   Deity("deity"),
-  Kunitsu("kunitsu"),
+  Divine("divine"),
   Dragon("dragon"),
-  Lady("lady");
+  Fallen("fallen"),
+  Fury("fury"),
+  Herald("herald"),
+  Kunitsu("kunitsu"),
+  Lady("lady"),
+  Tyrant("tyrant");
 
   private List<String[]> fusionCombination;
   private List<String> elementsUp;
@@ -24,10 +28,6 @@ public enum Race {
   private static Logger logger = Logger.getLogger("Race");
 
   static {
-    //Populate string to enum map
-    for(Race r : values()) {
-      stringToEnum.put(r.toString(), r);
-    }
     //Set up logger
     try {
       logger.setLevel(Level.ALL);
@@ -36,6 +36,10 @@ public enum Race {
     }
     catch(IOException e) {
       logger.log(Level.SEVERE, "Couldn't create log file handler for race", e);
+    }
+    //Populate string to enum map
+    for(Race r : values()) {
+      stringToEnum.put(r.toString().toLowerCase(), r);
     }
   }
 
@@ -55,7 +59,7 @@ public enum Race {
 
   /**
     *Returns a race enum, given a string name for the desired race
-    *@param s the string representation of the race
+    *@param s the string representation of the race. MUST BE LOWER CASE
     *return the race enum corresponding to the string representation
     */
   public static Race fromString(String s) {

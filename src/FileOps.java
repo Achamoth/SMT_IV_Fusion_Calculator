@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileReader;
@@ -21,7 +22,7 @@ public class FileOps {
 
   private static final String COMMA_DELIMITER = ",";
   private static final String COLON_DELIMITER = ":";
-  private static final String LINE_DELIMITER = "|";
+  private static final String RACE_DEMON_SPLITTER = "%";
   private static final String NEWLINE_DELIMITER = "\n";
   private static final Logger logger = Logger.getLogger("FileOps");
 
@@ -249,7 +250,7 @@ public class FileOps {
     * @throws IOException if IO error occurs while reading file
     * @throws FileNotFoundException if file can't be located in expected location
     */
-    public static void populateSpecialFusions(List<SpecialFusion> specials)
+    public static void populateSpecialFusions(Map<String,SpecialFusion> specials)
     throws IOException, NullPointerException, NumberFormatException, FileNotFoundException {
       //Log entry
       logger.entering("populateSpecialFusions", "FileOps");
@@ -262,8 +263,9 @@ public class FileOps {
       }
       BufferedReader br = new BufferedReader(new FileReader(f));
 
-      //Read file line by line. Start by reading header
-      String line = br.readLine();
+      //Read file line by line
+      String line = br.readLine(); //Read header file
+      line = br.readLine();
       while(line != null) {
         //Tokenize string
         String tokens[] = line.split(COMMA_DELIMITER);
@@ -275,9 +277,8 @@ public class FileOps {
         List<Demon> components = new ArrayList<Demon>();
         String componentNames[] = tokens[3].split(COLON_DELIMITER);
         for(int i=0; i<componentNames.length; i++) {
-          //Find demon race
-          String raceDemonPair[] = componentNames[i].split(LINE_DELIMITER);
-          Race curComponentRace = Race.fromString(raceDemonPair[0]);
+          String raceDemonPair[] = componentNames[i].split(RACE_DEMON_SPLITTER);
+          Race curComponentRace = Race.fromString(raceDemonPair[0].toLowerCase());
           String demonName = raceDemonPair[1];
           Demon curDemon = curComponentRace.getDemon(demonName);
           components.add(curDemon);
@@ -293,7 +294,10 @@ public class FileOps {
         SpecialFusion special = new SpecialFusion(finalDemon, components);
 
         //Add special fusion to list
-        specials.add(special);
+        specials.put(name,special);
+
+        //Read next line of file
+        line = br.readLine();
       }
       br.close();
 

@@ -1,20 +1,22 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.logging.*;
 import java.io.IOException;
+import java.lang.NumberFormatException;
+import java.lang.NullPointerException;
 
 public class SpecialFusion {
 
   private Demon result;
   private List<Demon> components;
 
-  private static List<SpecialFusion> specialFusions;
+  private static Map<String,SpecialFusion> specialFusions;
   private static Logger logger = Logger.getLogger("SpecialFusion");
 
-  //Populate special fusions list and set up logger
+  //Populate all special fusion data into hash map and initialize logger
   static {
-    specialFusions = new ArrayList<SpecialFusion>();
-
     try {
       logger.setLevel(Level.ALL);
       Handler handler = new FileHandler("../logs/SpecialFusion.log");
@@ -25,6 +27,7 @@ public class SpecialFusion {
     }
 
     try{
+      specialFusions = new HashMap<String,SpecialFusion>();
       FileOps.populateSpecialFusions(specialFusions);
     }
     catch(IOException e) {
@@ -32,7 +35,7 @@ public class SpecialFusion {
       System.exit(1);
     }
     catch(NullPointerException e) {
-      logger.log(Level.INFO, "Null list passed to populateSpecialFusions", e);
+      logger.log(Level.INFO, "Null pointer exception in populateSpecialFusions", e);
       System.exit(1);
     }
     catch(NumberFormatException e) {
@@ -41,9 +44,22 @@ public class SpecialFusion {
     }
   }
 
+
   public SpecialFusion(Demon demon, List<Demon> components) {
     this.result = demon;
     this.components = components;
+  }
+
+  public Demon getResult() {
+    return this.result;
+  }
+
+  public List<Demon> getComponents() {
+    return this.components;
+  }
+
+  public static Map<String, SpecialFusion> getSpecialFusions() {
+    return specialFusions;
   }
 
 }
