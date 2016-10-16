@@ -203,14 +203,15 @@ public class FileOps {
     //Log entry
     logger.entering("FileOps", "readFusionCombinations");
 
-    File f = new File("../Rules/Combinations");
+    String raceFile = race.substring(0,1).toUpperCase() + race.substring(1);
+    File f = new File("../Rules/Combinations/"+raceFile);
     if(!f.exists()) {
       logger.warning("Error. The file containing fusion rules doesn't exist in expected location");
       System.exit(1);
     }
-    BufferedReader br = new BufferedReader(new FileReader(f));
 
-    //Read header file
+    BufferedReader br = new BufferedReader(new FileReader(f));
+    //Read header line
     br.readLine();
     String line = br.readLine();
     //Read all lines in file and record any fusion combinations for desired race
