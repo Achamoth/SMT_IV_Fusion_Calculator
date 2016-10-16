@@ -99,18 +99,60 @@ public enum Race {
   public int getBaseLevel(Demon demon) {
     //Ensure demon isn't null
     if(demon == null)  {
-      throw new NullPointerException("Null-pointer passed as parameter to getBaseLevel()");
+      //throw new NullPointerException("Null-pointer passed as parameter to getBaseLevel()");
     }
     //Get demon's name
     String name = demon.getName();
-    //Search race's demon list
-    for(Demon curDemon : this.demons) {
-      if(curDemon.getName().equalsIgnoreCase(name)) {
-        return curDemon.getLevel();
+    //Get base demon off demon map
+    Demon base = this.stringToDemon.get(name);
+    if(base == null) {
+      return -1;
+    }
+    return base.getLevel();
+  }
+
+  public List<Demon> getWeakerDemons(Demon demon) {
+    //Create empty list to store results
+    List<Demon> result = new ArrayList<Demon>();
+    //Get supplied demon's base level
+    int baseLevel = this.getBaseLevel(demon);
+    //Loop through all demons in race's demon list
+    for(Demon cur : this.demons) {
+      if(cur.getLevel() < baseLevel) {
+        result.add(cur);
+      }
+      else {
+        break;
       }
     }
-    //If we've made it here, the demon didn't exist in this race's demon list. Return -1
-    return -1;
+    //Return list
+    return result;
+  }
+
+  public List<Demon> getStrongerDemons(Demon demon) {
+    //Create empty list to store results
+    List<Demon> result = new ArrayList<Demon>();
+    //Get supplied demon's base level
+    int baseLevel = this.getBaseLevel(demon);
+    //Loop through all demons in race's demon list in reverse order
+    for(int i=this.demons.size()-1; i>=0; i--) {
+      Demon cur = this.demons.get(i);
+      if(cur.getLevel() > baseLevel) {
+        result.add(cur);
+      }
+      else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  public Demon getWeakestDemon() {
+    return this.demons.get(0);
+  }
+
+  public Demon getStrongestDemon() {
+    return this.demons.get(demons.size()-1);
   }
 
 }

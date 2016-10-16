@@ -22,11 +22,11 @@ public class Fusion {
   }
 
   /**
-    * Find all possible combinations to fuse desired Demon
-    * @param desiredDemon the demon result that is desired
-    * @return a list of array demon pairs. Each pair is a possible fusion resulting in desired demon
-    * @return returns null if the desired demon can only be created through special fusion, or if the specified skill set can't be obtained from direct components
-    */
+  * Find all possible combinations to fuse desired Demon
+  * @param desiredDemon the demon result that is desired
+  * @return a list of array demon pairs. Each pair is a possible fusion resulting in desired demon
+  * @return returns null if the desired demon can only be created through special fusion, or if the specified skill set can't be obtained from direct components
+  */
   public static List<Demon[]> fuse(Demon desiredDemon) {
     //Log entry
     logger.entering("Fusion","fuse");
@@ -78,14 +78,59 @@ public class Fusion {
     List<String> eUp = desiredRace.getElementsUp();
     //For each element in here, calculate a possible demon to fuse with
     for(String curElement : eUp) {
-      //TODO: Need to first store and read in elements
+      //Get the demon representing the current element
+      Race elRace = Race.fromString("element");
+      Demon element = elRace.getDemon(curElement);
+
+      //Get strongest demon from desired demon's race
+      Demon strongestInRace = desiredRace.getStrongestDemon();
+      //Compute fusion between strongest demon and element, if the desired demon is the weakest in the race
+      Demon[] curPair = {strongestInRace, element};
+      if(fusionObtainsSkills(desiredDemon, curPair) && desiredRace.getWeakestDemon().getName().equalsIgnoreCase(desiredDemon.getName())) {
+        //Add this final pair to list of fusion pairs
+        possibleFusionPairs.add(curPair);
+      }
+
+      //Get all demons of a lower base level, belonging to the same race as the desired demon
+      List<Demon> weaker = desiredRace.getWeakerDemons(desiredDemon);
+      if(weaker.size() == 0) {
+        //If desired demon is the weakest demon, move to next element
+        continue;
+      }
+      //Get strongest demon from list of weaker demoms
+      Demon strongestAmongWeaker = weaker.get(weaker.size()-1);
+      //For the strongest demon among the list of weaker demons, compute a fusion with the element
+      curPair[0] = strongestAmongWeaker;
+      curPair[1] = element;
+      if(fusionObtainsSkills(desiredDemon, curPair)) {
+        //Add current pair to list of fusion pairs
+        possibleFusionPairs.add(curPair);
+      }
+
     }
 
     //Next, find the down-fusion through elements that can result in this demon
     List<String> eDown = desiredRace.getElementsDown();
     //For each element in here, calculate a possible demon to fuse with
     for(String curElement: eDown) {
-      //TODO: Need to first store and read in elements
+      //Get the demon representing the current element
+      Race elRace = Race.fromString("element");
+      Demon element = elRace.getDemon(curElement);
+
+      //Get all demons of a higher base level, belonging to the same race as the desired demon
+      List<Demon> stronger = desiredRace.getStrongerDemons(desiredDemon);
+      if(stronger.size() == 0) {
+        //Desired demon is the strongest in its race. Can't be produce through down fusion with elements
+        break;
+      }
+      //Get the weakest demon among the stronger demons
+      Demon weakestAmongStronger = stronger.get(stronger.size()-1);
+      //For the weakest of the stronger demons, compute a fusion with the element
+      Demon[] curPair = {weakestAmongStronger, element};
+      if(fusionObtainsSkills(desiredDemon, curPair)) {
+        //Add current pair to list of fusion pairs
+        possibleFusionPairs.add(curPair);
+      }
     }
 
     //Find two races that must be fused for this race
@@ -104,8 +149,8 @@ public class Fusion {
         for(Demon secondDemon : dlist2) {
           //Check average level of 2 demons
           int avgLvl = (r1.getBaseLevel(firstDemon) + r2.getBaseLevel(secondDemon))/2;
-          //Check that average level is lower than desired demon's level
-          if(avgLvl <= desiredDemon.getLevel()) {
+          //Check that average level is lower than desired demon's base level
+          if(avgLvl <= desiredRace.getBaseLevel(desiredDemon)) {
             //Now, check that it's also higher than level of weaker demon from desired race
             Demon previousDemon = null;
             for(Demon curDemon : desiredRace.getDemons()) {
@@ -153,74 +198,74 @@ public class Fusion {
   }
 
   /**
-    * Given a desired demon, and two components to fuse the demon, check if the components
-    * will provide the desired demon's skill set
-    * @param desirdDemon the demon that is desired from fusion
-    * @param fusionComponents the demons that will be fused to obtain the desired demon
-    * @return true if the components will provide for the desired demon's skill set
-    */
-    private static boolean fusionObtainsSkills(Demon desired, Demon[] components) {
-      //Log entry
-      logger.entering("Fusion","fusionObtainsSkills");
-      //Store all skills acquired from components
-      Set<String> skillsFromFusion = new HashSet<String>();
+  * Given a desired demon, and two components to fuse the demon, check if the components
+  * will provide the desired demon's skill set
+  * @param desirdDemon the demon that is desired from fusion
+  * @param fusionComponents the demons that will be fused to obtain the desired demon
+  * @return true if the components will provide for the desired demon's skill set
+  */
+  private static boolean fusionObtainsSkills(Demon desired, Demon[] components) {
+    //Log entry
+    logger.entering("Fusion","fusionObtainsSkills");
+    //Store all skills acquired from components
+    Set<String> skillsFromFusion = new HashSet<String>();
 
-      //Loop over all components
-      for(int i=0; i<components.length; i++) {
-        Demon curDemon = components[i];
-        Set<String> curDemonSkills = curDemon.getSkills();
-        for(String curSkill : curDemonSkills) {
-          skillsFromFusion.add(curSkill);
-        }
+    //Loop over all components
+    for(int i=0; i<components.length; i++) {
+      Demon curDemon = components[i];
+      Set<String> curDemonSkills = curDemon.getSkills();
+      for(String curSkill : curDemonSkills) {
+        skillsFromFusion.add(curSkill);
       }
-
-      //Find the demon's set of innate skills
-      Set<String> innateSkills = null;
-      Race race = Race.fromString(desired.getRace().toLowerCase());
-      Demon demon = race.getDemon(desired.getName());
-      innateSkills = demon.getSkills();
-
-      if(innateSkills == null) {
-        logger.warning("Couldn't find demon's innate skills. Demon is " + demon.getName());
-        System.exit(1);
-      }
-
-      //Now, find set of all skills in desired demon
-      Set<String> desiredSkills = desired.getSkills();
-
-      //Check that all skills in desiredSkills exist in skillsFromFusion
-      for(String curSkill : desiredSkills) {
-        if(!skillsFromFusion.contains(curSkill) && !innateSkills.contains(curSkill)) {
-          //Fusion won't provide for this skill. Return false
-          logger.exiting("Fusion","fusionObtainsSkills");
-          return false;
-        }
-      }
-      logger.exiting("Fusion","fusionObtainsSkills");
-      return true;
     }
 
-    /**
-      * Given a specification for a demon, find all fusion chains that will produce specified demon
-      * @param demon the demon desired as the end result of fusion
-      * @return a list of demon pair lists, with each list containing one valid fusion chain
-      */
-    List<List<Demon[]>> findFusionChains(Demon demon) {
-      //TODO: Complete
-      return null;
+    //Find the demon's set of innate skills
+    Set<String> innateSkills = null;
+    Race race = Race.fromString(desired.getRace().toLowerCase());
+    Demon demon = race.getDemon(desired.getName());
+    innateSkills = demon.getSkills();
+
+    if(innateSkills == null) {
+      logger.warning("Couldn't find demon's innate skills. Demon is " + demon.getName());
+      System.exit(1);
     }
 
-    /**
-      * Given a demon, return the set of all skills that can be acquired from that demon's possible fusions
-      * @param demon the demon to be fused
-      * @param depth since this method is called recursively, we will need to terminate at a specific depth. This parameter passes along the current depth
-      * @return a set of all skills that can be required from valid fusion chains for that demon
-      */
-      Set<String> findPossibleSkills(Demon demon, int curDepth) {
-        //TODO: Complete
-        //TODO: The difficulty here is in setting termination flags. This could technically go on infinitely
-        //TODO: Should set some sort of depth limit
-        //TODO: May need to return list of sets instead, since each possible fusion of demon could have a different set of skills, so one set for each fusion combination
-        return null;
+    //Now, find set of all skills in desired demon
+    Set<String> desiredSkills = desired.getSkills();
+
+    //Check that all skills in desiredSkills exist in skillsFromFusion
+    for(String curSkill : desiredSkills) {
+      if(!skillsFromFusion.contains(curSkill) && !innateSkills.contains(curSkill)) {
+        //Fusion won't provide for this skill. Return false
+        logger.exiting("Fusion","fusionObtainsSkills");
+        return false;
       }
+    }
+    logger.exiting("Fusion","fusionObtainsSkills");
+    return true;
+  }
+
+  /**
+  * Given a specification for a demon, find all fusion chains that will produce specified demon
+  * @param demon the demon desired as the end result of fusion
+  * @return a list of demon pair lists, with each list containing one valid fusion chain
+  */
+  List<List<Demon[]>> findFusionChains(Demon demon) {
+    //TODO: Complete
+    return null;
+  }
+
+  /**
+  * Given a demon, return the set of all skills that can be acquired from that demon's possible fusions
+  * @param demon the demon to be fused
+  * @param depth since this method is called recursively, we will need to terminate at a specific depth. This parameter passes along the current depth
+  * @return a set of all skills that can be required from valid fusion chains for that demon
+  */
+  Set<String> findPossibleSkills(Demon demon, int curDepth) {
+    //TODO: Complete
+    //TODO: The difficulty here is in setting termination flags. This could technically go on infinitely
+    //TODO: Should set some sort of depth limit
+    //TODO: May need to return list of sets instead, since each possible fusion of demon could have a different set of skills, so one set for each fusion combination
+    return null;
+  }
 }
