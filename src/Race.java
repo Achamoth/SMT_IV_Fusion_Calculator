@@ -15,7 +15,8 @@ public enum Race {
   Herald("herald"),
   Kunitsu("kunitsu"),
   Lady("lady"),
-  Tyrant("tyrant");
+  Tyrant("tyrant"),
+  Element("element");
 
   private List<String[]> fusionCombination;
   private List<String> elementsUp;
@@ -25,18 +26,8 @@ public enum Race {
 
   //Static string to enum map
   private static Map<String, Race> stringToEnum = new HashMap<String, Race>();
-  private static Logger logger = Logger.getLogger("Race");
 
   static {
-    //Set up logger
-    try {
-      logger.setLevel(Level.ALL);
-      Handler handler = new FileHandler("../Logs/Race.log");
-      logger.addHandler(handler);
-    }
-    catch(IOException e) {
-      logger.log(Level.SEVERE, "Couldn't create log file handler for race", e);
-    }
     //Populate string to enum map
     for(Race r : values()) {
       stringToEnum.put(r.toString().toLowerCase(), r);
@@ -83,6 +74,14 @@ public enum Race {
   }
 
   /**
+    * Returns boolean value signifying whether this race enum is an element or not
+    * @return true if race is element, false otherwise
+    */
+  public boolean isElement() {
+    return this.toString().equalsIgnoreCase("element");
+  }
+
+  /**
     * Given a demon name, find and return the corresponding demon
     * @param name the desired demon's name
     * @return the corresponding demon object
@@ -100,7 +99,6 @@ public enum Race {
   public int getBaseLevel(Demon demon) {
     //Ensure demon isn't null
     if(demon == null)  {
-      logger.fine("Null demon passed to getBaseLevel in Race");
       throw new NullPointerException("Null-pointer passed as parameter to getBaseLevel()");
     }
     //Get demon's name

@@ -24,8 +24,8 @@ public class Fusion {
   /**
     * Find all possible combinations to fuse desired Demon
     * @param desiredDemon the demon result that is desired
-    * @return a list array demon pairs. Each pair is a possible fusion resulting in desired demon
-    * @return returns null if the desiredDemon can only be obtained through special fusion
+    * @return a list of array demon pairs. Each pair is a possible fusion resulting in desired demon
+    * @return returns null if the desired demon can only be created through special fusion, or if the specified skill set can't be obtained from direct components
     */
   public static List<Demon[]> fuse(Demon desiredDemon) {
     //Log entry
@@ -35,10 +35,42 @@ public class Fusion {
     //First, find demon's race
     Race desiredRace = Race.fromString(desiredDemon.getRace().toLowerCase());
 
+    //Check if race is element
+    if(desiredRace.isElement()) {
+      //If so, fusion is simple to perform. First, get the demon's name
+      String demonName = desiredDemon.getName();
+      //Now, find the corresponding Element enum
+      Element element = Element.fromString(demonName);
+      //Now, find list of races that can produce this element
+      List<Race> races = element.getRaceFusionList();
+      //For each race, compute all possible fusions
+      for(Race r : races) {
+        //Get all demons in current race
+        List<Demon> demonsInRace = r.getDemons();
+        //Find all pairs of demons that provide desired skill set
+        int numDemons = demonsInRace.size();
+        for(int i=0; i<numDemons; i++) {
+          for(int j=i+1; j<numDemons; j++) {
+            //Produce demon pair
+            Demon[] curPair = new Demon[2];
+            curPair[0] = demonsInRace.get(i);
+            curPair[1] = demonsInRace.get(j);
+            //Check if current pair provides desired skill set
+            if(fusionObtainsSkills(desiredDemon, curPair)) {
+              //Add current pair as a possible fusion combination
+              possibleFusionPairs.add(curPair);
+            }
+          }
+        }
+      }
+      //Return list of possible fusion pairs
+      return possibleFusionPairs;
+    }
+
     //Check if demon is a special fusion or not
     Map<String, SpecialFusion> specials = SpecialFusion.getSpecialFusions();
-    if(specials.contains(desiredDemon.getName())) {
-      //Perform special fusion method
+    if(specials.containsKey(desiredDemon.getName())) {
+      //Return null. The caller should use special fusion method instead
       return null;
     }
 

@@ -14,31 +14,38 @@ public class Test {
   private static Logger logger = Logger.getLogger("SpecialFusion");
 
   public static void main(String[] args) {
+
+    //Try fusing an Ares with a specific skill set
     Set<String> skills = new HashSet<String>();
     //skills.add("Fatal Sword");
     skills.add("Agi");
     skills.add("Posmudi");
     skills.add("Bufu");
     skills.add("Fatal Sword");
-    Demon ares = new Demon("Fury", "Ares", 31, skills);
-    List<Demon[]> getFusions = Fusion.fuse(ares);
+    Demon desired = new Demon("Fury", "Ares", 31, skills);
+    List<Demon[]> fusions = Fusion.fuse(desired);
     int i=1;
-    for(Demon[] pairs : getFusions) {
+    for(Demon[] pairs : fusions) {
       System.out.printf("Pair %d: ", i++);
       System.out.printf("%s + %s\n", pairs[0].getName(), pairs[1].getName());
       System.out.println();
     }
+    System.out.println();
 
-    //Try getting all special fusions
-    Map<String, SpecialFusion> specialFusions = SpecialFusion.getSpecialFusions();
-    Set<String> specialFusionDemons = specialFusions.keySet();
-    for(String curSpecialName : specialFusionDemons) {
-      //Get demon
-      SpecialFusion curSpecial = specialFusions.get(curSpecialName);
-      //Print out special fusion name
-      System.out.println("Demon Name: " + curSpecial.getResult().getName());
-      System.out.println("Skills: " + curSpecial.getResult().getSkills().toString());
+    //Try fusing an element Salamander with a specific skill set
+    skills = new HashSet<String>();
+    skills.add("High Fire Pleroma");
+    skills.add("Panic Voice");
+    skills.add("Life Gain");
+    skills.add("Kannuki-Throw");
+    desired = new Demon("Element", "Salamander", 36, skills);
+    fusions = Fusion.fuse(desired);
+    i=1;
+    for(Demon[] pairs : fusions) {
+      System.out.printf("Pair %d: ", i++);
+      System.out.printf("%s + %s\n", pairs[0].getName(), pairs[1].getName());
       System.out.println();
     }
+    System.out.println();
   }
 }

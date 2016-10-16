@@ -78,6 +78,63 @@ public class FileOps {
   }
 
   /**
+    * For a given element, populates a list of races that can be used to produce the element
+    * @param element the specified element for which fusion rules are desired
+    * @param races the list of races to populate
+    */
+  public static void populateElementFusionRules(String element, List<Race> races) {
+    //Log entry
+    logger.entering("FileOps","populateElementFusionRules");
+
+    try {
+      //Ensure neither element nor races are null
+      if(element == null || races == null) {
+        throw new NullPointerException("Element or races null for populateElementFusionRules");
+      }
+
+      //Open file containing all fusion rules for each element
+      File f = new File("../Rules/ElementFusions");
+      if(!f.exists()) {
+        System.out.println("Error. Couldn't find element fusion rules in expected location");
+        System.exit(1);
+      }
+
+      //Contstruct reader and read first line (header)
+      BufferedReader br = new BufferedReader(new FileReader(f));
+      br.readLine();
+      //Read all lines in file until the desired element is found
+      String line = br.readLine();
+      boolean elementRead = false;
+      while(line != null && !elementRead) {
+        //Tokenize line
+        String tokens[] = line.split(COMMA_DELIMITER);
+        //Check if the current line is for the desired element
+        String curElement = tokens[0];
+        if(curElement.equalsIgnoreCase(element)) {
+          elementRead = true;
+          //Store all races that can produce desired element
+          String racesForElement[] = tokens[1].split(COLON_DELIMITER);
+          for(String curRace : racesForElement) {
+            Race race = Race.fromString(curRace.toLowerCase());
+            races.add(race);
+          }
+        }
+        //Read next line
+        line = br.readLine();
+      }
+    }
+    catch (IOException e) {
+      logger.log(Level.INFO, "IOException occured while reading element fusion rules", e);
+      System.exit(1);
+    }
+    catch (NullPointerException e) {
+      logger.log(Level.INFO, "Null pointer exception in populateElementFusionRules", e);
+      System.exit(1);
+    }
+    logger.exiting("FileOps","populateElementFusionRules");
+  }
+
+  /**
     * Finds all demons belonging to a specific race, and adds them to list passed as parameter
     * @param race the race for which we want to find all demons
     * @param demons the list to which all located demons are added
