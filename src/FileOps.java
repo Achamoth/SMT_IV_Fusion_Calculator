@@ -206,7 +206,7 @@ public class FileOps {
     String raceFile = race.substring(0,1).toUpperCase() + race.substring(1);
     File f = new File("../Rules/Combinations/"+raceFile);
     if(!f.exists()) {
-      logger.warning("Error. The file containing fusion rules doesn't exist in expected location");
+      logger.warning("Error. The file containing fusion rules doesn't exist in expected location: " + raceFile);
       System.exit(1);
     }
 
