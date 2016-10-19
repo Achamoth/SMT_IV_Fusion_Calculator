@@ -29,10 +29,13 @@ public class Test {
     System.out.println();*/
 
     //Try printing all fusion rules for Deity
-    Race race = Race.fromString("deity");
+    /*Race race = Race.fromString("deity");
     List<String[]> combinations = race.getFusionComponents();
     for(String[] curCombination : combinations) {
       System.out.println(race.toString() + ": " + curCombination[0] + " + " + curCombination[1]);
-    }
+    }*/
+
+    //Try running fusion chart reader
+    FileOps.readFusionChart();
   }
 }

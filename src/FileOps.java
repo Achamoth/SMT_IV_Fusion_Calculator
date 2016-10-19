@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.HashMap;
 import java.io.IOException;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.lang.NumberFormatException;
@@ -360,5 +362,96 @@ public class FileOps {
       br.close();
 
       logger.exiting("populateSpecialFusions","fileOps");
+    }
+
+    /**
+      * Reads fusion chart file, and creates all fusion rule files inside appropriate directory
+      */
+    public static void readFusionChart() {
+      //Log entry
+      logger.entering("readFusionChart","FileOps");
+      try {
+        //First, open fusion chart file
+        File f = new File("../Rules/FusionChart");
+        if(!f.exists()) {
+          logger.warning("FusionChart file not found in expected location. Exiting");
+          System.exit(1);
+        }
+        //Construct buffered reader
+        BufferedReader br = new BufferedReader(new FileReader(f));
+        //Read header file
+        String line = br.readLine();
+        //Construct hashmaps to store race index positions
+        Map<String,Integer> raceToIndex = new HashMap<String,Integer>();
+        Map<Integer,String> indexToRace = new HashMap<Integer,String>();
+        //Construct hashmap to store fusion combinations
+        Map<String,List<String[]>> fusionCombos = new HashMap<String,List<String[]>>();
+        //Parse header file
+        String[] header = line.split(COMMA_DELIMITER);
+        for(int i=0; i<header.length; i++) {
+          raceToIndex.put(header[i], new Integer(i));
+          indexToRace.put(new Integer(i), header[i]);
+          fusionCombos.put(header[i], new ArrayList<String[]>());
+        }
+        //Find number of races
+        int numRaces = header.length;
+        //Read all lines in file
+        line = br.readLine();
+        while(line != null) {
+          //Tokenize the current line
+          String[] tokens = line.split(COMMA_DELIMITER);
+          //Find the current race
+          String secondRace = tokens[0];
+          //Compare current race to all other appropriate races and see fusion result
+          for(int i=1; i<tokens.length; i++) {
+            String fusionResult = tokens[i].trim();
+            if(fusionResult.equals("-")) {
+              //No fusion
+              continue;
+            }
+            else {
+              //Calculate offset for current race
+              int offset = raceToIndex.get(secondRace) + 1;
+              //Find first race
+              int firstRacePosition = i+offset-1;
+              String firstRace = indexToRace.get(firstRacePosition);
+              //Now store fusion
+              List<String[]> curFusionCombos = fusionCombos.get(fusionResult);
+              String curPair[] = {firstRace, secondRace};
+              curFusionCombos.add(curPair);
+              fusionCombos.put(fusionResult, curFusionCombos);
+            }
+          }
+          //Read next line in file
+          line = br.readLine();
+        }
+
+        //Now, try and write all fusion combinations found out to files
+        Set<String> races = fusionCombos.keySet();
+        for(String curRace : races) {
+          //Open file to write fusion combinations to
+          FileWriter fw = new FileWriter("../Rules/Combinations/"+curRace);
+          fw.write("***Resulting Race, Race 1, Race 2***\n");
+          //Read all fusion combinations
+          List<String[]> curRaceCombos = fusionCombos.get(curRace);
+          for(String[] curRaceCombination : curRaceCombos) {
+            //Write current combination
+            fw.write(curRace.trim()+","+curRaceCombination[1].trim()+","+curRaceCombination[0]+"\n");
+          }
+          //Close file
+          fw.flush();
+          fw.close();
+        }
+      }
+      catch(IOException e) {
+        logger.log(Level.WARNING, "IOException while reading fusion chart", e);
+        System.exit(1);
+      }
+      catch(NullPointerException e) {
+        logger.log(Level.WARNING, "Null pointer exception while reading fusion chart", e);
+        System.exit(1);
+      }
+      //Log exit
+      logger.exiting("readFusionChart","FileOps");
     }
 }
