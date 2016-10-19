@@ -16,7 +16,7 @@ public class Test {
   public static void main(String[] args) {
 
     //Try fusing an Asura with a specific skill set
-    Set<String> skills = new HashSet<String>();
+    /*Set<String> skills = new HashSet<String>();
     Demon desired = new Demon("Fury", "Ares", 99, null);
     List<Demon[]> fusions = Fusion.fuse(desired);
     int i=1;
@@ -26,6 +26,16 @@ public class Test {
       System.out.printf("%s + %s\n", pairs[0].getName(), pairs[1].getName());
       System.out.println();
     }
-    System.out.println();
+    System.out.println();*/
+
+    //Try printing all fusion rules for Deity
+    /*Race race = Race.fromString("deity");
+    List<String[]> combinations = race.getFusionComponents();
+    for(String[] curCombination : combinations) {
+      System.out.println(race.toString() + ": " + curCombination[0] + " + " + curCombination[1]);
+    }*/
+
+    //Try running fusion chart reader
+    FileOps.readFusionChart();
   }
 }
