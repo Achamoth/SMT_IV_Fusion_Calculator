@@ -24,7 +24,7 @@ public class FileOps {
 
   private static final String COMMA_DELIMITER = ",";
   private static final String COLON_DELIMITER = ":";
-  private static final String RACE_DEMON_SPLITTER = "%";
+  private static final String RACE_DEMON_SPLITTER = "\\|";
   private static final String NEWLINE_DELIMITER = "\n";
   private static final Logger logger = Logger.getLogger("FileOps");
 
