@@ -204,7 +204,7 @@ public class Fusion {
   * @param fusionComponents the demons that will be fused to obtain the desired demon
   * @return true if the components will provide for the desired demon's skill set
   */
-  private static boolean fusionObtainsSkills(Demon desired, Demon[] components) {
+  public static boolean fusionObtainsSkills(Demon desired, Demon[] components) {
     //Log entry
     logger.entering("Fusion","fusionObtainsSkills");
     //Store all skills acquired from components

@@ -62,4 +62,13 @@ public class SpecialFusion {
     return specialFusions;
   }
 
+  public void printRecipe() {
+    System.out.print(this.result.getRace().toString() + " " + this.result.getName() + ": ");
+    System.out.print(this.components.get(0).getRace().toString().substring(0,1).toUpperCase()+this.components.get(0).getRace().toString().substring(1) + " " + this.components.get(0).getName());
+    for(int i=1; i<this.components.size(); i++) {
+      System.out.print(" + " + this.components.get(i).getRace().toString().substring(0,1).toUpperCase()+this.components.get(0).getRace().toString().substring(1) + " " + this.components.get(i).getName());
+    }
+    System.out.print("\n");
+  }
+
 }
