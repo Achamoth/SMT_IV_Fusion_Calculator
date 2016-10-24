@@ -36,7 +36,7 @@ public class Runner {
 
     }
     //Set up scanner to take user input
-    Scanner in = new Scanner(System.in);
+    /*Scanner in = new Scanner(System.in);
 
     //Ask user for desired demon's details
     //CLEAN THIS UP
@@ -87,6 +87,19 @@ public class Runner {
         System.out.println();
       }
     }
-    System.out.println();
+    System.out.println();*/
+
+    //Attempt a fusion chain
+    Set<String> asuraSkills = new HashSet<String>();
+    asuraSkills.add("Enduring Soul");
+    asuraSkills.add("Repel Phys");
+    asuraSkills.add("Repel Fire");
+    asuraSkills.add("Grand Tack");
+    Demon Asura = new Demon("Fury", "Asura", 99, asuraSkills);
+
+    FusionChain recipe = Fusion.findFusionChains(Asura, 0);
+
+    //Try printing fusion chain
+    recipe.printChain(0);
   }
 }

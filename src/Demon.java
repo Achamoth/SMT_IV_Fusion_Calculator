@@ -25,6 +25,13 @@ public class Demon {
     }
   }
 
+  public Demon(Demon d) {
+    this.level = d.getLevel();
+    this.name = d.getName();
+    this.race = d.getRace();
+    this.skills = d.getSkills();
+  }
+
   //Getter methodds
   public String getRace() {
     return this.race;
@@ -40,6 +47,20 @@ public class Demon {
 
   public Set<String> getSkills() {
     return this.skills;
+  }
+
+  public int getNumSkills() {
+    return this.skills.size();
+  }
+
+  //Simple setter method for skills
+  public void setSkills(Set<String> skills) {
+    if(skills == null) {
+      this.skills = new HashSet<String>();
+    }
+    else {
+      this.skills = skills;
+    }
   }
 
   /**

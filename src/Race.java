@@ -108,7 +108,12 @@ public enum Race {
   }
 
   public List<Demon> getDemons() {
-    return this.demons;
+    //Create a copy of the list
+    List<Demon> result = new ArrayList<Demon>();
+    for(Demon d : this.demons) {
+      result.add(new Demon(d));
+    }
+    return result;
   }
 
   /**
@@ -125,7 +130,9 @@ public enum Race {
     * @return the corresponding demon object
     */
   public Demon getDemon(String name) {
-    return stringToDemon.get(name);
+    System.out.println(this.toString());
+    System.out.println(name);
+    return new Demon(stringToDemon.get(name));
   }
 
   /**
