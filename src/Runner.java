@@ -95,11 +95,12 @@ public class Runner {
     asuraSkills.add("Repel Phys");
     asuraSkills.add("Repel Fire");
     asuraSkills.add("Grand Tack");
+    asuraSkills.add("Null Elec");
     Demon Asura = new Demon("Fury", "Asura", 99, asuraSkills);
 
     FusionChain recipe = Fusion.findFusionChains(Asura, 0);
 
     //Try printing fusion chain
-    recipe.printChain(0);
+    recipe.printChain(0, asuraSkills);
   }
 }

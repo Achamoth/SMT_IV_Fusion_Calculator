@@ -130,8 +130,6 @@ public enum Race {
     * @return the corresponding demon object
     */
   public Demon getDemon(String name) {
-    System.out.println(this.toString());
-    System.out.println(name);
     return new Demon(stringToDemon.get(name));
   }
 

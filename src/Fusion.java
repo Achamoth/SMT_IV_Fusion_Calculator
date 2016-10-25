@@ -411,7 +411,6 @@ public class Fusion {
   * @param curDepth the method is recursive, so this records the depth that the method has reached
   * @return a FusionChain object, which represents a fusion recipe for the desired demon
   */
-  //TODO: NEED TO DO THIS METHOD BREADTH FIRST, NOT DEPTH FIRST
   public static FusionChain findFusionChains(Demon demon, int curDepth) {
     //Log entry
     logger.entering("Fusion","findFusionChains");
@@ -472,18 +471,31 @@ public class Fusion {
 
           //Recursively call this method on each of the components to find new fusion chains
           Set<String> skillsLacking = findSkillDefficiencies(demon, result);
-          //Pass along skills lacking to component fusion chains
+          //Pass along skills lacking to first component's fusion chain
           result.getChain(0).getDemon().setSkills(skillsLacking);
-          result.getChain(1).getDemon().setSkills(skillsLacking);
-          //Now find fusion chains for these two demons
+          //Now find fusion chains for this demon
           result.setChain(0, findFusionChains(result.getChain(0).getDemon(), curDepth+1));
-          result.setChain(1, findFusionChains(result.getChain(1).getDemon(), curDepth+1));
-          //Reset demons to their base versions at the top of the trees
+          //Reset first component demon to its base version at the top of the tree
           Demon d1 = result.getChain(0).getDemon();
           Race r1 = Race.fromString(d1.getRace().toLowerCase());
           Demon d1Base = r1.getDemon(d1.getName());
           result.getChain(0).setDemon(d1Base);
 
+          //Now check skills again after finding new fusion chain for first component
+          result.addSkillsInChain(foundSkills);
+          numCurSkills = numberOfSkillsFound(demon, foundSkills);
+          if(numCurSkills == demon.getNumSkills()) {
+            //This chain works and provides all desired skill
+            return result;
+          }
+
+          //Otherwise, find all skills still lacking
+          skillsLacking = findSkillDefficiencies(demon, result);
+          //Pass these skills along to second component's fusion chain
+          result.getChain(1).getDemon().setSkills(skillsLacking);
+          //Now find fusion chains for this demon
+          result.setChain(1, findFusionChains(result.getChain(1).getDemon(),curDepth+1));
+          //Reset second component demon to its base version at the top of the tree
           Demon d2 = result.getChain(1).getDemon();
           Race r2 = Race.fromString(d2.getRace().toLowerCase());
           Demon d2Base = r2.getDemon(d2.getName());
@@ -491,7 +503,7 @@ public class Fusion {
 
           //Now check skills again after finding new fusion chains
           result.addSkillsInChain(foundSkills);
-          numCurSkills = (numberOfSkillsFound(demon, foundSkills));
+          numCurSkills = numberOfSkillsFound(demon, foundSkills);
           if(numCurSkills == demon.getNumSkills()) {
             //This chain works and provides all desired skills
             return result;
