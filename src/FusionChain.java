@@ -57,7 +57,15 @@ public class FusionChain {
     for(String curSkill : skillsFromDemon) {
       skills.add(curSkill);
     }
-    //Add all skills that can be acuired from component's fusion chains
+    //Add all skills that can be found off the compendium demon
+    Demon compendiumDemon = Race.fromString(demon.getRace().toString().toLowerCase()).getCompendiumDemon(demon.getName());
+    if(compendiumDemon != null) {
+      Set<String> skillsFromCompDemon = compendiumDemon.getSkills();
+      for(String curSkill : skillsFromCompDemon) {
+        skills.add(curSkill);
+      }
+    }
+    //Add all skills that can be acquired from component's fusion chains
     if(this.components == null || this.chains == null) return ;
     for(FusionChain c : this.chains) {
       c.addSkillsInChain(skills);
@@ -144,6 +152,17 @@ public class FusionChain {
     //Loop over all of demon's skills
     for(String curSkill : demonSkills) {
       //If current skill exists in 'skills' param, add it to the result
+      if(skills.contains(curSkill)) {
+        result.add(curSkill);
+      }
+    }
+    //Now find the compendium demon, and add all of its skills
+    Demon compDemon = Race.fromString(d.getRace().toLowerCase()).getCompendiumDemon(d.getName());
+    if(compDemon ==  null) {
+      return result;
+    }
+    Set<String> skillsfromCompDemon = compDemon.getSkills();
+    for(String curSkill : skillsfromCompDemon) {
       if(skills.contains(curSkill)) {
         result.add(curSkill);
       }

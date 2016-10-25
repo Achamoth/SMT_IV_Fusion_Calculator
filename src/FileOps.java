@@ -50,13 +50,15 @@ public class FileOps {
     *@param eDown a list of strings to be popluated, containing the names of elements that result in down-fusion for this race
     *@param demons a list of strings to be popluated, containing the names of all demons belonging to this race
     */
-  public static void populateRaceData(String race, List<String[]> fCombination, List<String> eUp, List<String> eDown, List<Demon> demons) {
+  public static void populateRaceData(String race, List<String[]> fCombination, List<String> eUp, List<String> eDown, List<Demon> demons, List<Demon> compendium) {
     //Log entry
     logger.entering("FileOps","populateRaceData");
 
     readattempt: try {
       //First, read in all demons
       readDemonList(race, demons);
+      //Next, read in demon compendium
+      readDemonCompendium(race, compendium);
       //Next, read in fusion combination
       readFusionCombinations(race, fCombination);
       //Finally, read in element rules
@@ -189,6 +191,65 @@ public class FileOps {
 
     //Log exit
     logger.exiting("FileOps", "readDemonList");
+  }
+
+  private static void readDemonCompendium(String race, List<Demon> compendium)
+  throws NullPointerException, FileNotFoundException, IOException, NumberFormatException{
+    //Log entry
+    logger.entering("FileOps","readDemonCompendium");
+
+    //Start by opening compendium file
+    File f = new File("../Compendium/Compendium");
+    if(!f.exists()) {
+      logger.warning("Error. The compendium file doesn't exist in expected location. Exiting");
+      System.exit(1);
+    }
+
+    //Construct buffered reader over file
+    BufferedReader br = new BufferedReader(new FileReader(f));
+
+    //Read header line
+    br.readLine();
+    //Read all lines in file until desired race is finished, or until end of file is reached
+    String previousRace = "";
+    boolean raceFinished = false;
+    String line = br.readLine();
+    while(line != null && !raceFinished) {
+      //First, tokenize line
+      String[] tokens = line.split(COMMA_DELIMITER);
+      //Read in race
+      String curRace = tokens[0].toLowerCase();
+      //Check if it's the race we're after
+      if(!curRace.equals(race.toLowerCase())) {
+        //If not, check if the last race encountered was
+        if(previousRace.equals(race)) {
+          //If so, we're done
+          raceFinished = true;
+          continue;
+        }
+        else {
+          //Otherwise, read next line
+          line = br.readLine();
+          continue;
+        }
+      }
+      //We have our desired race
+      String curDemonName = tokens[1];
+      int curDemonLevel = Integer.valueOf(tokens[2]);
+      //Read demon's skills
+      Set<String> curDemonSkillSet = new HashSet<String>();
+      String[] curDemonSkills = tokens[3].split(COLON_DELIMITER);
+      for(String curSkill : curDemonSkills) {
+        curDemonSkillSet.add(curSkill);
+      }
+      //Create and store new demon object
+      compendium.add(new Demon(curRace, curDemonName, curDemonLevel, curDemonSkillSet));
+
+      //Read next line
+      line = br.readLine();
+      //Update previous race
+      previousRace = curRace;
+    }
   }
 
 

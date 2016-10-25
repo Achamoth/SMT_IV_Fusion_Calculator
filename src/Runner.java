@@ -102,5 +102,11 @@ public class Runner {
 
     //Try printing fusion chain
     recipe.printChain(0, asuraSkills);
+
+    //Try printing shiva
+    Race fury = Race.fromString("fury");
+    Demon shiva = fury.getCompendiumDemon("Shiva");
+    if(shiva == null) System.out.println("Not found");
+    else System.out.println(shiva.toString());
   }
 }

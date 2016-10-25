@@ -60,7 +60,9 @@ public enum Race {
   private List<String> elementsUp;
   private List<String> elementsDown;
   private List<Demon> demons;
+  private List<Demon> compendium;
   private Map<String, Demon> stringToDemon;
+  private Map<String, Demon> stringToDemonCompendium;
 
   //Static string to enum map
   private static Map<String, Race> stringToEnum = new HashMap<String, Race>();
@@ -78,11 +80,17 @@ public enum Race {
     elementsUp = new ArrayList<String>();
     elementsDown = new ArrayList<String>();
     demons = new ArrayList<Demon>();
-    FileOps.populateRaceData(race, fusionCombination, elementsUp, elementsDown, demons);
+    compendium = new ArrayList<Demon>();
+    FileOps.populateRaceData(race, fusionCombination, elementsUp, elementsDown, demons, compendium);
     //Populate string to demon map for race
     stringToDemon = new HashMap<String, Demon>();
     for(Demon d : demons) {
       stringToDemon.put(d.getName(), d);
+    }
+    //Populate string to demon map for compendium demons in race
+    stringToDemonCompendium = new HashMap<String, Demon>();
+    for(Demon d : compendium) {
+      stringToDemonCompendium.put(d.getName(), d);
     }
   }
 
@@ -125,13 +133,26 @@ public enum Race {
   }
 
   /**
-    * Given a demon name, find and return the corresponding demon
+    * Given a demon name, find and return the corresponding base demon
     * @param name the desired demon's name
     * @return the corresponding demon object
     */
   public Demon getDemon(String name) {
     return new Demon(stringToDemon.get(name));
   }
+
+  /**
+    * Given a demon name, find and return the corresponding non-base demon (from the compendium)
+    * If no such demon exists, return null
+    * @param name the desired demon's name
+    * @return the corresponding demon object
+    */
+    public Demon getCompendiumDemon(String name) {
+      if(stringToDemonCompendium.get(name) == null) {
+        return null;
+      }
+      return new Demon(stringToDemonCompendium.get(name));
+    }
 
   /**
     * Given a demon belonging to this race, return the base level of the demon

@@ -417,6 +417,7 @@ public class Fusion {
 
     //Check that depth hasn't exceeded depth limit
     if(curDepth == 5) {
+      //TODO: When the depth limit is reached, the demons seem to get passed back up with the wrong set of skills
       //Depth limit reached. Terminate at this demon
       Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
       return new FusionChain(base);
@@ -436,7 +437,7 @@ public class Fusion {
       int mostSkillsFound = 0;
       Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
       FusionChain bestChain = new FusionChain(base);
-      //Get all fusion combination
+      //Get all fusion combinations
       List<Demon[]> combinations = fuseWithoutSkillRequirements(demon);
       for(Demon[] curCombination : combinations) {
         //Find the base demon
