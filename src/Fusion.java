@@ -11,10 +11,17 @@ public class Fusion {
 
   //DEPTH LIMIT FOR RECURSIVE FUSION CHAIN SEARCH
   private static int DEPTH_LIMIT = 4;
+  //SKILL THRESHOLD FOR SELECTING COMPENDIUM DEMONS IN FUSION CHAIN SEARCH
+  private static int SKILL_THRESHOLD = 1;
 
   //Setter method to change the depth limit
   public static void setDepthLimit(int newLimit) {
     DEPTH_LIMIT = newLimit;
+  }
+
+  //Setter method to change the skill threshold
+  public static void setSkillThreshold(int newThreshold) {
+    SKILL_THRESHOLD = newThreshold;
   }
 
   private static final Logger logger = Logger.getLogger("Fusion");
@@ -494,8 +501,8 @@ public class Fusion {
           //Check how many skills the compendium demon has that are wanted in final fusion
           Set<String> compendiumSkills = compendiumDemon.getSkills();
           int numSkillsFromCompendiumDemon = numberOfSkillsFound(demon, compendiumSkills);
-          //Compare the 2 values
-          if(numSkillsFromCompendiumDemon > numSkillsFromBase) {
+          //Compare the 2 values, and check against the skill threshold
+          if(numSkillsFromCompendiumDemon > numSkillsFromBase && numSkillsFromCompendiumDemon >= SKILL_THRESHOLD) {
             //Use the compendium demon
             result.addChain(new FusionChain(compendiumDemon));
             curCombination[j] = compendiumDemon;
@@ -612,7 +619,7 @@ public class Fusion {
           Set<String> compendiumSkills = compendiumDemon.getSkills();
           int numSkillsFromCompendiumDemon = numberOfSkillsFound(demon, compendiumSkills);
           //Compare the 2 values
-          if(numSkillsFromCompendiumDemon > numSkillsFromBase) {
+          if(numSkillsFromCompendiumDemon > numSkillsFromBase && numSkillsFromCompendiumDemon >= SKILL_THRESHOLD) {
             //Use compendium demon
             result.addChain(new FusionChain(compendiumDemon));
             curCombination[j] = compendiumDemon;

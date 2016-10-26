@@ -41,11 +41,17 @@ public class Runner {
     Scanner in = new Scanner(System.in);
 
     //Ask user for desired demon's details
-    //CLEAN THIS UP
     System.out.print("Would you like to use the compendium(y/n): ");
     String compendiumUsage = in.nextLine().trim();
-    if(compendiumUsage.equals("y")) Race.useCompendiumDemons();
-    else Race.dontUseCompendiumDemons();
+    if(compendiumUsage.equals("y")) {
+      Race.useCompendiumDemons();
+      System.out.print("What skill threshold would you like for evaluating compendium demons: ");
+      int skillThreshold = Integer.valueOf(in.nextLine().trim());
+      Fusion.setSkillThreshold(skillThreshold);
+    }
+    else {
+      Race.dontUseCompendiumDemons();
+    }
 
     System.out.print("Enter the desired depth limit: ");
     // int desiredDepthLimit = in.nextInt();
