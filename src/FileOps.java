@@ -22,10 +22,12 @@ import java.lang.NumberFormatException;
 
 public class FileOps {
 
+  //Delimiters for parsing data files
   private static final String COMMA_DELIMITER = ",";
   private static final String COLON_DELIMITER = ":";
   private static final String RACE_DEMON_SPLITTER = "\\|";
   private static final String NEWLINE_DELIMITER = "\n";
+  //Logger
   private static final Logger logger = Logger.getLogger("FileOps");
 
   static {

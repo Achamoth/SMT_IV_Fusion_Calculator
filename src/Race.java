@@ -66,6 +66,8 @@ public enum Race {
 
   //Static string to enum map
   private static Map<String, Race> stringToEnum = new HashMap<String, Race>();
+  //Flag that determines whether or not compendium demons are used in computation
+  private static boolean useCompendium = true;
 
   static {
     //Populate string to enum map
@@ -92,6 +94,14 @@ public enum Race {
     for(Demon d : compendium) {
       stringToDemonCompendium.put(d.getName(), d);
     }
+  }
+
+  public static void useCompendiumDemons() {
+    useCompendium = true;
+  }
+
+  public static void dontUseCompendiumDemons() {
+    useCompendium = false;
   }
 
   /**
@@ -148,7 +158,7 @@ public enum Race {
     * @return the corresponding demon object
     */
     public Demon getCompendiumDemon(String name) {
-      if(stringToDemonCompendium.get(name) == null) {
+      if(stringToDemonCompendium.get(name) == null || !useCompendium) {
         return null;
       }
       return new Demon(stringToDemonCompendium.get(name));

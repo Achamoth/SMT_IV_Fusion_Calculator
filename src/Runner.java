@@ -90,6 +90,7 @@ public class Runner {
     System.out.println();*/
 
     //Attempt a fusion chain
+    // Race.dontUseCompendiumDemons();
     Set<String> asuraSkills = new HashSet<String>();
     asuraSkills.add("Enduring Soul");
     asuraSkills.add("Repel Phys");
