@@ -246,8 +246,17 @@ public class Fusion {
     //Check if demon is a special fusion or not
     Map<String, SpecialFusion> specials = SpecialFusion.getSpecialFusions();
     if(specials.containsKey(desiredDemon.getName())) {
-      //Return null. The caller should use special fusion method instead
-      return null;
+      //Return the special fusion recipe
+      SpecialFusion special = specials.get(desiredDemon.getName());
+      List<Demon> specialRecipe = special.getComponents();
+      Demon[] componentArray = new Demon[specialRecipe.size()];
+      int i=0;
+      for(Demon curComp : specialRecipe) {
+        componentArray[i++] = curComp;
+      }
+      //Return the component array as the only fusion combination for this demon
+      possibleFusionPairs.add(componentArray);
+      return possibleFusionPairs;
     }
 
     //Now, find the up-fusion through elements that can result in this demon
@@ -425,62 +434,56 @@ public class Fusion {
       return new FusionChain(base);
     }
 
-    //Check if the desired demon is a special fusion
-    Map<String, SpecialFusion> specials = SpecialFusion.getSpecialFusions();
-    if(specials.containsKey(demon.getName())) {
-      //Desired demon is a special demon. Return null for now
-      //TODO: Fix this up
-      // return null;
-      Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
-      return new FusionChain(base);
-    }
+    //Find all possible fusion combinations for desired demon and work over them
+    int numSkillsFound = 0;
+    int mostSkillsFound = 0;
+    Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
+    FusionChain bestChain = new FusionChain(base);
+    //Get all fusion combinations
+    List<Demon[]> combinations = fuseWithoutSkillRequirements(demon);
+    //Loop over all fusion combinations
+    for(Demon[] curCombination : combinations) {
+      //Find the base demon
+      Race desiredRace = Race.fromString(demon.getRace().toLowerCase());
+      Demon baseDesired = desiredRace.getDemon(demon.getName());
+      //Create empty fusion chain result with desired demon (base version) at top
+      FusionChain result = new FusionChain(baseDesired);
+      //Construct new set of skills for this combination
+      Set<String> foundSkills = new HashSet<String>();
+      int numCurSkills = 0;
+      //Add the components to the fusion chain
+      for(Demon curComp : curCombination) {
+        Demon baseComp = Race.fromString(curComp.getRace().toLowerCase()).getDemon(curComp.getName());
+        result.addChain(new FusionChain(baseComp));
+      }
+      //Add all skills in current fusion chain to set
+      result.addSkillsInChain(foundSkills);
+      //Find out how many of the desired skills have been found
+      numCurSkills = numberOfSkillsFound(demon, foundSkills);
+      //Check if the skills required in the desired demon have been found
+      if(numCurSkills == demon.getNumSkills()) {
+        //This combination works and provides all desired skills
+        return result;
+      }
 
-    //If not, find all possible fusion combinations for desired demon and work over them
-    else {
-      int numSkillsFound = 0;
-      int mostSkillsFound = 0;
-      Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
-      FusionChain bestChain = new FusionChain(base);
-      //Get all fusion combinations
-      List<Demon[]> combinations = fuseWithoutSkillRequirements(demon);
-      for(Demon[] curCombination : combinations) {
-        //Find the base demon
-        Race desiredRace = Race.fromString(demon.getRace().toLowerCase());
-        Demon baseDesired = desiredRace.getDemon(demon.getName());
-        //Create empty fusion chain result with desired demon (base version) at top
-        FusionChain result = new FusionChain(baseDesired);
-        //Construct new set of skills for this combination
-        Set<String> foundSkills = new HashSet<String>();
-        int numCurSkills = 0;
-        //Add the two components to the fusion chain
-        Demon base1 = Race.fromString(curCombination[0].getRace().toLowerCase()).getDemon(curCombination[0].getName());
-        Demon base2 = Race.fromString(curCombination[1].getRace().toLowerCase()).getDemon(curCombination[1].getName());
-        result.addChain(new FusionChain(base1));
-        result.addChain(new FusionChain(base2));
-        //Add all skills in current fusion chain to set
-        result.addSkillsInChain(foundSkills);
-        //Find out how many of the desired skills have been found
-        numCurSkills = numberOfSkillsFound(demon, foundSkills);
-        //Check if the skills required in the desired demon have been found
-        if(numCurSkills == demon.getNumSkills()) {
-          //This combination works and provides all desired skills
-          return result;
+      else {
+        //Check result against best found so far
+        if(numCurSkills > mostSkillsFound) {
+          mostSkillsFound = numCurSkills;
+          bestChain = result;
         }
 
-        else {
-          //Check result against best found so far
-          if(numCurSkills > mostSkillsFound) {
-            mostSkillsFound = numCurSkills;
-            bestChain = result;
-          }
-
-          //Recursively call this method on each of the components to find new fusion chains
+        //Recursively call this method on each of the components to find new fusion chains
+        //TODO: Need to modify for demons with multiple components
+        int i=0;
+        for(Demon curComp : curCombination) {
+          //Find lacking skills
           Set<String> skillsLacking = findSkillDefficiencies(demon, result);
-          //Find a fusion chain for the first component with these skills
-          Demon comp1 = new Demon(result.getChain(0).getDemon());
-          comp1.setSkills(skillsLacking);
+          //Find a fusion chain for the current component with the lacking skills
+          Demon curCompCopy = new Demon(curComp);
+          curCompCopy.setSkills(skillsLacking);
           //Now find fusion chains for this demon
-          result.setChain(0, findFusionChains(comp1, curDepth+1));
+          result.setChain(i++, findFusionChains(curCompCopy, curDepth+1));
 
           //Now check skills again after finding new fusion chain for first component
           result.addSkillsInChain(foundSkills);
@@ -489,41 +492,34 @@ public class Fusion {
             //This chain works and provides all desired skill
             return result;
           }
+          //Otherwise, move onto next component
+        }
 
-          //Otherwise, find all skills still lacking
-          skillsLacking = findSkillDefficiencies(demon, result);
-          //Find a fusion chain for the second component with these skills
-          Demon comp2 = new Demon(result.getChain(1).getDemon());
-          comp2.setSkills(skillsLacking);
-          //Now find fusion chains for this demon
-          result.setChain(1, findFusionChains(comp2,curDepth+1));
-
-          //Now check skills again after finding new fusion chains
-          result.addSkillsInChain(foundSkills);
-          numCurSkills = numberOfSkillsFound(demon, foundSkills);
-          if(numCurSkills == demon.getNumSkills()) {
-            //This chain works and provides all desired skills
-            return result;
-          }
-          else if (numCurSkills > mostSkillsFound) {
-            //Check result against best found so far
-            mostSkillsFound = numCurSkills;
-            bestChain = result;
-          }
+        //Now check skills again after finding new fusion chains for components
+        result.addSkillsInChain(foundSkills);
+        numCurSkills = numberOfSkillsFound(demon, foundSkills);
+        if(numCurSkills == demon.getNumSkills()) {
+          //This chain works and provides all desired skills
+          return result;
+        }
+        else if (numCurSkills > mostSkillsFound) {
+          //Check result against best found so far
+          mostSkillsFound = numCurSkills;
+          bestChain = result;
         }
       }
-      //Return best chain found. Need to change demon to base demon before returning though
-      logger.exiting("Fusion","findFusionChains");
-      return bestChain;
     }
+    //Return best chain found. Need to change demon to base demon before returning though
+    logger.exiting("Fusion","findFusionChains");
+    return bestChain;
   }
 
   /**
-    * Given a demon and a set of skills, return the number of skills that exist in the set, which also exist in the demon
-    * @param demon the demon in question
-    * @param the set of skills in question
-    * @return the number of common skills between the demon and the provided set
-    */
+  * Given a demon and a set of skills, return the number of skills that exist in the set, which also exist in the demon
+  * @param demon the demon in question
+  * @param the set of skills in question
+  * @return the number of common skills between the demon and the provided set
+  */
   private static int numberOfSkillsFound(Demon demon, Set<String> foundSkills) {
     int result = 0;
     Set<String> demonSkills = demon.getSkills();
@@ -536,11 +532,11 @@ public class Fusion {
   }
 
   /**
-    * Given a specified demon and a fusion chain, find the skills owned by the demon, that don't exist in the fusion chain
-    * @param demon the demon in question, with the set of skills being checked against
-    * @param chain the fusion chain being checked against the demon's skill-set
-    * @return the set of skills owned by the demon not existing in the fusion chain
-    */
+  * Given a specified demon and a fusion chain, find the skills owned by the demon, that don't exist in the fusion chain
+  * @param demon the demon in question, with the set of skills being checked against
+  * @param chain the fusion chain being checked against the demon's skill-set
+  * @return the set of skills owned by the demon not existing in the fusion chain
+  */
   private static Set<String> findSkillDefficiencies(Demon demon, FusionChain chain) {
     Set<String> result = new HashSet<String>();
     //Find all skills in chain
