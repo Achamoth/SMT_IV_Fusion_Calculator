@@ -9,7 +9,12 @@ import java.io.IOException;
 public class Fusion {
 
   //DEPTH LIMIT FOR RECURSIVE FUSION CHAIN SEARCH
-  private static final int DEPTH_LIMIT = 4;
+  private static int DEPTH_LIMIT = 4;
+
+  //Setter method to change the depth limit
+  public static void setDepthLimit(int newLimit) {
+    DEPTH_LIMIT = newLimit;
+  }
 
   private static final Logger logger = Logger.getLogger("Fusion");
 
@@ -109,7 +114,6 @@ public class Fusion {
         //Add current pair to list of fusion pairs
         possibleFusionPairs.add(curPair);
       }
-
     }
 
     //Next, find the down-fusion through elements that can result in this demon
