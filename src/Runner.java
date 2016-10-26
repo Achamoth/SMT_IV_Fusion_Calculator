@@ -42,9 +42,8 @@ public class Runner {
 
     //Ask user for desired demon's details
     //CLEAN THIS UP
-    System.out.print("Would you like to use the compendium(y/n) (NOT READY YET): ");
+    System.out.print("Would you like to use the compendium(y/n): ");
     String compendiumUsage = in.nextLine().trim();
-    compendiumUsage = "n";
     if(compendiumUsage.equals("y")) Race.useCompendiumDemons();
     else Race.dontUseCompendiumDemons();
 

@@ -72,25 +72,14 @@ public class FusionChain {
   }
 
   /**
-    * Given a set of skills, add all the skills that can be acquired from this fusion chain to the set
-    * @param skills the set to add all possible skills to
-    */
+  * Given a set of skills, add all the skills that can be acquired from this fusion chain to the set
+  * @param skills the set to add all possible skills to
+  */
   public void addSkillsInChain(Set<String> skills) {
-    //Add all skills that can be found off the compendium demon
-    Demon compendiumDemon = Race.fromString(demon.getRace().toString().toLowerCase()).getCompendiumDemon(demon.getName());
-    if(compendiumDemon != null) {
-      Set<String> skillsFromCompDemon = compendiumDemon.getSkills();
-      for(String curSkill : skillsFromCompDemon) {
-        skills.add(curSkill);
-      }
-    }
-
-    //If there is no compendium demon, add all skills that can be found off the base demon result of the chain
-    else {
-      Set<String> skillsFromDemon = demon.getSkills();
-      for(String curSkill : skillsFromDemon) {
-        skills.add(curSkill);
-      }
+    //Add all skills that can be acquired of the demon at the top of this chain
+    Set<String> skillsFromDemon = demon.getSkills();
+    for(String curSkill : skillsFromDemon) {
+      skills.add(curSkill);
     }
 
     //Add all skills that can be acquired from component's fusion chains
@@ -101,10 +90,10 @@ public class FusionChain {
   }
 
   /**
-    * Print the chain as a fusion recipe
-    * @param depth the current depth since the method is called recursively. Used to print correct number of tabs
-    * @param skills a set of skills in the end desired demon. Used to print where skills are acquired in the fusion chain
-    */
+  * Print the chain as a fusion recipe
+  * @param depth the current depth since the method is called recursively. Used to print correct number of tabs
+  * @param skills a set of skills in the end desired demon. Used to print where skills are acquired in the fusion chain
+  */
   public void printChain(int depth, Set<String> skills) {
     //Only print if there are components
     if(this.components.size() == 0) return ;
@@ -149,27 +138,27 @@ public class FusionChain {
   }
 
   /**
-    * Given a demon and a set of skills, returns true if the demon contains any skills specified in the set; false otherwise
-    * @param demon the demon being examined
-    * @param skills the set of skills being checked against
-    * @return true or false, depending on outcome
-    */
+  * Given a demon and a set of skills, returns true if the demon contains any skills specified in the set; false otherwise
+  * @param demon the demon being examined
+  * @param skills the set of skills being checked against
+  * @return true or false, depending on outcome
+  */
   private static boolean componentContainsSkill(Demon d, Set<String> skills) {
     //Find the compendium demon
-    Demon compDemon = Race.fromString(d.getRace().toLowerCase()).getCompendiumDemon(d.getName());
-    if(compDemon != null) {
-      //There is a compendium demon. Find its skills
-      Set<String> compSkills = compDemon.getSkills();
-      //Check for matches
-      for(String curSkill : compSkills) {
-        if(skills.contains(curSkill)) {
-          return true;
-        }
-      }
-      return false;
-    }
+    // Demon compDemon = Race.fromString(d.getRace().toLowerCase()).getCompendiumDemon(d.getName());
+    // if(compDemon != null) {
+    //   //There is a compendium demon. Find its skills
+    //   Set<String> compSkills = compDemon.getSkills();
+    //   //Check for matches
+    //   for(String curSkill : compSkills) {
+    //     if(skills.contains(curSkill)) {
+    //       return true;
+    //     }
+    //   }
+    //   return false;
+    // }
 
-    //If there is no compendium demon, find base demon's set of skills
+    //Find demon's set of skills, and compare them to the skills in the provided set 'skills'
     Set<String> demonSkills = d.getSkills();
     //Check for matches
     for(String curSkill : demonSkills) {
@@ -181,28 +170,28 @@ public class FusionChain {
   }
 
   /**
-    * Given a demon and a set of skills, returns the set of common skills between the provided skill set, and the demon's skill set
-    * @param demon the demon being investigated
-    * @param skills the set of skills being checked against for common skills with the demon
-    * @return a set of skills (as strings) that are common between the demon, and the parameter skills
-    */
+  * Given a demon and a set of skills, returns the set of common skills between the provided skill set, and the demon's skill set
+  * @param demon the demon being investigated
+  * @param skills the set of skills being checked against for common skills with the demon
+  * @return a set of skills (as strings) that are common between the demon, and the parameter skills
+  */
   private static Set<String> findSkillsProvidedByDemon(Demon d, Set<String> skills) {
     //Construct empty result
     Set<String> result = new HashSet<String>();
 
-    //Find the compendium demon, if it exists, and return its set of skills
-    Demon compDemon = Race.fromString(d.getRace().toLowerCase()).getCompendiumDemon(d.getName());
-    if(compDemon !=  null) {
-      Set<String> skillsfromCompDemon = compDemon.getSkills();
-      for(String curSkill : skillsfromCompDemon) {
-        if(skills.contains(curSkill)) {
-          result.add(curSkill);
-        }
-      }
-      return result;
-    }
+    // //Find the compendium demon, if it exists, and return its set of skills
+    // Demon compDemon = Race.fromString(d.getRace().toLowerCase()).getCompendiumDemon(d.getName());
+    // if(compDemon !=  null) {
+    //   Set<String> skillsfromCompDemon = compDemon.getSkills();
+    //   for(String curSkill : skillsfromCompDemon) {
+    //     if(skills.contains(curSkill)) {
+    //       result.add(curSkill);
+    //     }
+    //   }
+    //   return result;
+    // }
 
-    //If there is no compendium demon, get base demon's set of skills
+    //Find all the skills the demon has that are common with 'skills' param, and return them
     Set<String> demonSkills = d.getSkills();
     //Loop over all of the demon's skills
     for(String curSkill : demonSkills) {
@@ -214,7 +203,7 @@ public class FusionChain {
     return result;
   }
 
-    @Override
+  @Override
   public boolean equals(Object o) {
     if(o == null) {
       return false;
@@ -224,11 +213,11 @@ public class FusionChain {
     }
     FusionChain c = (FusionChain) o;
     return (this.demon.equals(c.getDemon())
-           && this.components.equals(c.getComponents())
-           && this.chains.equals(c.getChains()));
+    && this.components.equals(c.getComponents())
+    && this.chains.equals(c.getChains()));
   }
 
-    @Override
+  @Override
   public int hashCode() {
     int code = 83;
     code *= this.demon.hashCode();

@@ -482,9 +482,34 @@ public class Fusion {
       Set<String> foundSkills = new HashSet<String>();
       int numCurSkills = 0;
       //Add the components to the fusion chain
+      int j=0;
       for(Demon curComp : curCombination) {
-        Demon baseComp = Race.fromString(curComp.getRace().toLowerCase()).getDemon(curComp.getName());
-        result.addChain(new FusionChain(baseComp));
+        //Check if the current component has a compendium demon
+        Demon baseComponent = Race.fromString(curComp.getRace().toLowerCase()).getDemon(curComp.getName());
+        Demon compendiumDemon = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
+        if(compendiumDemon != null) {
+          //There is a compendium demon. Check how many skills the base demon has that are wanted in final fusion
+          Set<String> baseSkills = baseComponent.getSkills();
+          int numSkillsFromBase = numberOfSkillsFound(demon, baseSkills);
+          //Check how many skills the compendium demon has that are wanted in final fusion
+          Set<String> compendiumSkills = compendiumDemon.getSkills();
+          int numSkillsFromCompendiumDemon = numberOfSkillsFound(demon, compendiumSkills);
+          //Compare the 2 values
+          if(numSkillsFromCompendiumDemon > numSkillsFromBase) {
+            //Use the compendium demon
+            result.addChain(new FusionChain(compendiumDemon));
+            curCombination[j] = compendiumDemon;
+          }
+          else {
+            //Use the base demon
+            result.addChain(new FusionChain(baseComponent));
+          }
+        }
+        else {
+          //No compendium demon. Add the base demon to the fusion chain
+          result.addChain(new FusionChain(baseComponent));
+        }
+        j++;
       }
       //Add all skills in current fusion chain to set
       result.addSkillsInChain(foundSkills);
@@ -509,6 +534,12 @@ public class Fusion {
           for(Demon curComp : curCombinationOrdering) {
             //Find lacking skills
             Set<String> skillsLacking = findSkillDefficiencies(demon, thisResult);
+            //If the current component is being summoned from the compendium, don't calculate a fusion chain for it
+            Demon compendiumCounterpart = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
+            if(curComp.equals(compendiumCounterpart)) {
+              //Current component is being summoned from compendium. Don't compute fusion chain for it
+              continue;
+            }
             //Find a fusion chain for the current component with the lacking skills
             Demon curCompCopy = new Demon(curComp);
             curCompCopy.setSkills(skillsLacking);
@@ -569,9 +600,32 @@ public class Fusion {
       Set<String> foundSkills = new HashSet<String>();
       int numCurSkills = 0;
       //Add the components to the fusion chain
+      int j=0;
       for(Demon curComp : curCombination) {
-        Demon baseComp = Race.fromString(curComp.getRace().toLowerCase()).getDemon(curComp.getName());
-        result.addChain(new FusionChain(baseComp));
+        Demon baseComponent = Race.fromString(curComp.getRace().toLowerCase()).getDemon(curComp.getName());
+        Demon compendiumDemon = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
+        if(compendiumDemon != null) {
+          //There is a compendium demon. Check how many skills the base demon has that are wanted in final fusion
+          Set<String> baseSkills = baseComponent.getSkills();
+          int numSkillsFromBase = numberOfSkillsFound(demon, baseSkills);
+          //Check how many skills the compendium demon has that are wanted in final fusion
+          Set<String> compendiumSkills = compendiumDemon.getSkills();
+          int numSkillsFromCompendiumDemon = numberOfSkillsFound(demon, compendiumSkills);
+          //Compare the 2 values
+          if(numSkillsFromCompendiumDemon > numSkillsFromBase) {
+            //Use compendium demon
+            result.addChain(new FusionChain(compendiumDemon));
+            curCombination[j] = compendiumDemon;
+          }
+          else {
+            //Use base demon
+            result.addChain(new FusionChain(baseComponent));
+          }
+        }
+        else {
+          result.addChain(new FusionChain(baseComponent));
+        }
+        j++;
       }
       //Add all skills in current fusion chain to set
       result.addSkillsInChain(foundSkills);
@@ -595,7 +649,13 @@ public class Fusion {
         for(Demon curComp : curCombination) {
           //Find lacking skills
           Set<String> skillsLacking = findSkillDefficiencies(demon, result);
-          //Find a fusion chain for the current component with the lacking skills
+          //If the current component is being summoned from the compendium, don't calculate a fusion chain for it
+          Demon compendiumCounterpart = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
+          if(curComp.equals(compendiumCounterpart)) {
+            //Current component is being summoned from compendium. Don't compute fusion chain for it
+            continue;
+          }
+          //Otherwise, find a fusion chain for the current component with the lacking skills
           Demon curCompCopy = new Demon(curComp);
           curCompCopy.setSkills(skillsLacking);
           //Now find fusion chains for this demon
