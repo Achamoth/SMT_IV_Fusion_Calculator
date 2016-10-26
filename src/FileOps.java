@@ -401,19 +401,34 @@ public class FileOps {
         String componentNames[] = tokens[3].split(COLON_DELIMITER);
         for(int i=0; i<componentNames.length; i++) {
           String raceDemonPair[] = componentNames[i].split(RACE_DEMON_SPLITTER);
+          //Print out error message if the line has a formatting error
+          if(raceDemonPair.length != 2) {
+            logger.info("Error in special fusions file at line: " + race + " " + name);
+            System.exit(1);
+          }
           Race curComponentRace = Race.fromString(raceDemonPair[0].toLowerCase());
           String demonName = raceDemonPair[1];
-          Demon curDemon = curComponentRace.getDemon(demonName);
+          Demon curDemon = null;
+          try{
+            curDemon = curComponentRace.getDemon(demonName);
+          } catch(NullPointerException e) {
+            logger.info("Couldn't find demon " + demonName + " in race " + curComponentRace.toString());
+            logger.log(Level.FINE, "NullPointerException in populateSpecialFusions", e);
+            System.exit(1);
+          }
           components.add(curDemon);
         }
-        //Read in demon's skills
-        String skills[] = tokens[4].split(COLON_DELIMITER);
-        Set<String> skillset = new HashSet<String>();
-        for(int i=0; i<skills.length; i++) {
-          skillset.add(skills[i]);
+        //Find demon's skills from race data
+        Set<String> skills = null;
+        try {
+          skills = Race.fromString(race.toLowerCase()).getDemon(name).getSkills();
+        } catch(NullPointerException e) {
+          logger.info("Couldn't find demon " + name + " in race " + race.toString());
+          logger.log(Level.FINE, "NullPointerException in populateSpecialFusions", e);
+          System.exit(1);
         }
         //Create demon and special fusion
-        Demon finalDemon = new Demon(race, name, level, skillset);
+        Demon finalDemon = new Demon(race, name, level, skills);
         SpecialFusion special = new SpecialFusion(finalDemon, components);
 
         //Add special fusion to list

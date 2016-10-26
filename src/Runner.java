@@ -41,10 +41,16 @@ public class Runner {
 
     //Ask user for desired demon's details
     //CLEAN THIS UP
-    System.out.print("Would you like to use the compendium(y/n): ");
+    System.out.print("Would you like to use the compendium(y/n) (NOT READY YET): ");
     String compendiumUsage = in.nextLine().trim();
+    compendiumUsage = "n";
     if(compendiumUsage.equals("y")) Race.useCompendiumDemons();
     else Race.dontUseCompendiumDemons();
+
+    System.out.print("Enter the desired depth limit: ");
+    // int desiredDepthLimit = in.nextInt();
+    int desiredDepthLimit = Integer.valueOf(in.nextLine().trim());
+    Fusion.setDepthLimit(desiredDepthLimit);
 
     System.out.print("Enter the desired demon's race: ");
     String desiredRace = in.nextLine().trim();
