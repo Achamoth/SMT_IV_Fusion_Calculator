@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class Fusion {
 
+  //DEPTH LIMIT FOR RECURSIVE FUSION CHAIN SEARCH
+  private static final int DEPTH_LIMIT = 4;
+
   private static final Logger logger = Logger.getLogger("Fusion");
 
   static {
@@ -416,8 +419,7 @@ public class Fusion {
     logger.entering("Fusion","findFusionChains");
 
     //Check that depth hasn't exceeded depth limit
-    if(curDepth == 5) {
-      //TODO: When the depth limit is reached, the demons seem to get passed back up with the wrong set of skills
+    if(curDepth == DEPTH_LIMIT) {
       //Depth limit reached. Terminate at this demon
       Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
       return new FusionChain(base);
@@ -428,7 +430,9 @@ public class Fusion {
     if(specials.containsKey(demon.getName())) {
       //Desired demon is a special demon. Return null for now
       //TODO: Fix this up
-      return null;
+      // return null;
+      Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
+      return new FusionChain(base);
     }
 
     //If not, find all possible fusion combinations for desired demon and work over them
@@ -459,7 +463,7 @@ public class Fusion {
         numCurSkills = numberOfSkillsFound(demon, foundSkills);
         //Check if the skills required in the desired demon have been found
         if(numCurSkills == demon.getNumSkills()) {
-          //This combination works and provides all desired skill
+          //This combination works and provides all desired skills
           return result;
         }
 
@@ -472,15 +476,11 @@ public class Fusion {
 
           //Recursively call this method on each of the components to find new fusion chains
           Set<String> skillsLacking = findSkillDefficiencies(demon, result);
-          //Pass along skills lacking to first component's fusion chain
-          result.getChain(0).getDemon().setSkills(skillsLacking);
+          //Find a fusion chain for the first component with these skills
+          Demon comp1 = new Demon(result.getChain(0).getDemon());
+          comp1.setSkills(skillsLacking);
           //Now find fusion chains for this demon
-          result.setChain(0, findFusionChains(result.getChain(0).getDemon(), curDepth+1));
-          //Reset first component demon to its base version at the top of the tree
-          Demon d1 = result.getChain(0).getDemon();
-          Race r1 = Race.fromString(d1.getRace().toLowerCase());
-          Demon d1Base = r1.getDemon(d1.getName());
-          result.getChain(0).setDemon(d1Base);
+          result.setChain(0, findFusionChains(comp1, curDepth+1));
 
           //Now check skills again after finding new fusion chain for first component
           result.addSkillsInChain(foundSkills);
@@ -492,15 +492,11 @@ public class Fusion {
 
           //Otherwise, find all skills still lacking
           skillsLacking = findSkillDefficiencies(demon, result);
-          //Pass these skills along to second component's fusion chain
-          result.getChain(1).getDemon().setSkills(skillsLacking);
+          //Find a fusion chain for the second component with these skills
+          Demon comp2 = new Demon(result.getChain(1).getDemon());
+          comp2.setSkills(skillsLacking);
           //Now find fusion chains for this demon
-          result.setChain(1, findFusionChains(result.getChain(1).getDemon(),curDepth+1));
-          //Reset second component demon to its base version at the top of the tree
-          Demon d2 = result.getChain(1).getDemon();
-          Race r2 = Race.fromString(d2.getRace().toLowerCase());
-          Demon d2Base = r2.getDemon(d2.getName());
-          result.getChain(1).setDemon(d2Base);
+          result.setChain(1, findFusionChains(comp2,curDepth+1));
 
           //Now check skills again after finding new fusion chains
           result.addSkillsInChain(foundSkills);
@@ -516,7 +512,7 @@ public class Fusion {
           }
         }
       }
-      //Return best chain found
+      //Return best chain found. Need to change demon to base demon before returning though
       logger.exiting("Fusion","findFusionChains");
       return bestChain;
     }

@@ -106,10 +106,10 @@ public class Demon {
     @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append(this.race + "\n");
-    sb.append(this.name + "\n");
-    sb.append(this.level + "\n");
-    sb.append(this.skills.toString() + "\n");
+    sb.append(this.race + " ");
+    sb.append(this.name + ", ");
+    sb.append(this.level + ", ");
+    sb.append(this.skills.toString());
     sb.append("\n");
     return sb.toString();
   }
