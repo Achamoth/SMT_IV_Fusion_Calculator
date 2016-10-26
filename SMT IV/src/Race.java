@@ -148,6 +148,9 @@ public enum Race {
     * @return the corresponding demon object
     */
   public Demon getDemon(String name) {
+    if(stringToDemon.get(name) == null) {
+      return null;
+    }
     return new Demon(stringToDemon.get(name));
   }
 
