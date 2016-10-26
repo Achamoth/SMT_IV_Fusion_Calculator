@@ -1,5 +1,6 @@
 import java.util.Set;
 import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -70,17 +71,29 @@ public class Runner {
     for(int i=0; i<numSkills; i++) skills.add(in.nextLine().trim());
     System.out.println();
 
+    System.out.print("How many fusion chains do you want: ");
+    int numChains = Integer.valueOf(in.nextLine().trim());
+
     //Create demon object
     Demon desired = new Demon(desiredRace, desiredDemon, level, skills);
 
-    //Find fusion chain for demon
-    FusionChain recipe = Fusion.findFusionChains(desired, 0);
-    //Print fusion chain
+    //Find fusion chains for demon
+    List<FusionChain> allChains = Fusion.findFusionChains(desired, numChains);
+    //Get rid of duplicates
+    Set<FusionChain> recipes = new HashSet<FusionChain>();
+    for(FusionChain curChain : allChains) {
+      recipes.add(curChain);
+    }
+    //Print fusion chains
     System.out.println();
     System.out.println("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName());
     System.out.println("Skills: " + skills.toString()+"\n");
     System.out.println();
-    recipe.printChain(0,skills);
+    for(FusionChain recipe : recipes) {
+      System.out.println();
+      recipe.printChain(0,skills);
+      System.out.println();
+    }
     System.out.println();
   }
 }

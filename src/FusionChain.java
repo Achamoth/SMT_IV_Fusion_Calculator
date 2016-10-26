@@ -18,6 +18,30 @@ public class FusionChain {
     chains = new ArrayList<FusionChain>();
   }
 
+  public FusionChain(FusionChain chain) {
+    this.demon = new Demon(chain.getDemon());
+    //Clone the components list
+    List<Demon> inputComponents = chain.getComponents();
+    this.components = new ArrayList<Demon>();
+    for(Demon curComp : inputComponents) {
+      this.components.add(new Demon(curComp));
+    }
+    //Clone the chains list
+    List<FusionChain> inputChains = chain.getChains();
+    this.chains = new ArrayList<FusionChain>();
+    for(FusionChain curChain : inputChains) {
+      this.chains.add(new FusionChain(curChain));
+    }
+  }
+
+  public List<Demon> getComponents() {
+    return this.components;
+  }
+
+  public List<FusionChain> getChains() {
+    return this.chains;
+  }
+
   public FusionChain getChain(int n) {
     return this.chains.get(n);
   }
@@ -188,5 +212,28 @@ public class FusionChain {
       }
     }
     return result;
+  }
+
+    @Override
+  public boolean equals(Object o) {
+    if(o == null) {
+      return false;
+    }
+    if(!(o instanceof FusionChain)) {
+      return false;
+    }
+    FusionChain c = (FusionChain) o;
+    return (this.demon.equals(c.getDemon())
+           && this.components.equals(c.getComponents())
+           && this.chains.equals(c.getChains()));
+  }
+
+    @Override
+  public int hashCode() {
+    int code = 83;
+    code *= this.demon.hashCode();
+    code += code * this.components.hashCode();
+    code *= code + this.chains.hashCode();
+    return code;
   }
 }

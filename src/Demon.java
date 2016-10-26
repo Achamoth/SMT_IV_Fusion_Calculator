@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class Demon {
+public class Demon{
 
   private int level;
   private String race;
@@ -101,7 +101,6 @@ public class Demon {
 
   /**
     * Returns string representation of current demon
-    *
     */
     @Override
   public String toString() {
@@ -114,4 +113,28 @@ public class Demon {
     return sb.toString();
   }
 
+    @Override
+  public boolean equals(Object d) {
+    if(d == null) {
+      return false;
+    }
+    if(!(d instanceof Demon)) {
+      return false;
+    }
+    Demon demon = (Demon) d;
+    return (this.level == demon.getLevel()
+            && this.name.equals(demon.getName())
+            && this.race.equals(demon.getRace())
+            && this.skills.equals(demon.getSkills()));
+  }
+
+    @Override
+  public int hashCode() {
+    int code = 83;
+    code += this.level;
+    code *= this.race.hashCode();
+    code += code * this.name.hashCode();
+    code *= code + this.skills.hashCode();
+    return code;
+  }
 }

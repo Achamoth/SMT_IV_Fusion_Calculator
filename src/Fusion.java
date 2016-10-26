@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.logging.*;
+import java.util.Arrays;
 import java.io.IOException;
 
 public class Fusion {
@@ -422,14 +423,126 @@ public class Fusion {
   }
 
   /**
+    * Given an array of demons, return all possible permutations of that array
+    * @param demons the list of demons
+    * @return a list of arrays, with each array being a different permutation of the input list
+    */
+  private static List<List<Demon>> findPermutations(List<Demon> input) {
+    //Form empty list of demon lists
+    List<List<Demon>> output = new ArrayList<List<Demon>>();
+    //If input is empty, return empty list
+    if(input.isEmpty()) {
+      output.add(new ArrayList<Demon>());
+      return output;
+    }
+    //Find all permutations
+    Demon head = input.get(0);
+    List<Demon> rest = input.subList(1, input.size());
+    for(List<Demon> permutations : findPermutations(rest)) {
+      List<List<Demon>> subLists = new ArrayList<List<Demon>>();
+      for(int i=0; i<=permutations.size(); i++) {
+        List<Demon> subList = new ArrayList<Demon>();
+        subList.addAll(permutations);
+        subList.add(i,head);
+        subLists.add(subList);
+      }
+      output.addAll(subLists);
+    }
+    return output;
+  }
+
+  /**
   * Given a specification for a demon, find a fusion chain that will produce that demon, or a demon closest to it
   * @param demon the demon desired as the end result of fusion
   * @param curDepth the method is recursive, so this records the depth that the method has reached
   * @return a FusionChain object, which represents a fusion recipe for the desired demon
   */
-  public static FusionChain findFusionChains(Demon demon, int curDepth) {
+  public static List<FusionChain> findFusionChains(Demon demon, int numChains) {
     //Log entry
     logger.entering("Fusion","findFusionChains");
+
+    //Construct empty list to store all chains found
+    List<FusionChain> chainsFound = new ArrayList<FusionChain>();
+
+    //Find all possible fusion combinations for desired demon and work over them
+    int numSkillsFound = 0;
+    int mostSkillsFound = 0;
+    Demon base = Race.fromString(demon.getRace().toLowerCase()).getDemon(demon.getName());
+    FusionChain bestChain = new FusionChain(base);
+    //Get all fusion combinations
+    List<Demon[]> combinations = fuseWithoutSkillRequirements(demon);
+    //Loop over all fusion combinations
+    for(Demon[] curCombination : combinations) {
+      //Find the base demon
+      Race desiredRace = Race.fromString(demon.getRace().toLowerCase());
+      Demon baseDesired = desiredRace.getDemon(demon.getName());
+      //Create empty fusion chain result with desired demon (base version) at top
+      FusionChain result = new FusionChain(baseDesired);
+      //Construct new set of skills for this combination
+      Set<String> foundSkills = new HashSet<String>();
+      int numCurSkills = 0;
+      //Add the components to the fusion chain
+      for(Demon curComp : curCombination) {
+        Demon baseComp = Race.fromString(curComp.getRace().toLowerCase()).getDemon(curComp.getName());
+        result.addChain(new FusionChain(baseComp));
+      }
+      //Add all skills in current fusion chain to set
+      result.addSkillsInChain(foundSkills);
+      //Find out how many of the desired skills have been found
+      numCurSkills = numberOfSkillsFound(demon, foundSkills);
+      //Check if the skills required in the desired demon have been found
+      if(numCurSkills == demon.getNumSkills()) {
+        //This combination works and provides all desired skills
+        chainsFound.add(result);
+        if(chainsFound.size() == numChains) return chainsFound;
+      }
+
+      else {
+        //Create multiple orderings of curCombination
+        List<List<Demon>> combinationPerms = findPermutations(Arrays.asList(curCombination));
+
+        for(List<Demon> curCombinationOrdering : combinationPerms) {
+          //Create copy of result to use for this ordering
+          FusionChain thisResult = new FusionChain(result);
+          int i=0;
+          //Recursively call this method on each of the components to find new fusion chains
+          for(Demon curComp : curCombinationOrdering) {
+            //Find lacking skills
+            Set<String> skillsLacking = findSkillDefficiencies(demon, thisResult);
+            //Find a fusion chain for the current component with the lacking skills
+            Demon curCompCopy = new Demon(curComp);
+            curCompCopy.setSkills(skillsLacking);
+            //Now find fusion chains for this demon
+            thisResult.setChain(i++, findFusionChain(curCompCopy, 1));
+
+            //Now check skills again after finding new fusion chain for first component
+            thisResult.addSkillsInChain(foundSkills);
+            numCurSkills = numberOfSkillsFound(demon, foundSkills);
+            if(numCurSkills == demon.getNumSkills()) {
+              //This chain works and provides all desired skills. Add chain to list of results
+              chainsFound.add(thisResult);
+              if(chainsFound.size() == numChains) return chainsFound;
+              break; //Break out of inner loop and move to next ordering of fusion components
+            }
+            //Otherwise, move onto next component
+          }
+        }
+      }
+    }
+    //Return best chain found
+    logger.exiting("Fusion","findFusionChains");
+    return chainsFound;
+  }
+
+  /**
+  * Given a specification for a demon, find a fusion chain that will produce that demon, or a demon closest to it
+  * @param demon the demon desired as the end result of fusion
+  * @param curDepth the method is recursive, so this records the depth that the method has reached
+  * @return a FusionChain object, which represents a fusion recipe for the desired demon
+  */
+  public static FusionChain findFusionChain(Demon demon, int curDepth) {
+    //Log entry
+    logger.entering("Fusion","findFusionChain");
 
     //Check that depth hasn't exceeded depth limit
     if(curDepth == DEPTH_LIMIT) {
@@ -478,7 +591,6 @@ public class Fusion {
         }
 
         //Recursively call this method on each of the components to find new fusion chains
-        //TODO: Need to modify for demons with multiple components
         int i=0;
         for(Demon curComp : curCombination) {
           //Find lacking skills
@@ -487,7 +599,7 @@ public class Fusion {
           Demon curCompCopy = new Demon(curComp);
           curCompCopy.setSkills(skillsLacking);
           //Now find fusion chains for this demon
-          result.setChain(i++, findFusionChains(curCompCopy, curDepth+1));
+          result.setChain(i++, findFusionChain(curCompCopy, curDepth+1));
 
           //Now check skills again after finding new fusion chain for first component
           result.addSkillsInChain(foundSkills);
@@ -513,8 +625,8 @@ public class Fusion {
         }
       }
     }
-    //Return best chain found. Need to change demon to base demon before returning though
-    logger.exiting("Fusion","findFusionChains");
+    //Return best chain found
+    logger.exiting("Fusion","findFusionChain");
     return bestChain;
   }
 
