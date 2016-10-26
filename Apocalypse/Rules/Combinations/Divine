@@ -7,9 +7,7 @@ Divine,Megami,Flight
 Divine,Avian,Flight
 Divine,Avian,Kunitsu
 Divine,Avian,Undead
-Divine,Avian,Godly
 Divine,Tree,Undead
-Divine,Tree,Godly
 Divine,Flight,Fairy
 Divine,Flight,Fallen
 Divine,Yoma,Raptor
@@ -25,7 +23,6 @@ Divine,Holy,Undead
 Divine,Genma,Undead
 Divine,Fairy,Night
 Divine,Fairy,Amatsu
-Divine,Fairy,Godly
 Divine,Fury,Undead
 Divine,Dragon,Undead
 Divine,Kishin,Undead
@@ -35,5 +32,3 @@ Divine,Spirit,Zealot
 Divine,Enigma,Undead
 Divine,Amatsu,Undead
 Divine,Kunitsu,Undead
-Divine,Undead,Godly
-Divine,Undead,Chaos

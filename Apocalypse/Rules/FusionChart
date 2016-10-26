@@ -7,7 +7,7 @@ Divine,Avian,Flight,Megami,Raptor,-,Jirae,Herald,Fairy,Avatar,Nymph,Nymph,Brute,
 Flight,Nymph,Avian,Raptor,Avian,Raptor,Herald,Vermin,Avatar,Avatar,Divine,Yoma,Raptor,Beast,Spirit,Foul,Drake,Fallen,Fallen,Night,Beast,Avian,Divine,Beast,Beast,Fallen,Drake,Foul,Raptor,Snake,Night,Drake,Herald,Raptor,Dragon,Night,Avian,Avian,Snake,-
 Yoma,Fairy,Jaki,Divine,Drake,Fairy,Jirae,Snake,Night,Divine,Holy,Lady,Flight,Ghost,Beast,Ghost,Wilder,Night,Ghost,Genma,Tyrant,Snake,Jaki,Ghost,Divine,Jaki,Flight,Ghost,Night,-,Ghost,Fairy,Night,Brute,Ghost,Genma,Fairy,Fallen,-
 Nymph,Foul,Fallen,Tree,Femme,Fairy,Divine,Megami,Megami,Avatar,Divine,Wood,Spirit,-,Yoma,-,Femme,-,Lady,Divine,Divine,Femme,-,Femme,Jaki,-,Night,Femme,Spirit,Reaper,Femme,Femme,Lady,-,Megami,Megami,Femme,-
-Vile,Drake,Jaki,-,-,-,-,Jaki,Wilder,Jaki,Drake,Tyrant,Raptor,Ghost,Reaper,-,-,-,-,Raptor,Jaki,Jaki,Jaki,Reaper,Wilder,Ghost,Tyrant,Raptor,Tyrant,-,Wilder,Fury,-,Kunitsu,-,-
+Vile,Drake,Jaki,-,-,-,-,Jaki,Wilder,Jaki,Drake,Tyrant,Raptor,Ghost,Reaper,-,-,-,-,Raptor,Jaki,Jaki,Jaki,Reaper,Wilder,Ghost,Tyrant,Raptor,Tyrant,-,Wilder,Fury,-,Kunitsu,-,-,Megami
 Raptor,Vile,-,-,-,-,Night,Avian,Foul,Vermin,Spirit,Dragon,Avian,Spirit,-,-,-,-,Drake,Ghost,Nymph,Wood,Vermin,Holy,Wilder,Avian,Wilder,Drake,-,Vermin,Drake,-,Avian,-,-, Avian
 Wood,-,-,-,-,Brute,Wilder,Vermin,Drake,Spirit,Vermin,Kunitsu,Lady,-,-,-,-,Foul,Foul,Vermin,Fairy,Drake,Raptor,Genma,Tree,Reaper,Reaper,-,Wilder,Femme,-,Tree,-,-,Tree
 Deity,Genma,Avatar,Reaper,Genma,Avatar,Brute,Beast,-,-,-,-,Kunitsu,Holy,Kunitsu,Fury,Fury,Jirae,Snake,Yoma,-,-,-,Reaper,-,Genma,-,Fairy,-,Holy,Fury,Herald,Fury,Divine
@@ -15,7 +15,7 @@ Avatar,Beast,Deity,Kishin,Jirae,Tree,Dragon,-,-,-,-,Dragon,Tree,Fury,Dragon,Snak
 Holy,Fairy,Beast,Avian,Spirit,Dragon,-,-,-,-,Snake,Deity,Tree,Brute,Beast,Jaki,Jirae,Jirae,-,-,-,Vermin,-,Fairy,Avatar,Beast,-,Deity,Avatar,Snake,Fairy,Divine
 Genma,Deity,Holy,Reaper,Avatar,-,-,-,-,Kishin,Kunitsu,Night,Brute,Holy,Kishin,Kishin,Brute,-,-,-,Ghost,-,Deity,Reaper,Night,-,Kishin,Deity,Nymph,Jirae,Divine
 Fairy,Flight,Beast,Avian,Spirit,Holy,Lady,Wood,Deity,Genma,Night,Tree,Night,Femme,Lady,Divine,Ghost,Wood,Flight,Jirae,Wood,Reaper,Genma,Yoma,Deity,Genma,Genma,Divine,Night,-
-Beast,Yoma,Wilder,Spirit,Snake,Holy,Wilder,Snake,Snake,Night,Lady,Wilder,Foul,Wilder,Flight,Wilder,Wilder,Holy,Wilder,Avatar,Snake,Holy,Holy,Fallen,-
+Beast,Yoma,Wilder,Spirit,Snake,Holy,Wilder,Snake,Snake,Wilder,Avatar,Snake,Snake,Night,Lady,Wilder,Foul,Wilder,Flight,Wilder,Wilder,Holy,Wilder,Avatar,Snake,Holy,Holy,Fallen,-
 Jirae,Fallen,Spirit,Wood,Brute,Foul,Brute,Kishin,Lady,Tree,Dragon,Fairy,Brute,Fairy,Jaki,Snake,Vermin,Fairy,Jaki,Spirit,Brute,Vermin,Kunitsu,Kishin,Tree,Kunitsu,Lady,-
 Snake,Spirit,Vermin,Drake,Fallen,Dragon,Femme,Fallen,Dragon,Dragon,Dragon,Drake,Yoma,Drake,Vermin,Drake,Beast,Wood,Drake,Beast,Brute,Dragon,Femme,Dragon,Nymph,Dragon,-
 Reaper,Spirit,Ghost,Spirit,-,-,-,-,Tyrant,Spirit,Spirit,Ghost,Vile,Spirit,Wood,Vile,Spirit,Vile,-,Spirit,Tyrant,-,Deity,-,-,Deity
