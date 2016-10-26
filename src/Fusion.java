@@ -457,7 +457,7 @@ public class Fusion {
   * @param curDepth the method is recursive, so this records the depth that the method has reached
   * @return a FusionChain object, which represents a fusion recipe for the desired demon
   */
-  public static List<FusionChain> findFusionChains(Demon demon) {
+  public static List<FusionChain> findFusionChains(Demon demon, int numChains) {
     //Log entry
     logger.entering("Fusion","findFusionChains");
 
@@ -494,6 +494,7 @@ public class Fusion {
       if(numCurSkills == demon.getNumSkills()) {
         //This combination works and provides all desired skills
         chainsFound.add(result);
+        if(chainsFound.size() == numChains) return chainsFound;
       }
 
       else {
@@ -520,6 +521,7 @@ public class Fusion {
             if(numCurSkills == demon.getNumSkills()) {
               //This chain works and provides all desired skills. Add chain to list of results
               chainsFound.add(thisResult);
+              if(chainsFound.size() == numChains) return chainsFound;
               break; //Break out of inner loop and move to next ordering of fusion components
             }
             //Otherwise, move onto next component

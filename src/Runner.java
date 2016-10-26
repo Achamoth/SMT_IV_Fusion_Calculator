@@ -71,11 +71,14 @@ public class Runner {
     for(int i=0; i<numSkills; i++) skills.add(in.nextLine().trim());
     System.out.println();
 
+    System.out.print("How many fusion chains do you want: ");
+    int numChains = Integer.valueOf(in.nextLine().trim());
+
     //Create demon object
     Demon desired = new Demon(desiredRace, desiredDemon, level, skills);
-    
+
     //Find fusion chains for demon
-    List<FusionChain> allChains = Fusion.findFusionChains(desired);
+    List<FusionChain> allChains = Fusion.findFusionChains(desired, numChains);
     //Get rid of duplicates
     Set<FusionChain> recipes = new HashSet<FusionChain>();
     for(FusionChain curChain : allChains) {
