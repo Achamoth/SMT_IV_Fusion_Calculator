@@ -326,9 +326,46 @@ class FusionSearch implements ActionListener {
 
     //Perform search
     if(simpleSearch) {
-      //TODO: Complete this
       //Perform simple search
+      List<Demon[]> recipes = Fusion.fuseWithoutSkillRequirements(desired);
+      if(toFile) {
+        //Output results to file
+        try {
+          FileOps.outputSimpleFusionResults(recipes, desired);
+        }
+        catch(Exception e) {
+          JOptionPane.showMessageDialog(frame, "Error writing results to output file");
+        }
+      }
+      else {
+        //Print simple fusion results
+        JDialog dialog = new JDialog(frame);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        JTextArea output = new JTextArea();
+        //Add all output to the text field
+        StringBuilder sb = new StringBuilder();
+        sb.append("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName()+"\n");
+        sb.append("Skills: " + desired.getSkills().toString()+"\n\n");
+        //Loop over all recipes
+        for(Demon[] recipe : recipes) {
+          sb.append(recipe[0].getRace().toString().substring(0,1).toUpperCase()+recipe[0].getRace().toString().substring(1)+" "+recipe[0].getName());
+          for(int i=1; i<recipe.length; i++) {
+            sb.append(" + " + recipe[i].getRace().toString().substring(0,1).toUpperCase()+recipe[i].getRace().toString().substring(1)+" "+recipe[i].getName());
+          }
+          sb.append("\n");
+        }
+        output.setText(sb.toString());
+
+        //Add output text to the modeless dialog
+        JScrollPane scroll = new JScrollPane(output);
+        panel.add(scroll,BorderLayout.CENTER);
+        dialog.getContentPane().add(panel);
+        dialog.setVisible(true);
+        dialog.pack();
+      }
     }
+
     else {
       //Find fusion chains for demon
       List<FusionChain> allChains = Fusion.findFusionChains(desired, numChains);
@@ -345,21 +382,36 @@ class FusionSearch implements ActionListener {
           FileOps.outputResults(recipes, desired);
         }
         catch(Exception e) {
-          System.out.println("Error writing results to output file");
+          JOptionPane.showMessageDialog(frame, "Error writing results to output file");
         }
       }
       else {
-        //Print fusion chains
-        //TODO: DON'T PRINT TO STDOUT. PRINT TO A NEW WINDOW
-        System.out.println();
-        System.out.println("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName());
-        System.out.println("Skills: " + skillSet.toString()+"\n");
-        System.out.println();
+        //Print fusion chain to new modeless dialog
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName()+"\n");
+        sb.append("Skills: " + skillSet.toString()+"\n");
+        sb.append("\n");
         for(FusionChain recipe : recipes) {
-          System.out.println();
-          recipe.printChain(0,skillSet);
-          System.out.println();
+          sb.append("\n");
+          sb.append(recipe.toString(0,skillSet));
+          sb.append("\n");
         }
+        String finalOut = sb.toString();
+
+        //Create new modeless dialog, and print finalOut to scrolling resizable textarea
+        //http://stackoverflow.com/questions/3843493/java-jtextarea-that-auto-resizes-and-scrolls
+        //https://docs.oracle.com/javase/tutorial/uiswing/misc/modality.html
+        JDialog dialog = new JDialog(frame);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        JTextArea output = new JTextArea();
+        output.setText(finalOut);
+        JScrollPane scroll = new JScrollPane(output);
+        panel.add(scroll, BorderLayout.CENTER);
+        dialog.getContentPane().add(panel);
+        dialog.setVisible(true);
+        dialog.pack();
       }
     }
   }
