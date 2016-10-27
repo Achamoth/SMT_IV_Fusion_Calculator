@@ -558,7 +558,7 @@ public class FileOps {
       fw.close();
     }
 
-    
+
     public static void outputSimpleFusionResults(List<Demon[]> recipes, Demon desired)
     throws NullPointerException, IOException {
       //Log entry
