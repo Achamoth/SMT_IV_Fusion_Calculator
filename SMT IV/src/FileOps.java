@@ -532,4 +532,52 @@ public class FileOps {
       //Log exit
       logger.exiting("readFusionChart","FileOps");
     }
+
+    /**
+      * Given a set of fusion chain recipes for a demon, print them out to a file
+      * @param recipes the set of recipes to produce the demon
+      * @param desired the demon being fused (the recipes are for this demon)
+      */
+    public static void outputResults(Set<FusionChain> recipes, Demon desired)
+    throws NullPointerException, IOException {
+      //Log entry
+      logger.entering("outputResults","FileOps");
+      //Open output file
+      FileWriter fw = new FileWriter("../"+desired.getName()+".txt");
+      //Write demon info
+      fw.write("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName()+"\n");
+      fw.write("Skills: " + desired.getSkills().toString()+"\n\n");
+      //Loop over all fusion chains
+      for(FusionChain recipe : recipes) {
+        fw.write("\n");
+        fw.write(recipe.toString(0,desired.getSkills()));
+        fw.write("\n");
+      }
+      //Close file
+      fw.flush();
+      fw.close();
+    }
+
+    
+    public static void outputSimpleFusionResults(List<Demon[]> recipes, Demon desired)
+    throws NullPointerException, IOException {
+      //Log entry
+      logger.entering("outputSimpleFusionResults","FileOps");
+      //Open output file
+      FileWriter fw = new FileWriter("../"+desired.getName()+".txt");
+      //Write demon info
+      fw.write("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName()+"\n");
+      fw.write("Skills: " + desired.getSkills().toString()+"\n\n");
+      //Loop over all recipes
+      for(Demon[] recipe : recipes) {
+        fw.write(recipe[0].getRace().toString().substring(0,1).toUpperCase()+recipe[0].getRace().toString().substring(1)+" "+recipe[0].getName());
+        for(int i=1; i<recipe.length; i++) {
+          fw.write(" + " + recipe[i].getRace().toString().substring(0,1).toUpperCase()+recipe[i].getRace().toString().substring(1)+" "+recipe[i].getName());
+        }
+        fw.write("\n");
+      }
+      //Close file
+      fw.flush();
+      fw.close();
+    }
 }

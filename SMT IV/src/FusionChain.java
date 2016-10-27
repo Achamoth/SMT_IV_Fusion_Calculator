@@ -137,6 +137,51 @@ public class FusionChain {
     }
   }
 
+  public String toString(int depth, Set<String> skills) {
+    StringBuilder sb = new StringBuilder();
+    //Only print if there are components
+    if(this.components.size() == 0) return sb.toString() ;
+    //Print demon name
+    String demonRace = this.demon.getRace().toString().substring(0,1).toUpperCase() + this.demon.getRace().toString().substring(1);
+    String demonName = this.demon.getName();
+    //Print tabs
+    for(int i=0; i<depth; i++) sb.append("\t");
+    sb.append(demonRace + " " + demonName + " = " );
+    //Print first component
+    String firstRace = this.components.get(0).getRace().toString().substring(0,1).toUpperCase() + this.components.get(0).getRace().toString().substring(1);
+    String firstName = this.components.get(0).getName();
+    sb.append(firstRace + " " + firstName);
+    //Print the rest of the components
+    for(int i=1; i<this.components.size(); i++) {
+      Demon curComponent = this.components.get(i);
+      String curRace = curComponent.getRace().toString().substring(0,1).toUpperCase() + curComponent.getRace().toString().substring(1);
+      String curName = curComponent.getName();
+      sb.append(" + " + curRace + " " + curName);
+    }
+    sb.append("\n");
+    //Loop through all the components and print where the skills are found
+    for(Demon curComponent : this.components) {
+      //If the current component contains a skill desired in the final demon, print this information
+      if(componentContainsSkill(curComponent, skills)) {
+        //Print all the skills this component provides
+        for(int i=0; i<depth; i++) sb.append("\t");
+        sb.append(curComponent.getRace().toString().substring(0,1).toUpperCase() + curComponent.getRace().toString().substring(1));
+        sb.append(" " + curComponent.getName() + ": ");
+        //Find all skills provided by this component
+        Set<String> skillsProvidedByComponent = findSkillsProvidedByDemon(curComponent, skills);
+        //Print skills
+        sb.append(skillsProvidedByComponent.toString());
+        sb.append("\n");
+      }
+    }
+
+    //Now, print all fusion chains
+    for(FusionChain chain : this.chains) {
+      sb.append(chain.toString(depth+1, skills));
+    }
+    return sb.toString();
+  }
+
   /**
   * Given a demon and a set of skills, returns true if the demon contains any skills specified in the set; false otherwise
   * @param demon the demon being examined
