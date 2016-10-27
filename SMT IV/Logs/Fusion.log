@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-10-27T08:35:27</date>
+  <millis>1477528527156</millis>
+  <sequence>438</sequence>
+  <logger>Fusion</logger>
+  <level>FINER</level>
+  <class>Fusion</class>
+  <method>fuseWithoutSkillRequirements</method>
+  <thread>13</thread>
+  <message>ENTRY</message>
+</record>
+</log>
