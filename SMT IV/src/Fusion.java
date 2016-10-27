@@ -27,14 +27,14 @@ public class Fusion {
   private static final Logger logger = Logger.getLogger("Fusion");
 
   static {
-    try {
+    // try {
       logger.setLevel(Level.ALL);
-      Handler handler = new FileHandler("../Logs/Fusion.log");
-      logger.addHandler(handler);
-    }
-    catch(IOException e) {
-      logger.log(Level.SEVERE, "Couldn't create log file handler", e);
-    }
+      // Handler handler = new FileHandler("../../Logs/Fusion.log");
+      // logger.addHandler(handler);
+    // }
+    // catch(IOException e) {
+      // logger.log(Level.SEVERE, "Couldn't create log file handler", e);
+    // }
   }
 
   /**

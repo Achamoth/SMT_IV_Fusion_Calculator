@@ -33,8 +33,8 @@ public class Runner {
     try {
       //Try to set up logger file handler
       logger.setLevel(Level.ALL);
-      Handler handler = new FileHandler("../logs/Runner.log");
-      logger.addHandler(handler);
+      // Handler handler = new FileHandler("../../logs/Runner.log");
+      // logger.addHandler(handler);
       //First, read all fusion rules
       FileOps.readFusionChart();
       //Next, read all special fusions

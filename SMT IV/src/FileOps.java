@@ -32,15 +32,15 @@ public class FileOps {
 
   static {
     //Set up logger
-    try {
+    // try {
       logger.setLevel(Level.ALL);
-      Handler handler = new FileHandler("../Logs/FileOps.log");
-      logger.addHandler(handler);
-    }
-    catch (IOException e) {
-      logger.log(Level.SEVERE, "Couldn't create log file handler for FileOps class", e);
-      System.exit(1);
-    }
+      // Handler handler = new FileHandler("../../Logs/FileOps.log");
+      // logger.addHandler(handler);
+    // }
+    // catch (IOException e) {
+      // logger.log(Level.SEVERE, "Couldn't create log file handler for FileOps class", e);
+      // System.exit(1);
+    // }
   }
 
   /**
@@ -543,7 +543,7 @@ public class FileOps {
       //Log entry
       logger.entering("outputResults","FileOps");
       //Open output file
-      FileWriter fw = new FileWriter("../"+desired.getName()+".txt");
+      FileWriter fw = new FileWriter(desired.getName()+".txt");
       //Write demon info
       fw.write("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName()+"\n");
       fw.write("Skills: " + desired.getSkills().toString()+"\n\n");
@@ -564,7 +564,7 @@ public class FileOps {
       //Log entry
       logger.entering("outputSimpleFusionResults","FileOps");
       //Open output file
-      FileWriter fw = new FileWriter("../"+desired.getName()+".txt");
+      FileWriter fw = new FileWriter(desired.getName()+".txt");
       //Write demon info
       fw.write("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName()+"\n");
       fw.write("Skills: " + desired.getSkills().toString()+"\n\n");

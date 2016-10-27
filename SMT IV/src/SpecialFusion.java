@@ -17,14 +17,14 @@ public class SpecialFusion {
 
   //Populate all special fusion data into hash map and initialize logger
   static {
-    try {
+    // try {
       logger.setLevel(Level.ALL);
-      Handler handler = new FileHandler("../logs/SpecialFusion.log");
-      logger.addHandler(handler);
-    }
-    catch(IOException e) {
-      logger.log(Level.SEVERE, "Couldn't create log file handler", e);
-    }
+      // Handler handler = new FileHandler("../../logs/SpecialFusion.log");
+      // logger.addHandler(handler);
+    // }
+    // catch(IOException e) {
+      // logger.log(Level.SEVERE, "Couldn't create log file handler", e);
+    // }
 
     try{
       specialFusions = new HashMap<String,SpecialFusion>();
