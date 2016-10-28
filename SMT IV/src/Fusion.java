@@ -170,7 +170,7 @@ public class Fusion {
           //Check average level of 2 demons
           int avgLvl = (r1.getBaseLevel(firstDemon) + r2.getBaseLevel(secondDemon))/2;
           //Check that average level is lower than desired demon's base level
-          if(avgLvl <= desiredRace.getBaseLevel(desiredDemon)) {
+          if(avgLvl < desiredRace.getBaseLevel(desiredDemon)) {
             //Now, check that it's also higher than level of weaker demon from desired race
             Demon previousDemon = null;
             for(Demon curDemon : desiredRace.getDemons()) {
