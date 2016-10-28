@@ -1,12 +1,11 @@
 ***Demon name, level, skills(list)***
 Ghost
-Strigoli,6,Mudo:Life Drain:Resist Light
-Preta,12,Life Drain:Bad Company:Resist Fire
+Strigoli,6,Mudo:Life Drain:Poison Claw
+Preta,11,Life Drain:Bad Company:Mudo:Mabufu
 Obariyon,18,Binding Claw:Patra:Sukunda
-Mou-Ryo,24,Mudo:Spirit Drain:Pulinpa
-Churel,32,Energy Drain:Shibaboo:Mudoon
-Enku,40,Fire Breath:Damascus Claw:Energy Drain
-Ghoul,49,Energy Drain:Tetanus Cut:Damascus Claw
-Kudlak,58,Energy Drain:Mudoon:Chakra Walk:Endure
-Dullahan,67,Mudoon:Blight:Luster Candy:Awakening:Bloody Glee
-Vetala,74,Nihil Claw:Fog Breath:Acid Breath
+Mou-Ryo,23,Mudo:Spirit Drain:Pulinpa:Resist Elec
+Churel,32,Marin Karin:Shibaboo:Mudoon:Dark Pleroma
+Enku,38,Fire Breath:Damascus Claw:Maragion
+Ghoul,49,Frenzied Chomp:Tetanus Cut:Damascus Claw:Acid Breath
+Kudlak,66,Energy Drain:Tarukaja:Pandemic Bomb:Death's Door
+Vetala,74,Acid Breath:Eat Whole:Fog Breath:Life Surge
