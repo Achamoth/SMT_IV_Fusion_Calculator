@@ -32,15 +32,19 @@ public class FileOps {
 
   static {
     //Set up logger
-    // try {
+    try {
       logger.setLevel(Level.ALL);
-      // Handler handler = new FileHandler("../../Logs/FileOps.log");
-      // logger.addHandler(handler);
-    // }
-    // catch (IOException e) {
-      // logger.log(Level.SEVERE, "Couldn't create log file handler for FileOps class", e);
-      // System.exit(1);
-    // }
+      //Create log directory if it doesn't already exist
+      File logDir = new File("Logs");
+      logDir.mkdir();
+      Handler handler = new FileHandler("Logs/FileOps.log");
+      logger.addHandler(handler);
+    }
+    catch (IOException e) {
+      logger.log(Level.SEVERE, "Couldn't create log file handler for FileOps class", e);
+      Runner.reportError("Couldn't create log file for FileOps class");
+      System.exit(1);
+    }
   }
 
   /**
@@ -61,21 +65,24 @@ public class FileOps {
       readDemonList(race, demons);
       //Next, read in demon compendium
       readDemonCompendium(race, compendium);
-      //Next, read in fusion combination
+      //Next, read in fusion combinations
       readFusionCombinations(race, fCombination);
       //Finally, read in element rules
       readElementRules(race, eUp, eDown);
     }
     catch(IOException e) {
       logger.log(Level.INFO, "An IOException occurred while reading files", e);
+      Runner.reportError("Error while reading files. IOException");
       System.exit(1);
     }
     catch(NullPointerException e) {
       logger.log(Level.FINE, "Null pointer exception. Race name was likely null", e);
+      Runner.reportError("Error while reading files. NullPointerException");
       System.exit(1);
     }
     catch (NumberFormatException e) {
       logger.log(Level.INFO, "Couldn't parse demon level as integer value", e);
+      Runner.reportError("Incorrect formatting in one of the files. NumberFormatException");
       System.exit(1);
     }
 
@@ -99,9 +106,10 @@ public class FileOps {
       }
 
       //Open file containing all fusion rules for each element
-      File f = new File("../Rules/ElementFusions");
+      File f = new File("Rules/ElementFusions");
       if(!f.exists()) {
         System.out.println("Error. Couldn't find element fusion rules in expected location");
+        Runner.reportError("Couldn't find ElementFusions file in expected location");
         System.exit(1);
       }
 
@@ -131,10 +139,12 @@ public class FileOps {
     }
     catch (IOException e) {
       logger.log(Level.INFO, "IOException occured while reading element fusion rules", e);
+      Runner.reportError("Error while reading ElementFusions file. IOException");
       System.exit(1);
     }
     catch (NullPointerException e) {
       logger.log(Level.INFO, "Null pointer exception in populateElementFusionRules", e);
+      Runner.reportError("Error while reading ElementFusions file. NullPointerException");
       System.exit(1);
     }
     logger.exiting("FileOps","populateElementFusionRules");
@@ -154,10 +164,11 @@ public class FileOps {
     logger.entering("FileOps", "readDemonList");
 
     //Start by opening file containing all of race's demons
-    File f = new File("../Demon Database/" + race);
+    File f = new File("Demon Database/" + race);
     //Ensure file exists
     if(!f.exists()) {
-      logger.warning("Error. The file " + race +".txt does not exist in expected directory. Exiting program...");
+      logger.warning("Error. The file " + race + " does not exist in expected directory. Exiting program...");
+      Runner.reportError("Couldn't find " + race +"\'s demon list in expected location. Exiting");
       System.exit(1);
     }
 
@@ -201,9 +212,10 @@ public class FileOps {
     logger.entering("FileOps","readDemonCompendium");
 
     //Start by opening compendium file
-    File f = new File("../Compendium/Compendium");
+    File f = new File("Compendium/Compendium");
     if(!f.exists()) {
       logger.warning("Error. The compendium file doesn't exist in expected location. Exiting");
+      Runner.reportError("Couldn't find compendium file in expected location. Exiting");
       System.exit(1);
     }
 
@@ -269,9 +281,10 @@ public class FileOps {
     logger.entering("FileOps", "readFusionCombinations");
 
     String raceFile = race.substring(0,1).toUpperCase() + race.substring(1);
-    File f = new File("../Rules/Combinations/"+raceFile);
+    File f = new File("Rules/Combinations/"+raceFile);
     if(!f.exists()) {
       logger.warning("Error. The file containing fusion rules doesn't exist in expected location: " + raceFile);
+      Runner.reportError("Couldn't find " + raceFile + "\'s fusion rules file in expected location. Exiting");
       System.exit(1);
     }
 
@@ -317,9 +330,10 @@ public class FileOps {
     logger.entering("FileOps","readElementRules");
 
     //Open file containing element rules
-    File f = new File("../Rules/ElementRules");
+    File f = new File("Rules/ElementRules");
     if(!f.exists()) {
       logger.warning("The file containing all element rules wasn't found");
+      Runner.reportError("Couldn't find ElementRules in expected location");
       System.exit(1);
     }
     BufferedReader br = new BufferedReader(new FileReader(f));
@@ -356,16 +370,6 @@ public class FileOps {
   }
 
   /**
-    * Reads in file containing list of all demons, and stores them in
-    * internal data structures
-    * @param compendium the set in which to store all demons found in file
-    * @throws NullPointerException if parameter compendium is null
-    */
-  public static void readCompendium(Set<Demon> compendium) {
-    //TODO
-  }
-
-  /**
     * Reads in file containing all special fusions, and stores them in
     * internal data structures, for use with SpecialFusion class
     * @param specials the list in which to store all special fusions found
@@ -379,9 +383,10 @@ public class FileOps {
       logger.entering("populateSpecialFusions", "FileOps");
 
       //Open file containing special fusions
-      File f = new File("../Special/SpecialFusions");
+      File f = new File("Special/SpecialFusions");
       if(!f.exists()) {
         System.out.println("The file containing all special fusions wasn't found");
+        Runner.reportError("Couldn't find SpecialFusions in expected location");
         System.exit(1);
       }
       BufferedReader br = new BufferedReader(new FileReader(f));
@@ -404,6 +409,7 @@ public class FileOps {
           //Print out error message if the line has a formatting error
           if(raceDemonPair.length != 2) {
             logger.info("Error in special fusions file at line: " + race + " " + name);
+            Runner.reportError("Error in special fusions file at line: " + race + " " + name);
             System.exit(1);
           }
           Race curComponentRace = Race.fromString(raceDemonPair[0].toLowerCase());
@@ -414,6 +420,7 @@ public class FileOps {
           } catch(NullPointerException e) {
             logger.info("Couldn't find demon " + demonName + " in race " + curComponentRace.toString());
             logger.log(Level.FINE, "NullPointerException in populateSpecialFusions", e);
+            Runner.reportError("Couldn't find demon " + demonName + " in race " + curComponentRace.toString() + " while reading special fusions file");
             System.exit(1);
           }
           components.add(curDemon);
@@ -425,6 +432,7 @@ public class FileOps {
         } catch(NullPointerException e) {
           logger.info("Couldn't find demon " + name + " in race " + race.toString());
           logger.log(Level.FINE, "NullPointerException in populateSpecialFusions", e);
+          Runner.reportError("Couldn't find demon " + name + " in race " + race.toString() + " while reading special fusions");
           System.exit(1);
         }
         //Create demon and special fusion
@@ -450,9 +458,10 @@ public class FileOps {
       logger.entering("readFusionChart","FileOps");
       try {
         //First, open fusion chart file
-        File f = new File("../Rules/FusionChart");
+        File f = new File("Rules/FusionChart");
         if(!f.exists()) {
           logger.warning("FusionChart file not found in expected location. Exiting");
+          Runner.reportError("FusionChart file not found in expected location. Exiting");
           System.exit(1);
         }
         //Construct buffered reader
@@ -508,7 +517,7 @@ public class FileOps {
         Set<String> races = fusionCombos.keySet();
         for(String curRace : races) {
           //Open file to write fusion combinations to
-          FileWriter fw = new FileWriter("../Rules/Combinations/"+curRace);
+          FileWriter fw = new FileWriter("Rules/Combinations/"+curRace);
           fw.write("***Resulting Race, Race 1, Race 2***\n");
           //Read all fusion combinations
           List<String[]> curRaceCombos = fusionCombos.get(curRace);
@@ -523,15 +532,56 @@ public class FileOps {
       }
       catch(IOException e) {
         logger.log(Level.WARNING, "IOException while reading fusion chart", e);
+        Runner.reportError("Error while reading fusion chart. IOException");
         System.exit(1);
       }
       catch(NullPointerException e) {
         logger.log(Level.WARNING, "Null pointer exception while reading fusion chart", e);
+        Runner.reportError("Error while reading fusiion chart. NullPointerException");
         System.exit(1);
       }
       //Log exit
       logger.exiting("readFusionChart","FileOps");
     }
+
+    /**
+      * Reads demon files, and constructs set of all skills in game
+      * @return a set of skills (in string format)
+      */
+      public static Set<String> findSkillList()
+      throws FileNotFoundException, IOException {
+        //Construct empty result
+        Set<String> skillsFound = new HashSet<String>();
+
+        //Open all files in Demon Database directory
+        File databaseDir = new File("Demon Database");
+        File[] allRaceFiles = databaseDir.listFiles();
+
+        for(File curRace : allRaceFiles) {
+          if(curRace.isFile() && curRace.exists()) {
+            //Construct buffered reader on file
+            BufferedReader br = new BufferedReader(new FileReader(curRace));
+            //Read header lines
+            br.readLine();
+            br.readLine();
+            //Read all lines in current race file
+            String line = br.readLine();
+            while(line != null) {
+              //Tokenize current line
+              String tokens[] = line.split(COMMA_DELIMITER);
+              //Tokenize 3rd token (skills list)
+              String curDemonSkills[] = tokens[2].split(COLON_DELIMITER);
+              //Add all of the current demon's skills to the overall set of skills
+              for(String curSkill : curDemonSkills) {
+                skillsFound.add(curSkill);
+              }
+              line = br.readLine();
+            }
+          }
+        }
+        //Return result
+        return skillsFound;
+      }
 
     /**
       * Given a set of fusion chain recipes for a demon, print them out to a file

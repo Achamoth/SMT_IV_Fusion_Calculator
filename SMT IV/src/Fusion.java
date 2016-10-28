@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.logging.*;
 import java.util.Arrays;
 import java.io.IOException;
+import java.io.File;
 
 public class Fusion {
 
@@ -27,14 +28,18 @@ public class Fusion {
   private static final Logger logger = Logger.getLogger("Fusion");
 
   static {
-    // try {
+    try {
       logger.setLevel(Level.ALL);
-      // Handler handler = new FileHandler("../../Logs/Fusion.log");
-      // logger.addHandler(handler);
-    // }
-    // catch(IOException e) {
-      // logger.log(Level.SEVERE, "Couldn't create log file handler", e);
-    // }
+      //Create Logs directory if it doesn't already exist
+      File logDir = new File("Logs");
+      logDir.mkdir();
+      Handler handler = new FileHandler("Logs/Fusion.log");
+      logger.addHandler(handler);
+    }
+    catch(IOException e) {
+      logger.log(Level.SEVERE, "Couldn't create log file handler", e);
+      Runner.reportError("Couldn't create log file for Fusion class");
+    }
   }
 
   /**
@@ -411,6 +416,7 @@ public class Fusion {
 
     if(innateSkills == null) {
       logger.warning("Couldn't find demon's innate skills. Demon is " + demon.getName());
+      Runner.reportError("Couldn't find innate skills for " + demon.getName());
       System.exit(1);
     }
 

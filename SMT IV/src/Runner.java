@@ -13,11 +13,21 @@ import java.lang.NullPointerException;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.File;
 
 public class Runner {
 
+  //Integer constants for receiving error messages from FileOps, to print appropriate error message to GUI
+  public static final int NULLPOINTER = 1;
+  public static final int IO = 2;
+  public static final int NUMBERFORMAT = 3;
+  //Integer constants for reporting missing files
+  public static final int ELEMENTFUSIONSFILE = 4;
+
+
   private static Map<String, SpecialFusion> specialFusions = new HashMap<String, SpecialFusion>();
   private static Logger logger = Logger.getLogger("SpecialFusion");
+  private static Set<String> allSkills;
   private static ProgramFrame frame;
 
   public static Map<String, SpecialFusion> getSpecialFusions() {
@@ -28,107 +38,74 @@ public class Runner {
     return frame;
   }
 
+  public static Set<String> getAllSkills() {
+    return allSkills;
+  }
+
+  public static void reportError(String error) {
+    JOptionPane.showMessageDialog(new JFrame(), error);
+  }
+
   public static void main(String[] args) {
 
+    //Try and set up logs
     try {
       //Try to set up logger file handler
       logger.setLevel(Level.ALL);
-      // Handler handler = new FileHandler("../../logs/Runner.log");
-      // logger.addHandler(handler);
+      //Create log directory if it doesn't already exist
+      File logDir = new File("Logs");
+      logDir.mkdir();
+      Handler handler = new FileHandler("Logs/Runner.log");
+      logger.addHandler(handler);
+    }
+    catch (IOException e) {
+      logger.log(Level.INFO, "Error setting up log file", e);
+      JOptionPane.showMessageDialog(new JFrame(), "Couldn't create log file for Runner class");
+    }
+
+    //Now try and read in data
+    try {
       //First, read all fusion rules
       FileOps.readFusionChart();
       //Next, read all special fusions
       FileOps.populateSpecialFusions(specialFusions);
+      // Populate list of skills
+      System.out.println("Before findSkillList");
+      allSkills = FileOps.findSkillList();
+      System.out.println("After findSkillList");
     }
     catch (IOException e) {
       logger.log(Level.INFO, "IOException reading data files", e);
+      JOptionPane.showMessageDialog(new JFrame(), "Error reading in data files");
       System.exit(1);
     }
     catch (NullPointerException e) {
       logger.log(Level.INFO, "NullPointerException reading data files", e);
+      JOptionPane.showMessageDialog(new JFrame(), "Error reading in data files");
       System.exit(1);
     }
     catch(NumberFormatException e) {
       logger.log(Level.INFO, "NumberFormatException reading data files", e);
+      JOptionPane.showMessageDialog(new JFrame(), "Formatting error in data files");
       System.exit(1);
     }
 
+    System.out.println("Before running thread");
     EventQueue.invokeLater(new Runnable() {
       public void run()
       {
+        System.out.println("Inside thread");
         //Set up frame
         frame = new ProgramFrame();
+        System.out.println("Created frame");
         frame.setTitle("SMT IV Fusion Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
         frame.setVisible(true);
-
-        //Set up scanner to take user input
-        /*Scanner in = new Scanner(System.in);
-
-        //Ask user for desired demon's details
-        System.out.print("Would you like to use the compendium(y/n): ");
-        String compendiumUsage = in.nextLine().trim();
-        if(compendiumUsage.equals("y")) {
-        Race.useCompendiumDemons();
-        System.out.print("What skill threshold would you like for evaluating compendium demons: ");
-        int skillThreshold = Integer.valueOf(in.nextLine().trim());
-        Fusion.setSkillThreshold(skillThreshold);
+        System.out.println("Made frame visible");
       }
-      else {
-      Race.dontUseCompendiumDemons();
-    }
-
-    System.out.print("Enter the desired depth limit: ");
-    // int desiredDepthLimit = in.nextInt();
-    int desiredDepthLimit = Integer.valueOf(in.nextLine().trim());
-    Fusion.setDepthLimit(desiredDepthLimit);
-
-    System.out.print("Enter the desired demon's race: ");
-    String desiredRace = in.nextLine().trim();
-
-    System.out.print("Enter the desired demon's name: ");
-    String desiredDemon = in.nextLine().trim();
-
-    System.out.print("Enter the desired demon's level: ");
-    int level = in.nextInt();
-
-    System.out.print("How many skills would you like the demon to have: ");
-    int numSkills = in.nextInt();
-
-    System.out.println("Enter the desired skills:");
-    in.nextLine();
-    Set<String> skills = new HashSet<String>();
-    for(int i=0; i<numSkills; i++) skills.add(in.nextLine().trim());
-    System.out.println();
-
-    System.out.print("How many fusion chains do you want: ");
-    int numChains = Integer.valueOf(in.nextLine().trim());
-
-    //Create demon object
-    Demon desired = new Demon(desiredRace, desiredDemon, level, skills);
-
-    //Find fusion chains for demon
-    List<FusionChain> allChains = Fusion.findFusionChains(desired, numChains);
-    //Get rid of duplicates
-    Set<FusionChain> recipes = new HashSet<FusionChain>();
-    for(FusionChain curChain : allChains) {
-    recipes.add(curChain);
+    });
   }
-  //Print fusion chains
-  System.out.println();
-  System.out.println("Fusing: " + desired.getRace().toString().substring(0,1).toUpperCase()+desired.getRace().toString().substring(1)+" "+desired.getName());
-  System.out.println("Skills: " + skills.toString()+"\n");
-  System.out.println();
-  for(FusionChain recipe : recipes) {
-  System.out.println();
-  recipe.printChain(0,skills);
-  System.out.println();
-}*/
-//System.out.println();
-}
-});
-}
 }
 
 class ProgramFrame extends JFrame {
@@ -265,6 +242,9 @@ class FusionSearch implements ActionListener {
     boolean simpleSearch = frame.simpleSearch.isSelected();
     boolean toFile = frame.outputToFile.isSelected();
 
+    //Get list of all demon skills
+    Set<String> allSkills = Runner.getAllSkills();
+
     //Find demon data
     String name = frame.demonName.getText();
     String race = frame.demonRace.getText();
@@ -280,6 +260,10 @@ class FusionSearch implements ActionListener {
     Set<String> skillSet = new HashSet<String>();
     for(int i=0; i<8; i++) {
       if(!skills[i].isEmpty()) {
+        if(!allSkills.contains(skills[i])) {
+          JOptionPane.showMessageDialog(frame, "The skill \"" + skills[i] + "\" does not exist");
+          return ;
+        }
         skillSet.add(skills[i]);
       }
     }
