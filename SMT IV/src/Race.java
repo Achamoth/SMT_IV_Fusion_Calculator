@@ -54,7 +54,8 @@ public enum Race {
   Foul("foul"),
   Element("element"),
   Fiend("fiend"),
-  Famed("famed");
+  Famed("famed"),
+  Primal("primal");
 
   private List<String[]> fusionCombination;
   private List<String> elementsUp;
