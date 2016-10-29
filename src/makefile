@@ -6,6 +6,7 @@ SOURCES = $(wildcard *.java)
 CLASS = $(wildcard *.class)
 
 JC = javac
+JFLAGS = -Xlint:unchecked
 
 $(PROJECT) : $(CLASS)
 	$(JC) $(SOURCES)

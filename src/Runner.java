@@ -26,6 +26,8 @@ public class Runner {
   private static Map<String, SpecialFusion> specialFusions = new HashMap<String, SpecialFusion>();
   private static Logger logger = Logger.getLogger("SpecialFusion");
   private static Set<String> allSkills;
+  private static Set<Demon> allDemons;
+  private static Set<Race> allRaces;
   private static ProgramFrame frame;
 
   public static Map<String, SpecialFusion> getSpecialFusions() {
@@ -38,6 +40,33 @@ public class Runner {
 
   public static Set<String> getAllSkills() {
     return allSkills;
+  }
+
+  public static String[] getAllSkillsArray() {
+    String result[] = new String[allSkills.size()];
+    int i=0;
+    for(String skill : allSkills) {
+      result[i++] = skill;
+    }
+    return result;
+  }
+
+  public static String[] getAllDemonsArray() {
+    String result[] = new String[allDemons.size()];
+    int i=0;
+    for(Demon demon : allDemons) {
+      result[i++] = demon.getName();
+    }
+    return result;
+  }
+
+  public static String[] getAllRacesArray() {
+    String result[] = new String[allRaces.size()];
+    int i=0;
+    for(Race race : allRaces) {
+      result[i++] = race.toString().substring(0,1).toUpperCase() + race.toString().substring(1);
+    }
+    return result;
   }
 
   public static void reportError(String error) {
@@ -84,6 +113,21 @@ public class Runner {
       logger.log(Level.INFO, "NumberFormatException reading data files", e);
       JOptionPane.showMessageDialog(new JFrame(), "Formatting error in data files");
       System.exit(1);
+    }
+
+    //Populate set of demons and races
+    allDemons = new HashSet<Demon>();
+    allRaces = new HashSet<Race>();
+    //Loop over all races
+    for(Race r : Race.values()) {
+      //Add race to set of races
+      allRaces.add(r);
+      //Loop over all demons in race
+      List<Demon> demonsInRace = r.getDemons();
+      for(Demon d : demonsInRace) {
+        //Add demon to set of demons
+        allDemons.add(d);
+      }
     }
 
     EventQueue.invokeLater(new Runnable() {

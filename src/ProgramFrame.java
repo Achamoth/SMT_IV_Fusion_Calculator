@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
@@ -23,21 +24,21 @@ public class ProgramFrame extends JFrame {
   public JCheckBox outputToFile;
 
   //Textboxes for demon (for fusion chain)
-  public JTextField demonName;
-  public JTextField demonRace;
-  public JTextField skill1;
-  public JTextField skill2;
-  public JTextField skill3;
-  public JTextField skill4;
-  public JTextField skill5;
-  public JTextField skill6;
-  public JTextField skill7;
-  public JTextField skill8;
+  public JComboBox demonName;
+  public JComboBox demonRace;
+  public JComboBox skill1;
+  public JComboBox skill2;
+  public JComboBox skill3;
+  public JComboBox skill4;
+  public JComboBox skill5;
+  public JComboBox skill6;
+  public JComboBox skill7;
+  public JComboBox skill8;
 
   //Text field for simple demon search
-  public JTextField simpleSearchDemon;
+  public JComboBox simpleSearchDemon;
   //Text field for skill search
-  public JTextField skillTextField;
+  public JComboBox skillTextField;
 
   public ProgramFrame() {
     //Get screen dimensions
@@ -94,21 +95,59 @@ public class ProgramFrame extends JFrame {
     lastItem.add(outputToFile);
 
     /* Create panel for demon specification */
+    //First, retrieve array of all demon names, races and skills for combo boxes
+    String skills[] = Runner.getAllSkillsArray();
+    String demons[] = Runner.getAllDemonsArray();
+    String races[] = Runner.getAllRacesArray();
+    //Sort the arrays alphabetically
+    Arrays.sort(skills);
+    Arrays.sort(demons);
+    Arrays.sort(races);
     //Add title (Desired Demon)
     JPanel demonChainTitle = new JPanel();
     demonChainTitle.add(new JLabel("Desired Demon:"));
     JPanel demonChain = new JPanel(new GridLayout(5,4));
     //Create all textfield components to be added
-    demonRace = new JTextField();
-    demonName = new JTextField();
-    skill1 = new JTextField();
-    skill2 = new JTextField();
-    skill3 = new JTextField();
-    skill4 = new JTextField();
-    skill5 = new JTextField();
-    skill6 = new JTextField();
-    skill7 = new JTextField();
-    skill8 = new JTextField();
+    demonRace = new JComboBox(races);
+    demonRace.setEditable(true);
+    demonRace.setSelectedIndex(-1);
+    AutoCompletion.enable(demonRace);
+    demonName = new JComboBox(demons);
+    AutoCompletion.enable(demonName);
+    demonName.setEditable(true);
+    demonName.setSelectedIndex(-1);
+    skill1 = new JComboBox(skills);
+    AutoCompletion.enable(skill1);
+    skill1.setEditable(true);
+    skill1.setSelectedIndex(-1);
+    skill2 = new JComboBox(skills);
+    AutoCompletion.enable(skill2);
+    skill2.setEditable(true);
+    skill2.setSelectedIndex(-1);
+    skill3 = new JComboBox(skills);
+    AutoCompletion.enable(skill3);
+    skill3.setEditable(true);
+    skill3.setSelectedIndex(-1);
+    skill4 = new JComboBox(skills);
+    AutoCompletion.enable(skill4);
+    skill4.setEditable(true);
+    skill4.setSelectedIndex(-1);
+    skill5 = new JComboBox(skills);
+    AutoCompletion.enable(skill5);
+    skill5.setEditable(true);
+    skill5.setSelectedIndex(-1);
+    skill6 = new JComboBox(skills);
+    AutoCompletion.enable(skill6);
+    skill6.setEditable(true);
+    skill6.setSelectedIndex(-1);
+    skill7 = new JComboBox(skills);
+    AutoCompletion.enable(skill7);
+    skill7.setEditable(true);
+    skill7.setSelectedIndex(-1);
+    skill8 = new JComboBox(skills);
+    AutoCompletion.enable(skill8);
+    skill8.setEditable(true);
+    skill8.setSelectedIndex(-1);
     //Add race label and textfield
     demonChain.add(new JLabel("Race"));
     demonChain.add(demonRace);
@@ -159,7 +198,10 @@ public class ProgramFrame extends JFrame {
     demonSearch.setLayout(new GridLayout(1,3));
     //Create label and text field and add to panel
     demonSearch.add(new JLabel("Demon Search"));
-    simpleSearchDemon = new JTextField();
+    simpleSearchDemon = new JComboBox(demons);
+    simpleSearchDemon.setSelectedIndex(-1);
+    AutoCompletion.enable(simpleSearchDemon);
+    simpleSearchDemon.setEditable(true);
     demonSearch.add(simpleSearchDemon);
     //Create button, add listener to it, and add button to panel
     JButton simpleDemonSearchButton = new JButton("Search");
@@ -172,7 +214,10 @@ public class ProgramFrame extends JFrame {
     skillSearch.setLayout(new GridLayout(1,3));
     //Create new label and text field and add to panel
     skillSearch.add(new JLabel("Skill Search"));
-    skillTextField = new JTextField();
+    skillTextField = new JComboBox(skills);
+    skillTextField.setSelectedIndex(-1);
+    AutoCompletion.enable(skillTextField);
+    skillTextField.setEditable(true);
     skillSearch.add(skillTextField);
     //Create button, add listener to it, and add button to panel
     JButton skillSearchButton = new JButton("Search");
@@ -203,7 +248,7 @@ class DemonSearch implements ActionListener {
     ProgramFrame frame = Runner.getFrame();
 
     //Now, get the string value of the demon name that was searched by the user
-    String demonName = frame.simpleSearchDemon.getText();
+    String demonName = (String) frame.simpleSearchDemon.getSelectedItem();
 
     //Ensure it isn't empty
     if(demonName.isEmpty()) {
@@ -263,7 +308,7 @@ class SkillSearch implements ActionListener {
     ProgramFrame frame = Runner.getFrame();
 
     //Get the string value of the skill from the frame
-    String desiredSkill = frame.skillTextField.getText();
+    String desiredSkill = (String) frame.skillTextField.getSelectedItem();
 
     //Make sure it isn't empty
     if(desiredSkill.isEmpty()) {
@@ -328,20 +373,20 @@ class FusionSearch implements ActionListener {
     Set<String> allSkills = Runner.getAllSkills();
 
     //Find demon data
-    String name = frame.demonName.getText();
-    String race = frame.demonRace.getText();
+    String name = (String) frame.demonName.getSelectedItem();
+    String race = (String) frame.demonRace.getSelectedItem();
     String[] skills = new String[8];
-    skills[0] = frame.skill1.getText();
-    skills[1] = frame.skill2.getText();
-    skills[2] = frame.skill3.getText();
-    skills[3] = frame.skill4.getText();
-    skills[4] = frame.skill5.getText();
-    skills[5] = frame.skill6.getText();
-    skills[6] = frame.skill7.getText();
-    skills[7] = frame.skill8.getText();
+    skills[0] = (String) frame.skill1.getSelectedItem();
+    skills[1] = (String) frame.skill2.getSelectedItem();
+    skills[2] = (String) frame.skill3.getSelectedItem();
+    skills[3] = (String) frame.skill4.getSelectedItem();
+    skills[4] = (String) frame.skill5.getSelectedItem();
+    skills[5] = (String) frame.skill6.getSelectedItem();
+    skills[6] = (String) frame.skill7.getSelectedItem();
+    skills[7] = (String) frame.skill8.getSelectedItem();
     Set<String> skillSet = new HashSet<String>();
     for(int i=0; i<8; i++) {
-      if(!skills[i].isEmpty()) {
+      if(skills[i] != null) {
         if(!allSkills.contains(skills[i])) {
           JOptionPane.showMessageDialog(frame, "The skill \"" + skills[i] + "\" does not exist");
           return ;
@@ -357,7 +402,7 @@ class FusionSearch implements ActionListener {
 
     /* CHECK DATA */
     //Make sure that race and name have been entered
-    if(race.isEmpty() || name.isEmpty()) {
+    if(race == null || name == null) {
       //Print error message
       JOptionPane.showMessageDialog(frame, "The demon's race and name must be filled in");
       return ;
