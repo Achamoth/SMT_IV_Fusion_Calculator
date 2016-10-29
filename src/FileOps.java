@@ -397,6 +397,12 @@ public class FileOps {
       while(line != null) {
         //Tokenize string
         String tokens[] = line.split(COMMA_DELIMITER);
+        //Ensure line is formatted properly
+        if(tokens.length != 4) {
+          logger.info("Formatting error in special fusions file at line: " + tokens[0] + " " + tokens[1]);
+          Runner.reportError("Formatting error in special fusions file at line: " + tokens[0] + " " + tokens[1]);
+          System.exit(1);
+        }
         //Read in race, name and level of demon
         String race = tokens[0];
         String name = tokens[1];
@@ -418,9 +424,14 @@ public class FileOps {
           try{
             curDemon = curComponentRace.getDemon(demonName);
           } catch(NullPointerException e) {
-            logger.info("Couldn't find demon " + demonName + " in race " + curComponentRace.toString());
+            logger.info("Couldn't find race " + raceDemonPair[0] + " in special fusions file at line: " + race + " " + name);
             logger.log(Level.FINE, "NullPointerException in populateSpecialFusions", e);
-            Runner.reportError("Couldn't find demon " + demonName + " in race " + curComponentRace.toString() + " while reading special fusions file");
+            Runner.reportError("Couldn't find race " + raceDemonPair[0] + " in special fusions file at line: " + race + " " + name);
+            System.exit(1);
+          }
+          if(curDemon == null) {
+            logger.info("Couldn't find demon " + demonName + " in race " + raceDemonPair[0] + " while reading special fusions file");
+            Runner.reportError("Couldn't find demon " + demonName + " in race " + raceDemonPair[0] + " while reading special fusions file");
             System.exit(1);
           }
           components.add(curDemon);
