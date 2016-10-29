@@ -1,1 +1,46 @@
 ***Race,Name,Level,Components(List)***
+Amatsu,Ame no Uzume,22,Fairy|Napaea:Beast|Kabuso
+Holy,Chironnupu,26,Food|Kuda:Food|Katakirauwa:Food|Hare of Inaba
+Enigma,Kanbari,27,Food|Mamedanuki:Ghost|Mou-Ryo:Ghost|Preta
+Fairy,High Pixie,29,Fairy|Pixie:Divine|Archangel:Yoma|Karasu Tengu
+Tyrant,King Frost,30,Fairy|Jack Frost:Fairy|Pyro Jack:Foul|Jack the Ripper
+Kunitsu,Sukuna-Hikona,34,Kunitsu|Okuninushi:Femme|Mermaid:Flight|Gu Huo Niao
+Femme,Medusa,39,Lady|Pele:Drake|Basilisk:Snake|Vouivre
+Jaki,Black Frost,40,Tyrant|King Frost:Tyrant|Balor:Vile|Baphomet
+Genma,Frost Ace,42,Tyrant|King Frost:Genma|Tam Lin:Divine|Power
+Undead,Alice,49,Jaki|Black Frost:Fairy|Nadja:Beast|Hairy Jack:Fairy|High Pixie
+Enigma,Futotama,50,Wilder|Nue:Vile|Mishaguji:Jirae|Tsuchigumo
+Amatsu,Take-Mikazuchi,55,Kunitsu|Okuninushi:Wilder|Raijuu:Brute|Momunofu
+Enigma,Kinmamon,60,Element|Salamander:Element|Gnome:Element|Sylph:Element|Undine
+Fallen,Adramelech,68,Fury|Tonatiuh:Fairy|Kelpie:Fallen|Murmur
+Tyrant,Belial,70,Divine|Dominion:Fallen|Orias:Spirit|Inferno
+Enigma,Kama,72,Lady|Diana:Genma|Jarilo
+Tyrant,Lucifuge,73,Lady|Black Maria:Vile|Alciel:Fallen|Dantalion:Tyrant|Abaddon
+Fairy,Demonee-Ho,76,Genma|Frost Ace:Genma|Cu Chulainn:Genma|Kresnik
+Tyrant,Samyaza,76,Tyrant|Azazel:Deity|Prometheus:Divine|Virtue
+Famed,Tenkai,77,Avatar|Makami:Brute|Momunofu:Nymph|Kikuri-Hime:Avian|Yatagarasu
+Deity,Baal,79,Megami|Anat:Drake|Ym:Drake|Tiamat
+Tyrant,Beelzebub,79,Deity|Baal:Ghost|Ghoul:Tyrant|Morax
+Amatsu,Amaterasu,79,Avian|Yatagarasu:Enigma|Futotama:Amatsu|Ame no Uzume
+Enigma,Kangiten,80,Yoma|Ganesha:Megami|Parvati:Holy|Airavata
+Fiend,David,82,Megami|Lakshmi:Nymph|Apsaras:Snake|Naga
+Deity,Maitreya,83,Tyrant|Mithras:Genma|Nata Taishi:Megami|Norn
+Entity,Alilat,84,Nymph|Peri:Herald|Azrael:Herald|Israfel
+Deity,Odin,85,Fallen|Ose:Jirae|Titan:Deity|Thoth:Kishin|Thor
+Fiend,Matador,87,Holy|Qing Niugai:Beast|Stonka:Wilder|Catoblepas:Spirit|Macabre
+Deity,Krishna,87,Tyrant|Loki:Megami|Lakshmi:Fury|Chernobog
+Fiend,White Rider,89,Fiend|Matador:Genma|Kresnik
+Lady,Inanna,91,Megami|Ishtar:Tyrant|Tzitzimitl:Megami|Anat
+Fiend,Red Rider,91,Fiend|White Rider:Fairy|Vivian:Spirit|Inferno
+Fiend,Black Rider,93,Fiend|Red Rider:Tyrant|Abaddon:Vile|Alciel
+Herald,Mastema,93,Fallen|Murmur:Fallen|Gemori:Herald|Kazfiel
+Fiend,Pale Rider,95,Fiend|Black Rider:Jaki|Girimehkala:Ghost|Kudlak
+Fury,Shiva,95,Avatar|Barong:Femme|Rangda
+Fury,Mitra-Buddha,96,Deity|Maitreya:Fury|Susano-o:Dragon|Quetzalcoatl
+Fiend,Trumpeter,97,Fiend|Pale Rider:Fiend|Black Rider:Fiend|Red Rider:Fiend|White Rider
+Fiend,Mother Harlot,99,Fiend|Trumpeter:Reaper|Orcus:Megami|Ishtar:Spirit|Legion
+Tyrant,Lucifer,99,Herald|Aniel:Lady|Inanna:Tyrant|Belial
+Herald,Merkabah,99,Herald|Seraph:Divine|Cherub:Divine|Throne
+Megami,Cleopatra,99,Holy|Sphinx:Avian|Phoenix:Nymph|Sarasvati
+Tyrant,Mephisto,99,Tyrant|Lucifuge:Fallen|Shax:Tyrant|Loki
+Primal,Satan,120,Herald|Merkabah:Tyrant|Lucifer
