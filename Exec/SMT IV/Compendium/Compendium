@@ -217,9 +217,9 @@ Brute,Yomotsu-Ikusa,40,Draconic Reaction:High Gun Pleroma:Null Phys:Bloody Glee:
 Brute,Yamawaro,31,Null Phys:Null Fire:High Gun Pleroma:Charge:Grand Tack:Madness Nails:Mortal Jihad:Purple Smoke
 Brute,Momunofu,26,Charge:Dream Needle:Blight:Tetanus Cut:Oni-Kagura:Poison Claw:Fatal Sword:Damascus Claw
 Brute,Oni,13,Resist Dark:Tarukaja:Charge:Critical Wave:Tetanus Cut:Poison Claw:Damascus Claw:Gram Slice
-Brute,Bilwis,Poison Claw:Critical Wave:Gram Slice:Patra:Zio
+Brute,Bilwis,7,Poison Claw:Critical Wave:Gram Slice:Patra:Zio
 Femme,Kali,75,Enduring Soul:Life Surge:Null Gun:Null Phys:High Gun Pleroma:Charge:Grand Tack:Berserker God
-Femme,Rangda,Enduring Soul:Life Surge:Drain Phys:High Gun Pleroma:Gun Pleroma:Charge:Riot Gun:Berserker God
+Femme,Rangda,68,Enduring Soul:Life Surge:Drain Phys:High Gun Pleroma:Gun Pleroma:Charge:Riot Gun:Berserker God
 Femme,Dakini,67,Null Phys:Null Gun:Life Gain:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Mortal Jihad
 Femme,Taraka,59,Null Phys:Null Gun:High Gun Pleroma:Draconic Reaction:Charge:Grand Tack:Hades Blast:Mortal Jihad
 Femme,Atropos,50,Life Surge:Null Phys:Null Fire:Mediarahan:Megido:Bufudyne:Zandyne:Agidyne
@@ -256,7 +256,7 @@ Drake,Mushussu,47,Null Fire:Null Ice:Diarahan:Agidyne:Tetrakarn:Tarukaja:Mamudo:
 Drake,Kingu,39,Null Phys:Null Fire:Draconic Reaction:High Gun Pleroma:Charge:Dekunda:Grand Tack:Madness Nails
 Drake,Basilisk,33,Null Fire:Null Elec:Null Ice:Doping:Mediarama:Diarahan:Mortal Jihad:Megaton Press
 Drake,Zhu Tun She,9,Critical Wave:Gram Slice:Tarukaja:Rakunda:Agi
-Spirit,Legion,Null Gun:Null Elec:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Madness Nails:Mortal Jihad
+Spirit,Legion,47,Null Gun:Null Elec:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Madness Nails:Mortal Jihad
 Spirit,Pisaca,38,High Gun Pleroma:Draconic Reaction:Null Phys:Null Fire:Charge:Grand Tack:Madness Nails:Mortal Jihad
 Spirit,Macabre,27,Tarukaja:Charge:Blight:Critical Wave:Tetanus Cut:Poison Claw:Damascus Claw:Dream Needle
 Spirit,Quicksilver,20,Tetanus Cut:Poison Claw:Agilao:Bufula:Mabufu:Zan:Needle Shot:Gram Slice
