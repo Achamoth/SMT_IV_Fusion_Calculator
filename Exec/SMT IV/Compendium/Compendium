@@ -169,3 +169,124 @@ Jaki,Gremlin,12,Poison Claw:Tarukaja:Mabufu:Sukukaja:Zio:Dream Fist
 Jaki,Lham Dearg,3,Gram Slice:Critical Wave
 Vermin,Arachne,41,Null Fire:Null Elec:Megidola:Charge:Blast Arrow:Madness Nails:Mortal Jihad:Purple Smoke
 Vermin,Mothman,13,Tarukaja:Critical Wave:Gram Slice:Poison Claw:Zan:Zio
+Fury,Shiva,90,Enduring Soul:Life Surge:Drain Gun:High Gun Pleroma:Gun Pleroma:Charge:Riot Gun:Berserker God
+Fury,Susano-o,88,Enduring Soul:Life Surge:Drain Phys:Null Fire:High Gun Pleroma:Charge:Riot Gun:Berserker God
+Fury,Masakado,74,Enduring Soul:Life Surge:Drain Phys:High Gun Pleroma:Charge:Grand Tack:Myriad Arrows:Deadly Wind
+Fury,Beiji-Weng,69,Null Phys:Nul Gun:Debilitate:Makarakarn:Samarecarm:Glacial Blast:Agidyne:Ziodyne
+Fury,Chernobog,50,Sea of Chaos:Null Phys:Null Gun:Null Fire:Fatal Sword:Blight:Null Force:Ziodyne
+Fury,Asura,45,Null Ice:Charge:Titanomachia:Phys Pleroma:Madness Nails:Null Gun:Fatal Sword:Tathlum Shot
+Fury,Tonatiuh,37,High Gun Pleroma:Null Gun:Null Ice:Charge:Grand Tack:Titanomachia:Madness Nails:Berserker God
+Lady,Black Maria,66,Life Surge:Mana Surge:Null Force:Luster Candy:Concentrate:Salvation:Deadly Wind:Glacial Blast
+Lady,Diana,42,Enduring Soul:Life Surge:Mana Surge:High Gun Pleroma:Charge:Riot Gun:Invitation:Antichthon
+Lady,Sedna,27,Mabufula:Energy Drain:Zanma:Tarukaja:Zio:Media:Needle Shot:Dia
+Lady,Dzelarhorns,17,Tarukaja:Rakunda:Media:Mabufu:Bufula:Mazio:Agilao:Zan
+Lady,Pele,40,Tarukaja:Posumudi:Media:Mazio:Zio:Agi:Critical Wave:Gram Slice
+Dragon,Huang Long,80,Drain Phys:Null Gun:High Gun Pleroma:Draconic Reaction:Charge:Grand Tack:Berserker God:Megidolaon
+Dragon,Quetzalcoatl,73,Life Surge:Drain Gun:High Gun Pleroma:Concentrate:Charge:Grand Tack:Deadly Wind:Trisagion
+Dragon,Zhu Yin,61,Null Gun:Life Gain:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Nihil Claw:Mortal Jihad
+Dragon,Illuyanka,51,Null Fire:Null Elec:Draconic Reaction:Charge:Diarahan:Blast Arrow:Titanomachia:Madness Nails
+Dragon,Long,41,Null Phys:Null Fire:Null Elec:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Madness Nails
+Dragon,Gucumatz,33,Null Phys:Null Fire:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Madness Nails:Blight
+Dragon,Makara,26,Media:Mazio:Agi:Tarukaja:Bufu:Poison Claw
+Kishin,Thor,77,Enduring Soul:Life Surge:Null Force:High Phys Pleroma:Phys Pleroma:Charge:Grand Tack:Berserker God
+Kishin,Bishamonten,71,Null Phys:Null Gun:Null Fire:High Gun Pleroma:Charge:Grand Tack:Berserker God:Madness Nails
+Kishin,Jikokuten,58,Null Phys:Null Gun:Null Elec:High Gun Pleroma:Mediarahan:Makarakarn:Grand Tack:Bufudyne
+Kishin,Zhong Kui,57,Life Surge:Null Phys:Null Force:Charge:Blast Arrow:Titanomachia:Madness Nails:Berserker God
+Kishin,Koumokuten,45,Null Phys:Null Fire:Null Ice:Charge:Madness Nails:Mortal Jihad:Ziodyne:Null Force
+Kishin,Zouchouten,56,Null Ice:Sukunda:Doping:Diarahan:Mazanma:Myriad Arrows:Agidyne:Estoma Sword
+Fallen,Samael,90,Enduring Soul:Life Surge:Drain Phys:Null Ice:High Gun Pleroma:Charge:Riot Gun:Berserker God
+Fallen,Botis,83,Enduring Soul:Life Surge:Drain Phys:Null Force:High Gun Pleroma:Charge:Riot Gun:Berserker God
+Fallen,Barbatos,76,Null Phys:Null Gun:Null Fire:Enduring Soul:High Gun Pleroma:Charge:Grand Tack:Berserker God
+Fallen,Shax,71,Life Surge:Null Phys:Null Elec:Luster Candy:Debilitate:Salvation:Glacial Blast:Deadly Wind
+Fallen,Murmur,64,Madness Nails:Mudoon:Maziodyne
+Fallen,Gemori,61,Life Surge:Null Phys:Null Ice:Doping:Mediarahan:Maragidyne:Mabufudyne:Mana Surge
+Fallen,Mitra,53,Life Surge:Null Phys:Null Gun:Null Force:Mediarahan:Charge:Grand Tack:Mortal Jihad
+Fallen,Decarabia,52,Null Phys:Null Gun:Null Fire:Null Ice:Null Force:Tetrakarn:Megido:Ziodyne
+Fallen,Nebiros,46,Null Fire:Null Ice:Madness Nails:Mana Gain:Diarahan:Megidola:Mazanma:Zandyne
+Fallen,Ose,41,High Gun Pleroma:Null Phys:Null Fire:Charge:Javelin Rain:Madness Nails:Mortal Jihad:Grand Tack
+Fallen,Dantalion,32,Tetrakarn:Tarukaja:Recarm:Mazanma:Fire Breath:Mazio:Bufula:Agilao
+Fallen,Orias,26,Draconic Reaction:High Gun Pleroma:Null Phys:Null Fire:Charge:Grand Tack:Madness Nails:Damascus Claw
+Fallen,Bifrons,12,Attack Knowhow:Tarukaja:Dia:Maragi:Agi:Zio:Critical Wave:Poison Claw
+Fallen,Melcholm,5,Tarukaja:Dia:Zio:Agi
+Brute,Yaksha,70,Enduring Soul:Life Surge:Null Force:High Phys Pleroma:Phys Pleroma:Charge:Grand Tack:Berserker God
+Brute,Berserker,63,Null Gun:Null Fire:High Gun Pleroma:Draconic Reaction:Charge:Grand Tack:Madness Nails:Berserker God
+Brute,Sui-Ki,57,Null Fire:Null Phys:Mediarahan:Makarakarn:Megidola:Agidyne:Bufudyne:Zandyne
+Brute,Fuu-Ki,49,Null Elec:Null Fire:Null Ice:Charge:Tathlum Shot:Javelin Rain:Fatal Sword:Mortal Jihad
+Brute,Kin-Ki,45,Null Fire:Null Force:Charge:Javelin Rain:Blight:Damascus Claw:Fatal Sword:Oni-Kagura
+Brute,Yomotsu-Ikusa,40,Draconic Reaction:High Gun Pleroma:Null Phys:Bloody Glee:Charge:Grand Tack:Madness Nails:Mortal Jihad
+Brute,Yamawaro,31,Null Phys:Null Fire:High Gun Pleroma:Charge:Grand Tack:Madness Nails:Mortal Jihad:Purple Smoke
+Brute,Momunofu,26,Charge:Dream Needle:Blight:Tetanus Cut:Oni-Kagura:Poison Claw:Fatal Sword:Damascus Claw
+Brute,Oni,13,Resist Dark:Tarukaja:Charge:Critical Wave:Tetanus Cut:Poison Claw:Damascus Claw:Gram Slice
+Brute,Bilwis,Poison Claw:Critical Wave:Gram Slice:Patra:Zio
+Femme,Kali,75,Enduring Soul:Life Surge:Null Gun:Null Phys:High Gun Pleroma:Charge:Grand Tack:Berserker God
+Femme,Rangda,Enduring Soul:Life Surge:Drain Phys:High Gun Pleroma:Gun Pleroma:Charge:Riot Gun:Berserker God
+Femme,Dakini,67,Null Phys:Null Gun:Life Gain:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Mortal Jihad
+Femme,Taraka,59,Null Phys:Null Gun:High Gun Pleroma:Draconic Reaction:Charge:Grand Tack:Hades Blast:Mortal Jihad
+Femme,Atropos,50,Life Surge:Null Phys:Null Fire:Mediarahan:Megido:Bufudyne:Zandyne:Agidyne
+Femme,Lachesis,43,Life Surge:Mana Surge:Drain Gun:Luster Candy:Concentrate:Salvation:Glacial Blast:Deadly Wind
+Femme,Clotho,37,Null Ice:Mediarama:Tetrakarn:Doping:Mazanma:Maragion:Bufula:Resist Phys
+Femme,Yuki Jyorou,31,Ice Pleroma:High Gun Pleroma:Mediarama:Megido:Mazanma:Mabufula:Bufula:Agilao
+Femme,Shikome,28,Null Fire:Gun Pleroma:Diarahan:Posumudi:Tarukaja:Dekaja:Megidola:Zandyne
+Femme,Leanan Sidhe,11,Tarukaja:Media:Mazio:Zio:Bufu:Agi:Poison Claw:Needle Shot
+Night,Maya,78,Life Surge:Mana Surge:Drain Gun:Luster Candy:Concentrate:Salvation:Glacial Blast:Deadly Wind
+Night,Lilith,76,Life Surge:Drain Gun:Luster Candy:Concentrate:Invitation:Salvation:Deadly Wind:Glacial Blast
+Night,Queen Mab,63,Null Phys:Life Surge:Mana Surge:Makarakarn:Doping:Mediarahan:Diarahan:Megidola
+Night,Wild Hunt,53,Null Phys:Null Gun:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Nihil Claw:Mortal Jihad
+Night,Succubus,47,Null Phys:Null Gun:Doping:Mediarahan:Megido:Mabufula:Mazanma:Zandyne
+Night,Kaiwan,40,Null Gun:Null Ice:Makarakarn:Tetrakarn:Megido:Mabufula:Mazanma:Zandyne
+Night,Lilim,35,Null Phys:Null Gun:Null Fire:Null Ice:Null Elec:Doping:Ziodyne:Zandyne
+Night,Incubus,28,Null Elec:Null Fire:Null Ice:Charge:Megaton Press:Blight:Damascus Claw:Mortal Jihad
+Night,Sandman,14,Tarukaja:Rakunda:Media:Mabufu:Bufu:Mazio:Zio:Zan
+Night,Fomorian,7,Resist Dark:Critical Wave:Tetanus Cut:Poison Claw:Gram Slice:Needle Shot:Bufu:Zio
+Night,Mokoi,2,Zio:
+Tyrant,Mara,96,Enduring Soul:Repel Phys:Null Ice:Gun Pleroma:High Gun Pleroma:Charge:Riot Gun:Berserker God
+Tyrant,Tzitzimitl,78,Enduring Soul:Life Surge:Drain Phys:Repel Elec:Luster Candy:Salvation:Glacial Blast:Deadly Wind
+Tyrant,Beelzebub,76,Life Surge:Null Phys:High Gun Pleroma:Luster Candy:Charge:Heaven’s Bow:Grand Tack:Glacial Blast
+Tyrant,Abaddon,64,Life Surge:Null Phys:Null Force:Phys Pleroma:Charge:Grand Tack:Madness Nails:Berserker God
+Tyrant,Loki,64,Life Surge:Null Phys:High Fire Pleroma:Tetrakarn:Mabufudyne:Adigyne:Zandyne:Ziodyne
+Tyrant,Asmodeus,53,Null Phys:Null Ice:Null Elec:Null Force:Makarakarn:Tetrakarn:Doping:Ziodyne
+Tryant,Balor,42,Null Ice:Null Elec:Charge:Tathlum Shot:Titanomachia:Mortal Jihad:Berserker God:Axel Claw
+Tyrant,King Frost,40,Null Fire:Charge:Tathlum Shot:Megaton Press:Mortal Jihad:Poison Claw:Concentrate:Cold World
+Tyrant,Samyaza,32,Null Gun:Null Ice:Charge:Titanomachia:Madness Nails:Mazionga:Bufula:Tarukaja
+Drake,Fafnir,78,Life Surge:Null Ice:Null Elec:High Gun Pleroma:Charge:Grand Tack:Draconic Reaction:Mortal Jihad
+Drake,Ym,68,Life Surge:Mana Surge:Null Phys:Null Elec:Mediarahan:Megidola:Zandyne:Glacial Blast
+Drake,Niddhoggr,65,Null Phys:Null Gun:Null Elec:Charge:Grand Tack:Madness Nails:Berserker God:Mortal Jihad
+Drake,Tiamat,55,Null Elec:Null Phys:Null Force:High Fire Pleroma:Tetrakarn:Agidyne:Zandyne:Ziodyne
+Drake,Mushussu,47,Null Fire:Null Ice:Diarahan:Agidyne:Tetrakarn:Tarukaja:Mamudo:Sabbatma
+Drake,Kingu,39,Null Phys:Null Fire:Draconic Reaction:High Gun Pleroma:Charge:Dekunda:Grand Tack:Madness Nails
+Drake,Basilisk,33,Null Fire:Null Elec:Null Ice:Doping:Mediarama:Diarahan:Mortal Jihad:Megaton Press
+Drake,Zhu Tun She,9,Critical Wave:Gram Slice:Tarukaja:Rakunda:Agi
+Spirit,Legion,Null Gun:Null Elec:Draconic Reaction:High Gun Pleroma:Charge:Grand Tack:Madness Nails:Mortal Jihad
+Spirit,Pisaca,38,High Gun Pleroma:Draconic Reaction:Null Phys:Null Fire:Charge:Grand Tack:Madness Nails:Mortal Jihad
+Spirit,Macabre,27,Tarukaja:Charge:Blight:Critical Wave:Tetanus Cut:Poison Claw:Damascus Claw:Dream Needle
+Spirit,Quicksilver,20,Tetanus Cut:Poison Claw:Agilao:Bufula:Mabufu:Zan:Needle Shot:Gram Slice
+Spirit,Poltergeist,13,Sukunda:Mazan:Patra:Dia:Bufu
+Spirit,Wicker Man,10,Poison Claw:Critical Wave:Gram Slice:Zan:Zio:Attack Knowhow
+Foul,Mad Gasser,40,Null Fire:Null Ice:War Cry:Charge:Tathlum Shot:Megaton Press:Axel Claw:Mortal Jihad
+Foul,Night Stalker,26,Charge:Blight:Oni-Kagura:Fatal Sword:Poison Claw:Tetanus Cut:Damascus Claw:Dream Needle
+Foul,Jack the Ripper,12,Critical Wave:Gram Slice:Poison Claw:Tetanus Cut:Zio:Resist Dark
+Ghost,Ghoul,51,Null Fire:Null Elec:Energy Drain:Charge:Blast Arrow:Madness Nails:Mortal Jihad:Purple Smoke
+Ghost,Enku,43,Null Ice:Null Elec:Tetrakarn:Diarahan:Megido:Mazionga:Agidyne:Zandyne
+Ghost,Churel,32,Tarukaja:Rakunda:Energy Drain:Media:Maragi:Mabufu:Zanma:Zio
+Ghost,Mou-Ryo,28,Charge:Blight:Tetanus Cut:Oni-Kagura:Poison Claw:Fatal Sword:Damascus Claw:Dream Needle
+Ghost,Preta,12,Tarukaja:Charge:Critical Wave:Tetanus Cut:Poison Claw:Damascus Claw:Gram Slice:Needle Shot
+Ghost,Strigoli,8,Tarukaja:Media:Critical Wave:Gram Slice:Charge:Zio:Agi:Bufu
+Element,Salamander,36,Enduring Soul:Drain Phys:Life Surge:Repel Elec:Luster Candy:Concentrate:Salvation:Glacial Blast
+Element,Sylph,28,Enduring Soul:Life Surge:Charge:Riot Gun:High Gun Pleroma:Antichthon:Invitation:Glacial Blast
+Element,Gnome,24,Enduring Soul:Life Surge:Repel Phys:High Gun Pleroma:Charge:Riot Gun:Invitation:Antichthon
+Element,Flaemis,20,Enduring Soul:Life Surge:Repel Elec:High Fire Pleroma:Fire Pleroma:Salvation:Invitation:Antichthon
+Element,Aquans,16,Null Phys:Null Ice:Null Elec:Null Fire:Mediarahan:Doping:Mazanma:Wind Breath
+Element,Aeros,24,Enduring Soul:Life Surge:Repel Phys:Repel Elec:Repel Gun:Riot Gun:Antichthon:Concentrate
+Element,Erthys,23,High Gun Pleroma:Null Phys:Null Fire:Null Ice:Charge:Grand Tack:Mortal Jihad:Berserker God
+Enigma,Kangiten,82,Enduring Soul:Life Surge:Drain Fire:Invitation:Salvation:Concentrate:Deadly Wind:Antichthon
+Enigma,Futotama,42,Enduring Soul:Life Surge:Repel Elec:High Fire Pleroma:Fire Pleroma:Doping:Trisagion:Antichthon
+Zealot,Dionysus,41,Null Ice:Tetrakarn:Doping:Diarahan:Mazanma:Fire Breath:Agilao:Bufula
+Entity,Alilat,87,Enduring Soul:Life Surge:Luster Candy:Doping:Salvation:Invitation:Concentrate:Antichthon
+Amatsu,Amaterasu,80,Enduring Soul:Life Surge:Repel Elec:High Fire Pleroma:Fire Pleroma:Salvation:Trisagion:Antichthon
+Amatsu,Ame no Uzume,22,Enduring Soul:Life Surge:Repel Elec:High Fire Pleroma:Fire Pleroma:Salvation:Trisagion:Anticthon
+Kunitsu,Oumitsunu,65,Life Surge:Drain Gun:Null Phys:Null Force:High Gun Pleroma:Charge:Berserker God:Grand Tack
+Kunitsu,Arahabaki,57,Enduring Soul:Life Surge:Null Fire:High Phys Pleroma:High Gun Pleroma:Charge:Riot Gun:Berserker God
+Kunitsu,Hitokoto-Nushi,49,Null Phys:Null Gun:Null Fire:Null Force:Null Ice:Makarakarn:Zandyne:Ziodyne
+Kunitsu,Kushinada-Hime,44,Null Phys:Null Fire:Null Ice:Null Elec:Tetrakarn:Makarakarn:Diarahan:Zandyne
+Famed,Yamato Takeru,90,Life Surge:Null Phys:Drain Gun:High Gun Pleroma:Charge:Grand Tack:Berserker God:Bufudyne
+Undead,Alice,51,Null Phys:Null Fire:Null Ice:Null Elec:Null Force:Doping:Mediarahan:Debilitate
