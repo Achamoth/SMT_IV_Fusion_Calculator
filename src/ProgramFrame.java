@@ -183,15 +183,21 @@ public class ProgramFrame extends JFrame {
     demonChain.add(new JLabel("Skill 8"));
     demonChain.add(skill8);
 
-    //Create new panel for search button
-    JPanel searchButton = new JPanel();
+    //Create new panel for buttons
+    JPanel buttons = new JPanel();
+    //Create clear button
+    JButton clear = new JButton("Clear");
+    //Add Listener to clear button
+    ClearScreen clearAction = new ClearScreen();
+    clear.addActionListener(clearAction);
     //Create search button
     JButton mainSearch = new JButton("Find fusion chain(s)");
     //Add listener to search button
     FusionSearch searchAction = new FusionSearch();
     mainSearch.addActionListener(searchAction);
-    //Add search button
-    searchButton.add(mainSearch);
+    //Add buttons
+    buttons.add(clear);
+    buttons.add(mainSearch);
 
     //Create new panel for demon searh
     JPanel demonSearch = new JPanel();
@@ -231,13 +237,37 @@ public class ProgramFrame extends JFrame {
     container.add(lastItem);
     container.add(demonChainTitle);
     container.add(demonChain);
-    container.add(searchButton);
+    container.add(buttons);
     container.add(demonSearch);
     container.add(skillSearch);
 
     //Add container to JFrame
     add(container);
     pack();
+  }
+}
+
+class ClearScreen implements ActionListener {
+  public void actionPerformed(ActionEvent event) {
+    /* The user has pressed the clear button. Clear all entries */
+    //First, get the frame from runner class
+    ProgramFrame frame = Runner.getFrame();
+
+    //Clear all demon spec entries
+    frame.demonRace.setSelectedIndex(-1);
+    frame.demonName.setSelectedIndex(-1);
+    frame.skill1.setSelectedIndex(-1);
+    frame.skill2.setSelectedIndex(-1);
+    frame.skill3.setSelectedIndex(-1);
+    frame.skill4.setSelectedIndex(-1);
+    frame.skill5.setSelectedIndex(-1);
+    frame.skill6.setSelectedIndex(-1);
+    frame.skill7.setSelectedIndex(-1);
+    frame.skill8.setSelectedIndex(-1);
+
+    //Clear skill and demon search entries as well
+    frame.simpleSearchDemon.setSelectedIndex(-1);
+    frame.skillTextField.setSelectedIndex(-1);
   }
 }
 
