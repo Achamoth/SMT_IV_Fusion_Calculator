@@ -11,14 +11,14 @@ import java.io.File;
 public class Fusion {
 
   //DEPTH LIMIT FOR RECURSIVE FUSION CHAIN SEARCH
-  private static int DEPTH_LIMIT = 4;
+  // private static int DEPTH_LIMIT = 4;
   //SKILL THRESHOLD FOR SELECTING COMPENDIUM DEMONS IN FUSION CHAIN SEARCH
   private static int SKILL_THRESHOLD = 1;
 
   //Setter method to change the depth limit
-  public static void setDepthLimit(int newLimit) {
-    DEPTH_LIMIT = newLimit;
-  }
+  // public static void setDepthLimit(int newLimit) {
+  //   DEPTH_LIMIT = newLimit;
+  // }
 
   //Setter method to change the skill threshold
   public static void setSkillThreshold(int newThreshold) {
@@ -470,7 +470,7 @@ public class Fusion {
   * @param curDepth the method is recursive, so this records the depth that the method has reached
   * @return a FusionChain object, which represents a fusion recipe for the desired demon
   */
-  public static List<FusionChain> findFusionChains(Demon demon, int numChains) {
+  public static List<FusionChain> findFusionChains(Demon demon, int numChains, int DEPTH_LIMIT, boolean depthFirst) {
     //Log entry
     logger.entering("Fusion","findFusionChains");
 
@@ -542,33 +542,42 @@ public class Fusion {
         for(List<Demon> curCombinationOrdering : combinationPerms) {
           //Create copy of result to use for this ordering
           FusionChain thisResult = new FusionChain(result);
-          int i=0;
-          //Recursively call this method on each of the components to find new fusion chains
-          for(Demon curComp : curCombinationOrdering) {
-            //Find lacking skills
-            Set<String> skillsLacking = findSkillDefficiencies(demon, thisResult);
-            //If the current component is being summoned from the compendium, don't calculate a fusion chain for it
-            Demon compendiumCounterpart = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
-            if(curComp.equals(compendiumCounterpart)) {
-              //Current component is being summoned from compendium. Don't compute fusion chain for it
-              continue;
-            }
-            //Find a fusion chain for the current component with the lacking skills
-            Demon curCompCopy = new Demon(curComp);
-            curCompCopy.setSkills(skillsLacking);
-            //Now find fusion chains for this demon
-            thisResult.setChain(i++, findFusionChain(curCompCopy, 1));
+          //Perform iterative deepening search on components
+          int startDepth = 1;
+          if(depthFirst) startDepth = DEPTH_LIMIT;
+          for(int curDepthLimit = startDepth; curDepthLimit <= DEPTH_LIMIT; curDepthLimit++) {
+            //Recursively call this method on each of the components to find new fusion chains
+            int i=0;
+            boolean foundCombo = false;
+            for(Demon curComp : curCombinationOrdering) {
+              //Find lacking skills
+              Set<String> skillsLacking = findSkillDefficiencies(demon, thisResult);
+              //If the current component is being summoned from the compendium, don't calculate a fusion chain for it
+              Demon compendiumCounterpart = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
+              if(curComp.equals(compendiumCounterpart)) {
+                //Current component is being summoned from compendium. Don't compute fusion chain for it
+                continue;
+              }
+              //Find a fusion chain for the current component with the lacking skills
+              Demon curCompCopy = new Demon(curComp);
+              curCompCopy.setSkills(skillsLacking);
+              //Now find fusion chains for this demon
+              thisResult.setChain(i++, findFusionChain(curCompCopy, 1, curDepthLimit, depthFirst));
 
-            //Now check skills again after finding new fusion chain for first component
-            thisResult.addSkillsInChain(foundSkills);
-            numCurSkills = numberOfSkillsFound(demon, foundSkills);
-            if(numCurSkills == demon.getNumSkills()) {
-              //This chain works and provides all desired skills. Add chain to list of results
-              chainsFound.add(thisResult);
-              if(chainsFound.size() == numChains) return chainsFound;
-              break; //Break out of inner loop and move to next ordering of fusion components
+              //Now check skills again after finding new fusion chain for first component
+              thisResult.addSkillsInChain(foundSkills);
+              numCurSkills = numberOfSkillsFound(demon, foundSkills);
+              if(numCurSkills == demon.getNumSkills()) {
+                //This chain works and provides all desired skills. Add chain to list of results
+                chainsFound.add(thisResult);
+                if(chainsFound.size() == numChains) return chainsFound;
+                foundCombo = true;
+                break; //Break out of inner loop and move to next ordering of fusion components
+              }
+              //Check if a combination was found
+              if(foundCombo) break;
+              //Otherwise, move onto next component in current ordering
             }
-            //Otherwise, move onto next component
           }
         }
       }
@@ -584,7 +593,7 @@ public class Fusion {
   * @param curDepth the method is recursive, so this records the depth that the method has reached
   * @return a FusionChain object, which represents a fusion recipe for the desired demon
   */
-  public static FusionChain findFusionChain(Demon demon, int curDepth) {
+  public static FusionChain findFusionChain(Demon demon, int curDepth, int DEPTH_LIMIT, boolean depthFirst) {
     //Log entry
     logger.entering("Fusion","findFusionChain");
 
@@ -656,32 +665,36 @@ public class Fusion {
           mostSkillsFound = numCurSkills;
           bestChain = result;
         }
+        //Perform iterative deepening search on components
+        int startDepth = curDepth+1;
+        if(depthFirst) startDepth = DEPTH_LIMIT;
+        for(int curDepthLimit = startDepth; curDepthLimit <= DEPTH_LIMIT; curDepthLimit++) {
+          //Recursively call this method on each of the components to find new fusion chains
+          int i=0;
+          for(Demon curComp : curCombination) {
+            //Find lacking skills
+            Set<String> skillsLacking = findSkillDefficiencies(demon, result);
+            //If the current component is being summoned from the compendium, don't calculate a fusion chain for it
+            Demon compendiumCounterpart = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
+            if(curComp.equals(compendiumCounterpart)) {
+              //Current component is being summoned from compendium. Don't compute fusion chain for it
+              continue;
+            }
+            //Otherwise, find a fusion chain for the current component with the lacking skills
+            Demon curCompCopy = new Demon(curComp);
+            curCompCopy.setSkills(skillsLacking);
+            //Now find fusion chains for this demon
+            result.setChain(i++, findFusionChain(curCompCopy, curDepth+1, curDepthLimit, depthFirst));
 
-        //Recursively call this method on each of the components to find new fusion chains
-        int i=0;
-        for(Demon curComp : curCombination) {
-          //Find lacking skills
-          Set<String> skillsLacking = findSkillDefficiencies(demon, result);
-          //If the current component is being summoned from the compendium, don't calculate a fusion chain for it
-          Demon compendiumCounterpart = Race.fromString(curComp.getRace().toLowerCase()).getCompendiumDemon(curComp.getName());
-          if(curComp.equals(compendiumCounterpart)) {
-            //Current component is being summoned from compendium. Don't compute fusion chain for it
-            continue;
+            //Now check skills again after finding new fusion chain for first component
+            result.addSkillsInChain(foundSkills);
+            numCurSkills = numberOfSkillsFound(demon, foundSkills);
+            if(numCurSkills == demon.getNumSkills()) {
+              //This chain works and provides all desired skill
+              return result;
+            }
+            //Otherwise, move onto next component
           }
-          //Otherwise, find a fusion chain for the current component with the lacking skills
-          Demon curCompCopy = new Demon(curComp);
-          curCompCopy.setSkills(skillsLacking);
-          //Now find fusion chains for this demon
-          result.setChain(i++, findFusionChain(curCompCopy, curDepth+1));
-
-          //Now check skills again after finding new fusion chain for first component
-          result.addSkillsInChain(foundSkills);
-          numCurSkills = numberOfSkillsFound(demon, foundSkills);
-          if(numCurSkills == demon.getNumSkills()) {
-            //This chain works and provides all desired skill
-            return result;
-          }
-          //Otherwise, move onto next component
         }
 
         //Now check skills again after finding new fusion chains for components

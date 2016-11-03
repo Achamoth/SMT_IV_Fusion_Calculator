@@ -22,6 +22,7 @@ public class ProgramFrame extends JFrame {
   public JCheckBox useCompendium;
   public JCheckBox simpleSearch;
   public JCheckBox outputToFile;
+  public JCheckBox depthFirst;
 
   //Textboxes for demon (for fusion chain)
   public JComboBox demonName;
@@ -183,7 +184,9 @@ public class ProgramFrame extends JFrame {
     demonChain.add(new JLabel("Skill 8"));
     demonChain.add(skill8);
 
-    //Create new panel for buttons
+    //Create new panel for buttons, and depth first option
+    //Create depth first checkbox
+    depthFirst = new JCheckBox("Depth First");
     JPanel buttons = new JPanel();
     //Create clear button
     JButton clear = new JButton("Clear");
@@ -195,9 +198,10 @@ public class ProgramFrame extends JFrame {
     //Add listener to search button
     FusionSearch searchAction = new FusionSearch();
     mainSearch.addActionListener(searchAction);
-    //Add buttons
-    buttons.add(clear);
+    //Add buttons and checkbox
+    buttons.add(depthFirst);
     buttons.add(mainSearch);
+    buttons.add(clear);
 
     //Create new panel for demon searh
     JPanel demonSearch = new JPanel();
@@ -394,10 +398,11 @@ class FusionSearch implements ActionListener {
 
     //Get frame
     ProgramFrame frame = Runner.getFrame();
-    //Find out whether user wants to use compendium
+    //Find out what flags have been ticked
     boolean useCompendium = frame.useCompendium.isSelected();
     boolean simpleSearch = frame.simpleSearch.isSelected();
     boolean toFile = frame.outputToFile.isSelected();
+    boolean depthFirst = frame.depthFirst.isSelected();
 
     //Get list of all demon skills
     Set<String> allSkills = Runner.getAllSkills();
@@ -458,7 +463,7 @@ class FusionSearch implements ActionListener {
     if(useCompendium) Race.useCompendiumDemons();
     else Race.dontUseCompendiumDemons();
     //Search depth
-    Fusion.setDepthLimit(searchDepth);
+    // Fusion.setDepthLimit(searchDepth);
     //Skill threshold
     Fusion.setSkillThreshold(skillThreshold);
 
@@ -509,7 +514,7 @@ class FusionSearch implements ActionListener {
 
     else {
       //Find fusion chains for demon
-      List<FusionChain> allChains = Fusion.findFusionChains(desired, numChains);
+      List<FusionChain> allChains = Fusion.findFusionChains(desired, numChains, searchDepth, depthFirst);
       //Get rid of duplicates
       Set<FusionChain> recipes = new HashSet<FusionChain>();
       for(FusionChain curChain : allChains) {
