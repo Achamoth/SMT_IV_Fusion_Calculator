@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Comparator;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -347,7 +348,7 @@ class SkillSearch implements ActionListener {
     }
 
     //Store a list of demons that have the skill
-    List<String> demonsWithSkill = new ArrayList<String>();
+    List<Demon> demonsWithSkill = new ArrayList<Demon>();
 
     //Try to find the skill
     for(Race race : Race.values()) {
@@ -356,8 +357,8 @@ class SkillSearch implements ActionListener {
         //Check if the current demon has the skill
         if(demon.getSkills().contains(desiredSkill)) {
           //Add the demon to the list
-          String curResult = demon.getRace().substring(0,1).toUpperCase() + demon.getRace().substring(1) + " " + demon.getName();
-          demonsWithSkill.add(curResult);
+          // String curResult = demon.getRace().substring(0,1).toUpperCase() + demon.getRace().substring(1) + " " + demon.getName();
+          demonsWithSkill.add(demon);
         }
       }
     }
@@ -373,10 +374,17 @@ class SkillSearch implements ActionListener {
     JPanel panel = new JPanel(new BorderLayout());
     JTextArea output = new JTextArea();
 
+    //Sort list of demons by level
+    demonsWithSkill.sort(new Comparator<Demon>() {
+      public int compare(Demon d1, Demon d2) {
+        return d1.getLevel() - d2.getLevel();
+      }
+    });
+
     StringBuilder sb = new StringBuilder();
     sb.append(desiredSkill + ":\n");
-    for(String curDemon : demonsWithSkill) {
-      sb.append(curDemon + "\n");
+    for(Demon demon : demonsWithSkill) {
+      sb.append(demon.getRace().substring(0,1).toUpperCase() + demon.getRace().substring(1) + " " + demon.getName() + "\n");
     }
     output.setText(sb.toString());
 
