@@ -7,6 +7,7 @@ import java.util.logging.*;
 import java.util.Arrays;
 import java.io.IOException;
 import java.io.File;
+import java.lang.Math;
 
 public class Fusion {
 
@@ -168,7 +169,8 @@ public class Fusion {
         //Loop through all entries in r2
         for(Demon secondDemon : dlist2) {
           //Check average level of 2 demons
-          int avgLvl = (r1.getBaseLevel(firstDemon) + r2.getBaseLevel(secondDemon))/2;
+          double avg = ((double) r1.getBaseLevel(firstDemon) + (double) r2.getBaseLevel(secondDemon))/2;
+          int avgLvl = (int) Math.ceil(avg);
           //Check that average level is lower than desired demon's base level
           if(avgLvl < desiredRace.getBaseLevel(desiredDemon)) {
             //Now, check that it's also higher than level of weaker demon from desired race
@@ -345,7 +347,8 @@ public class Fusion {
         //Loop through all entries in r2
         for(Demon secondDemon : dlist2) {
           //Check average level of 2 demons
-          int avgLvl = (r1.getBaseLevel(firstDemon) + r2.getBaseLevel(secondDemon))/2;
+          double avg = ((double)r1.getBaseLevel(firstDemon) + (double) r2.getBaseLevel(secondDemon))/2;
+          int avgLvl = (int) Math.ceil(avg);
           //Check that average level is lower than desired demon's base level
           if(avgLvl < desiredRace.getBaseLevel(desiredDemon)) {
             //Now, check that it's also higher than level of weaker demon from desired race
