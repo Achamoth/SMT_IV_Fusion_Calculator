@@ -1,1 +1,276 @@
 ***Race,Name,Level,Skills(List)***
+Primal,Satan,120,Enduring Soul:Drain Elec:Drain Force:Healing Knowhow:Almighty Pleroma:Luster Candy:Concentrate:Megiddo Ark
+Undead,Alice,49,Life Surge:Dark Pleroma:High Dark Pleroma:Concentrate:Megidola:Die For Me!:Grand Tack
+Famed,Hagen,56,Loyalty Slash:Hades Blast:Hellish Mask:Enduring Soul:High Fire Pleroma:Mediarama:Concentrate
+Famed,Tenkai,77,Enduring Soul:Life Surge:Resist Gun:Healing Knowhow:Luster Candy:Debilitate:Imposing Stance:Judgement Light
+Kunitsu,Take-Minakata,21,Counter:Tetanus Cut:Damascus Claw:Oni-Kagura:Fang Breaker
+Kunitsu,Okuninushi,30,Tarukaja:Charge:Diarama:Heat Wave:Tetanus Cut:Fang Breaker
+Kunitsu,Sukuna-Hikona,34,Makakaja:Rakukaja:Concentrate:Infernal Hail:Needlestorm:Fang Breaker
+Kunitsu,Hitokotonushi,49,Enduring Soul:Life Surge:Resist Fire:Elec Pleroma:Mediarama:Mahamaon:Ziodyne
+Kunitsu,Arahabaki,57,Enduring Soul:Life Surge:Resist Force:Makarakarn:Tetrakarn:Acid Breath:Makakaja
+Kunitsu,Oumitsunu,65,Enduring Soul:Life Surge:Resist Force:Phys Pleroma:Charge:Hades Blast:Berserker God
+Amatsu,Ame no Uzume,22,Resist Ice:Sabbatma:Dia:Zanma:Agi:Zan:Tetanus Cut:Poison Claw
+Amatsu,Take-Mikazuchi,55,Life Surge:Resist Force:Resist Gun:Imposing Stance:Critical Eye:Charge:Berserker God
+Amatsu,Amaterasu,79,Enduring Soul:Life Surge:Resist Elec:High Fire Pleroma:Will of Flame:Concentrate:Mediarahan:Trisagion
+Entity,Alilat,87,Enduring Soul:Life Surge:Healing Knowhow:Luster Candy:Debilitate:Null Phys:Mediarahan:Megidolaon
+Zealot,Dionysus,41,Purple Smoke:Megidola:Gun Pleroma:Diarahan:Grand Tack:Blast Arrow
+Food,Katakirauwa,1,Life Surge:Resist Elec:Ice Pleroma:Makakaja:Mediarama:Mabufudyne:Zandyne
+Food,Onmoraki,5,Agi:
+Food,Kuda,28,Sukukaja:Tetanus Cut:Blight:Mabufula
+Enigma,Futotama,50,Life Surge:Resist Force:Healing Knowhow:Imposing Stance:Resist Gun:Resist Elec:Charge:Berserker God
+Enigma,Kinmamon,60,Enduring Soul:Life Surge:Mana Surge:Resist Ice:Healing Knowhow:Luster Candy:Debilitate:Mediarahan
+Enigma,Kangiten,80,Enduring Soul:Life Surge:Healing Knowhow:Luster Candy:Mediarahan:Invitation:Riot Gun:Null Ice
+Fiend,David,82,Enduring Soul:Resist Elec:Healing Knowhow:Haunting Rhapsody:Luster Candy:Mediarahan:Smile Charge:Magaon
+Fiend,Matador,90,Enduring Soul:Resist Ice:High Phys Pleroma:Phys Pleroma:Repel Phys:Charge:Andalusia:Pierce Phys
+Fiend,White Rider,89,Enduring Soul:Resist Force:High Gun Pleroma:Gun Pleroma:Pierce Gun:Charge:Heaven's Bow:Riot Gun
+Fiend,Red Rider,92,Enduring Soul:Resist Ice:High Phys Pleroma:Phys Pleroma:Pierce Phys:Charge:Blade of Terror:Ruinous Brand
+Fiend,Black Rider,93,Enduring Soul:Resist Fire:High Ice Pleroma:Healing Knowhow:Pierce Ice:Concentrate:Antichthon:Glacial Blast
+Fiend,Pale Rider,97,Resist Elec:High Force Pleroma:Force Pleroma:Pierce Force:Luster Candy:Debilitate:Concentrate:Deadly Wind
+Element,Erthys,6,Enduring Soul:Life Surge:Resist Force:Resist Fire:Makarakarn:Tetrakarn:Makakaja
+Element,Aeros,12,Life Surge:Force Pleroma:Gun Pleroma:Fire Pleroma:Resist Light:Magaon:Grand Tack:Blast Arrow
+Element,Aquans,16,Life Surge:Resist Elec:Ice Pleroma:Makakaja:Mediarama:Mabufudyne:Zandyne
+Element,Flaemis,20,Enduring Soul:Magaon:High Gun Pleroma:Gun Pleroma:Pierce Gun:Charge:Heaven's Bow:Riot Gun
+Element,Gnome,24,Enduring Soul:Life Surge:Mana Surge:Healing Knowhow:High Elec Pleroma:Luster Candy:Debilitate:Mediarahan
+Element,Sylph,28,Enduring Soul:Life Surge:Healing Knowhow:High Force Pleroma:Luster Candy:War Cry:Mediarahan:Mahamaon
+Element,Undine,32,Enduring Soul:Life Surge:Resist Fire:High Ice Pleroma:Healing Knowhow:Invitation:Concentrate:Antichthon
+Element,Salamander,36,Enduring Soul:Life Surge:High Light Pleroma:Light Pleroma:Debilitate:Concentrate:Mediarahan:Judgement Light
+Ghost,Obariyon,18,Binding Claw:Patra:Sukunda
+Ghost,Mou-Ryo,23,Spirit Drain:Rakukaja:Agilao:Zanma:Mudo:Resist Elec
+Ghost,Churel,32,Dark Pleroma:Makakaja:Tarunda:Media:Agilao:Mudoon
+Ghost,Kudlak,66,Enduring Soul:Resist Gun:High Gun Pleroma:Gun Pleroma:Pierce Gun:Charge:Heaven's Bow:Riot Gun
+Ghost,Vetala,74,Enduring Soul:Resist Fire:High Force Pleroma:Force Pleroma:Healing Knowhow:Luster Candy:Concentrate:Mediarahan
+Foul,Slime,2,Life Drain:
+Foul,Jack the Ripper,7,Tetanus Cut:Shibaboo:Patra:Bufu:Agi
+Foul,Hooligan,10,Madness Needle:Needle Shot:Hama:Dia:Agi
+Foul,Night Stalker,22,Damascus Claw:Dormina:Attack Knowhow
+Foul,Tattooed Man,27,Tarukaja:Charge:Heat Wave:Tetanus Cut:Fang Breaker:Oni-Kagura
+Foul,Mad Gasser,37,Enduring Soul:Life Surge:High Fire Pleroma:Luster Candy:Concentrate:Megidolaon:Floral Gust:Glacial Blast
+Spirit,Inferno,31,Makakaja:Tarunda:Magaon:Fire Breath:Zionga:Media
+Spirit,Wicker Man,38,Critical Eye:Charge:Magaon:Tathlum Shot:Tetanus Cut:Mazanma:Resist Elec
+Spirit,Macabre,45,Blight:Pandemic Bomb
+Spirit,Pisaca,54,Phys Pleroma:Imposing Stance:Mudoon:Mamudo:Dark Pleroma:Berserker God:Mortal Jihad
+Drake,Toubyou,14,Megidola:
+Drake,Bai Suzhen,23,Bufula:Media:Makakaja:Magaon:Zionga
+Drake,Basilisk,28,Resist Force:Fire Pleroma:Force Pleroma:Makakaja:Estoma:Media
+Drake,Tiamat,55,Enduring Soul:Life Surge:Resist Ice:High Fire Pleroma:Will of Flame:Concentrate:Mediarahan:Trisagion
+Drake,Niddhoggr,60,Enduring Soul:High Gun Pleroma:Gun Pleroma:Pierce Gun:Resist Force:Charge:Heaven's Bow:Riot Gun
+Drake,Ym,65,Life Surge:Mana Surge:War Cry:Concentrate:Mediarama:Floral Gust:Bufudyne
+Drake,Python,70,Enduring Soul:Life Surge:Healing Knowhow:Concentrate:Megidolaon:Mamudoon:Maragidyne:Glacial Blast
+Drake,Vasuki,88,High Gun Pleroma:Glacial Blast:Debilitate:Enduring Soul:Life Surge:Healing Knowhow:Judgement Light:Floral Gust
+Tyrant,King Frost,30,Ice Pleroma:Makakaja:Rakukaja:King Bufula:Bufula:Ice Breath
+Tyrant,Balor,36,Tarukaja:Charge:Megaton Press:Tetanus Cut:Oni-Kagura:Fang Breaker
+Tyrant,Loki,58,Mana Surge:Acid Breath:Makakaja:Concentrate:Mediarama:Floral Gust:Bufudyne
+Tyrant,Abaddon,63,Enduring Soul:Resist Fire:Resist Elec:High Ice Pleroma:Healing Knowhow:Concentrate:Antichthon:Glacial Blast
+Tyrant,Azazel,69,Enduring Soul:Life Surge:Resist Elec:Healing Knowhow:Concentrate:Megidolaon:Maragidyne:Glacial Blast
+Tyrant,Belial,70,Drain Elec:Drain Force:Resist Light:Luster Candy:Concentrate:Magaon:Thunder Reign:Fire of Lethargy
+Tyrant,Lucifuge,73,Enduring Soul:Resist Elec:High Dark Pleroma:Dark Pleroma:Luster Candy:Concentrate:Magaon:Light Devourer
+Tyrant,Tzitzimitl,75,Enduring Soul:Life Surge:High Ice Pleroma:Luster Candy:Debilitate:Concentrate:Will of Frost:Glacial Blast
+Tyrant,Samyaza,76,Enduring Soul:Resist Fire:Resist Ice:High Force Pleroma:Force Pleroma:Concentrate:Magic Torrent:True Zandyne
+Tyrant,Chi You,87,Enduring Soul:Life Surge:Drain Fire:High Phys Pleroma:Phys Pleroma:Charge:Berserker God:Deadly Wind
+Tyrant,Mara,92,Enduring Soul:Life Surge:Resist Ice:High Phys Pleroma:Phys Pleroma:Charge:Hell Thrust:Repel Phys
+Tyrant,Lucifer,99,Enduring Soul:Resist Light:Healing Knowhow:Debilitate:Concentrate:Evil Gleam:Ice Age:Deadly Wind
+Tyrant,Mephisto,99,Resist Light:High Dark Pleroma:Dark Pleroma:Pierce Dark:Luster Candy:Concentrate:Growing Hate:Fear Darkness
+Night,Sandman,10,Dream Needle:Tetanus Cut:Poison Claw:Zan:Agi
+Night,Kikimora,28,Fire Pleroma:Makakaja:Rakunda:Magaon:Agilao:Zionga
+Night,Lilim,33,Makakaja:Tarunda:Media:Diarama:Mabufula:Agilao
+Night,Kaiwan,39,Sukukaja:Blight:Tetanus Cut:Mabufula:Bufula:Zionga:Mudoon
+Night,Succubus,45,Makakaja:Tarunda:Magaon:Diarahan:Bufudyne:Ziodyne
+Night,Maya,77,Enduring Soul:Life Surge:Resist Gun:Luster Candy:Concentrate:Megidolaon:Judgement Light:Glacial Blast
+Femme,Leanan Sidhe,9,Dia:
+Femme,Mermaid,15,Magaon:Media:Zanma:Bufula:Rakukaja
+Femme,Shikome,23,Rapid Needle:Magaon:Stun Needles:Tetanus Cut:Fang Breaker:Tarunda
+Femme,Yuki Jyorou,30,Tarukaja:Ice Pleroma:Mamudo:Mabufu:Bufula:Zanma
+Femme,Clotho,35,Force Pleroma:Makakaja:Tarunda:Diarahan:Zanma:Agilao
+Femme,Medusa,39,Resist Force:Gun Pleroma:Charge:Snake’s Fangs:Grand Tack:Ziodyne
+Femme,Lachesis,41,Resist Gun:Blast Arrow:Diarahan:Rakukaja:Tarunda:Makakaja
+Femme,Atropos,46,Makakaja:Tarunda:Diarahan:Bufudyne:Ziodyne:Hamaon
+Femme,Kali,75,Enduring Soul:Life Surge:Resist Gun:Phys Pleroma:Charge:Madness Nails:Mist Rush:Berserker God
+Brute,Oni,13,Tetanus Cut:Head Crush:Lunge:Critical Wave:Bufu
+Brute,Momunofu,25,Enduring Soul:Life Surge:Resist Gun:Healing Knowhow:Luster Candy:Debilitate:Megidolaon:Judgement Light
+Brute,Yomotsu Ikusa,37,Resist Gun:Critical Eye:Charge:Tathlum Shot:Blast Arrow:Fang Breaker
+Brute,Berserker,64,Life Surge:Resist Force:Phys Pleroma:Enduring Soul:Charge:Hades Blast:Berserker God
+Brute,Yaksha,71,Enduring Soul:Life Surge:Healing Knowhow:Luster Candy:Debilitate:Concentrate:Megidolaon:Judgement Light
+Brute,Ongyo-Ki,78,Enduring Soul:Life Surge:Phys Pleroma:Healing Knowhow:Resist Fire:Charge:Hades Blast:Berserker God
+Fallen,Decarabia,6,Bufu:Agi
+Fallen,Melcholm,13,Maragi:Dia:Tarukaja:Zio:Lunge
+Fallen,Bifrons,20,Magaon:Makakaja:Maragi:Agilao:Zionga
+Fallen,Orias,38,Enduring Soul:Life Surge:Resist Light:Healing Knowhow:Luster Candy:Magaon:Mediarahan:Gun Pleroma
+Fallen,Nebiros,46,Enduring Soul:Life Surge:Healing Knowhow:Estoma:Luster Candy:Mediarahan:Magaon:Mudoon
+Fallen,Dantalion,53,Enduring Soul:Life Surge:Judgement Light:High Dark Pleroma:Dark Pleroma:Concentrate:Magaon:Mamudoon
+Fallen,Gemori,58,Enduring Soul:Life Surge:High Fire Pleroma:Will of Flame:Concentrate:Mediarahan:Maragidyne:Trisagion
+Fallen,Murmur,63,Enduring Soul:Life Surge:Resist Gun:Healing Knowhow:War Cry:Luster Candy:Floral Gust
+Fallen,Adramelech,68,Enduring Soul:Resist Ice:High Fire Pleroma:Life Surge:Concentrate:Hellish Brand:Healing Knowhow:Fire Pleroma
+Fallen,Barbatos,69,Enduring Soul:Life Surge:Healing Knowhow:Concetrate:Mabufudyne:Zandyne:Heaven's Bow:Stun Needles
+Fallen,Shax,74,Enduring Soul:Null Gun:Resist Light:Debilitate:Magaon:Concentrate:Mazandyne:Glacial Blast
+Fallen,Botis,83,Enduring Soul:Life Surge:Resist Force:Will of Thunder:Debilitate:Concentrate:Maziodyne:Glacial Blast
+Kishin,Zhong Kui,50,Resist Gun:Resist Force:Imposing Stance:Critical Eye:Charge:Javelin Rain:Berserker God
+Kishin,Zouchouten,55,Life Surge:Force Pleroma:Imposing Stance:Concentrate:Judgement Light:Floral Gust:Agidyne
+Kishin,Koumokuten,60,Life Surge:Phys Pleroma:Resist Force:Critical Eye:Charge:Berserker God:Imposing Stance
+Kishin,Bishamonten,70,Enduring Soul:Life Surge:Resist Fire:Phys Pleroma:Charge:Hades Blast:Berserker God
+Kishin,Marishiten,75,Enduring Soul:Life Surge:High Ice Pleroma:Luster Candy:Debilitate:Concentrate:Megidolaon:Glacial Blast
+Kishin,Thor,80,Enduring Soul:Life Surge:Resist Force:Phys Pleroma:Healing Knowhow:Charge:Hades Blast:Berserker God
+Dragon,Makara,13,Enduring Soul:Life Surge:Resist Gun:Healing Knowhow:Luster Candy:Debilitate:Mediarahan:Judgement Light
+Dragon,Long,61,Life Surge:Force Pleroma:Imposing Stance:War Cry:Concentrate:Judgement Light:Floral Gust
+Dragon,Quetzalcoatl,67,Enduring Soul:Life Surge:High Fire Pleroma:Hellish Mask:Smile Charge:Floral Gust:Agidyne:Mazandyne
+Dragon,Huang Long,78,Enduring Soul:Life Surge:Resist Gun:Victory Cry:Luster Candy:Debilitate:Megidolaon:Judgement Light
+Lady,Pele,9,Needle Shot:Posumudi:Dia:Agi:Zio
+Lady,Dzelarhorns,19,Rakukaja:Magaon:Media:Agilao:Zanma
+Lady,Sedna,29,Enduring Soul:Life Surge:High Force Pleroma:Healing Knowhow:Luster Candy:Mediarahan:Judgement Light:Deadly Wind
+Lady,Hariti,36,Ice Pleroma:Tarunda:Makakaja:Media:Bufula:Agilao
+Lady,Diana,41,Tarunda:Rakukaja:Diarahan:Blast Arrow:Grand Tack:Gun Pleroma
+Lady,Asherah,51,Life Surge:Gun Pleroma:High Force Pleroma:Force Pleroma:Resist Force:Floral Gust:Grand Tack
+Lady,Isis,59,Force Pleroma:Imposing Stance:Acid Breath:Concentrate:Mediarama:Floral Gust:Zandyne
+Lady,Black Maria,66,Life Surge:Resist Force:War Cry:Makakaja:Mediarama:Bufudyne:Ziodyne
+Lady,Skadi,73,Enduring Soul:Life Surge:Resist Fire:Luster Candy:War Cry:Mediarahan:Glacial Blast:High Ice Pleroma
+Lady,Xi Wangmu,79,Enduring Soul:Life Surge:Mana Surge:Healing Knowhow:Luster Candy:Debilitate:Invitation:Doping
+Lady,Inanna,91,Enduring Soul:High Ice Pleroma:High Force Pleroma:Healing Knowhow:Debilitate:Concentrate:Deadly Wind:Ice Age
+Fury,Tonatiuh,37,Life Gain:Tarukaja:Tarunda:Charge:Heat Wave:Tetanus Cut:Fang Breaker
+Fury,Chernobog,50,Enduring Soul:Life Surge:Mana Surge:Healing Knowhow:Doping:Debilitate:Luster Candy:Magaon
+Fury,Wu Kong,57,Resist Gun:Imposing Stance:Critical Eye:Charge:Phys Pleroma:Berserker God:Mortal Jihad
+Fury,Beiji-Weng,66,Enduring Soul:Life Surge:Resist Fire:Concentrate:Mediarama:Judgement Light:Glacial Blast
+Fury,Kartikeya,78,Enduring Soul:Life Surge:Resist Force:Luster Candy:Debilitate:High Gun Pleroma:Heaven's Bow:Judgement Light
+Fury,Susano-o,84,Enduring Soul:Life Surge:Drain Fire:Phys Pleroma:Charge:High Phys Pleroma:Berserker God:Deadly Wind
+Vermin,Mothman,11,Shibaboo:Mana Bonus
+Vermin,Myrmecolion,29,Life Surge:Gun Pleroma:Imposing Stance:Tarunda:Charge:Blast Arrow:Grand Tack
+Vermin,Arachne,44,Gun Pleroma:Makakaja:Charge:Blast Arrow:Snake’s Fangs:Grand Tack
+Jaki,Ippon-Datara,16,Power Punch:Tetanus Cut:Critical Wave:Head Crush:Oni-Kagura
+Jaki,Wendigo,30,Charge:Mabufula:Heat Wave:Tetanus Cut:Oni-Kagura:Fang Breaker
+Jaki,Rakshasa,38,Tarukaja:Charge:Heat Wave:Tetanus Cut:Oni-Kagura:Fang Breaker
+Jaki,Black Frost,40,Tarukaja:Rakukaja:Charge:Megaton Press:Oni-Kagura:Fang Breaker
+Jaki,Girimehkala,62,Enduring Soul:Resist Elec:High Force Pleroma:Force Pleroma:Luster Candy:Concentrate:Deadly Wind:Magaon
+Jaki,Hekatoncheires,68,Enduring Soul:Life Surge:Phys Pleroma:Healing Knowhow:Charge:Hades Blast:Mist Rush:Berserker God
+Wilder,Raiju,33,Life Surge:Resist Gun:Resist Force:Imposing Stance:Critical Eye:Charge:Berserker God
+Wilder,Nue,39,Life Surge:Resist Gun:Resist Force:Resist Elec:Ice Pleroma:Critical Eye:Imposing Stance:Berserker God
+Wilder,Catoblepas,52,Enduring Soul:Life Surge:High Phys Pleroma:Phys Pleroma:Life Surge:Repel Phys:Charge:Hell Thrust
+Wilder,Cabracan,59,Resist Gun:Resist Force:Resist Ice:Critical Eye:Charge:Madness Nails:Berserker God
+Reaper,Hel,43,Makakaja:Dark Pleroma:Mabufula:Mamudo:Mudoon:Bufudyne
+Reaper,Persephone,57,Enduring Soul:Life Surge:Resist Elec:Doping:Concentrate:Megidolaon:Glacial Blast:Floral Gust
+Snake,Naga,19,Attack Knowhow:Makakaja:Dream Needle:Madness Needle:Needle Shot:Damascus Claw:Head Crush:Lunge
+Snake,Vouivre,28,Tarukaja:Charge:Diarama:Blight:Tetanus Cut:Fang Breaker
+Snake,Orochi,51,Resist Gun:Resist Force:Tarunda:Critical Eye:Charge:Madness Nails:Berserker God
+Snake,Gui Xian,60,Life Surge:Resist Gun:Resist Force:War Cry:Charge:Madness Nails:Berserker God
+Snake,Pendragon,66,Life Surge:Resist Gun:Phys Pleroma:War Cry:Charge:Madness Nails:Berserker God
+Jirae,Sudama,6,Zio:Dia
+Jirae,Dwarf,8,Tetanus Cut:Lunge:Agi:Bufu:Zio
+Jirae,Hua Po,12,Maragi:Dia:Agi:Bufu:Hama
+Jirae,Knocker,17,Tarukaja:Rakukaja:Maragi:Zanma:Lunge
+Jirae,Tsuchigumo,31,Tarukaja:Charge:Dream Needle:Poison Claw:Oni-Kagura:Fang Breaker:Heat Wave:Tetanus Cut
+Jirae,Titan,37,Critical Eye:Charge:Heat Wave:Tetanus Cut:Oni-Kagura:Fang Breaker
+Jirae,Tlaltecuhtli,46,Resist Gun:Life Gain:Tarunda:Rakukaja:Mazionga:Agidyne
+Jirae,Gogmagog,61,Enduring Soul:Life Surge:High Phys Pleroma:Phys Pleroma:Drain Fire:Charge:Earthquake:Berserker God
+Beast,Kabuso,6,Poison Claw:Tetanus Cut:Dia:Agi:Zan
+Beast,Kaso,10,Agi:Zio:Zan:Dia:Lunge
+Beast,Stonka,26,Life Surge:Critical Eye:Charge:Diarahan:Gun Pleroma:Grand Tack:Blast Arrow
+Beast,Hairy Jack,30,Gun Pleroma:Life Surge:Critical Eye:Charge:Concentrate:Grand Tack:Megidola
+Beast,Nekomata,35,Axel Claw:Estoma:Force Pleroma:Makakaja:Mazanma:Magaon:Beastly Reaction
+Beast,Orthrus,52,Resist Gun:Resist Force:Resist Ice:Critical Eye:Charge:Madness Nails:Berserker God
+Fairy,Nadja,8,Tetanus Cut:Dia:Zan:Agi:Zio
+Fairy,Pixie,10,Life Surge:Gun Pleroma:Fire Pleroma:Diarahan:Blast Arrow:Grand Tack:Zio
+Fairy,Napaea,14,Resist Ice:Zanma:Agi:Zio:Dream Needle
+Fairy,Spriggan,14,Life Surge:Gun Pleroma:Fire Pleroma:Resist Light:Oni-Kagura:Blast Arrow:Grand Tack:Magaon
+Fairy,Jack Frost,20,Life Surge:Gun Pleroma:Diarahan:Mabufu:Bufula:Blast Arrow:Grand Tack
+Fairy,Pyro Jack,25,Life Surge:Gun Pleroma:Fire Pleroma:Diarahan:Earthquake:Blast Arrow:Grand Tack
+Fairy,High Pixie,29,Life Surge:Gun Pleroma:Diarahan:Blast Arrow:Grand Tack:Mazionga:Healing Knowhow
+Fairy,Kelpie,31,Life Surge:Gun Pleroma:Tarunda:Diarahan:Earthquake:Blast Arrow:Grand Tack
+Fairy,Silky,44,Life Surge:Imposing Stance:Concentrate:Samarecarm:Diarahan:Megidola:Maziodyne
+Fairy,Vivian,52,Enduring Soul:High Phys Pleroma:Phys Pleroma:Resist Ice:Berserker God:Charge:Imposing Stance:Drain Fire
+Fairy,Lorelei,58,Life Surge:Mediarama:Rakukaja:Dekunda:Makarakarn:Megidola:Mabufudyne
+Fairy,Titania,73,Enduring Soul:Resist Gun:Healing Knowhow:Luster Candy:War Cry:Mediarahan:Maziodyne:Mana Surge
+Genma,Tam Lin,13,Gram Slice:Tetanus Cut:Hama:Posumudi:Agi:Estoma
+Genma,Ictinike,18,Damascus Claw:Tetanus Cut:Oni-Kagura:Fang Breaker:Scratch Dance:Resist Force
+Genma,Tlaloc,39,Bufula:Zionga:Resist Fire:Mana Gain
+Genma,Kurama Tengu,43,Mazanma:Mahama
+Genma,Cu Chulainn,50,Resist Gun:Force Pleroma:Concentrate:Critical Eye:Charge:Berserker God:Floral Gust
+Genma,Kresnik,56,Enduring Soul:Gun Pleroma:Resist Force:High Gun Pleroma:Heaven's Bow:Charge:Riot Gun:Salvation
+Genma,Hanuman,66,Enduring Soul:Life Surge:Resist Elec:Phys Pleroma:Charge:Hades Blast:Berserker God
+Genma,Heimdall,73,Enduring Soul:High Force Pleroma:Healing Knowhow:Luster Candy:War Cry:Mediarahan:Ziodyne:Zandyne
+Holy,Pablisag,24,Magaon:Tathlum Shot:Toxic Sting:Tetanus Cut:Fang Breaker:Rapid Needle
+Holy,Qing Niugai,29,Enduring Soul:Life Surge:Resist Fire:Megaton Press:Tetanus Cut:Poison Claw:Concentrate:Agidyne
+Holy,Airavata,44,Enduring Soul:Life Surge:Healing Knowhow:Luster Candy:War Cry:Mediarahan:Ziodyne:Zandyne
+Holy,Sleipnir,55,Phys Pleroma:Resist Force:Resist Dark:Imposing Stance:Charge:Mahamaon:Berserker God:Madness Nails
+Holy,Baihu,62,Life Surge:Resist Force:War Cry:Critical Eye:Charge:Madness Nails:Berserker God
+Holy,Sphinx,71,Enduring Soul:Resist Ice:Healing Knowhow:Luster Candy:War Cry:Mediarahan:Mahamaon
+Avatar,Makami,33,Heal Pleroma:Samarecarm:Diarama:Concentrate:Megidola:Ziodyne:Estoma
+Avatar,Chimera,46,Enduring Soul:Life Surge:Resist Fire:Re
+Avatar,Ukano Mitama,53,Enduring Soul:Life Surge:Resist Elec:Concentrate:Mediarama:Ziodyne:Healing Knowhow
+Avatar,Anubis,60,Force Pleroma:Mediarama:Makakaja:Concentrate:Judgement Light:Mamudoon:Floral Gust
+Deity,Thoth,30,Megido:Resist Gun:Media:Hamaon:Light Pleroma:Zanma
+Deity,Prometheus,40,Enduring Soul:Resist Fire:Resist Ice:Healing Knowhow:High Force Pleroma:Luster Candy:Concentrate:Antichthon
+Deity,Lord Nandou,48,Enduring Soul:Life Surge:Mana Surge:Healing Knowhow:Doping:Invitation:Doping:Debilitate:Luster Candy
+Deity,Ometeotl,59,Enduring Soul:Life Surge:Resist Fire:Concentrate:Mediarama:Mahamaon:Agidyne
+Deity,Mahamayuri,67,Enduring Soul:Life Surge:Resist Elec:Force Pleroma:Concentrate:Floral Gust:Doping
+Deity,Hachiman,75,Enduring Soul:Life Surge:Resist Force:War Cry:Critical Eye:Charge:Madness Nails:Berserker God
+Deity,Apsu,82,Enduring Soul:Life Surge:High Ice Pleroma:Debilitate:Will of Frost:Concentrate:Ice Age:Floral Gust
+Deity,Baal,79,Enduring Soul:Life Surge:Mana Surge:Resist Ice:High Fire Pleroma:Concentrate:Floral Gust:Trisagion
+Deity,Odin,85,Will of Thunder:Life Surge:Drain Force:High Elec Pleroma:Concentrate:Thunder Reign:Charge:Gungnir
+Deity,Krishna,87,Enduring Soul:Drain Dark:Doping:Combat Tara:Debilitate:Salvation:Venomous Raga:Dream Raga
+Wood,Mandrake,6,Shibaboo:Poisma:Patra
+Wood,Zaccoum,41,Dark Pleroma:Acid Breath:Makakaja:Media:Mudoon:Mabufula
+Wood,Alraune,48,Life Surge:Gun Pleroma:Imposing Stance:Charge:Diarahan:Blast Arrow:Grand Tack
+Raptor,Itsumade,19,Megidola:Gun Pleroma:Diarahan
+Raptor,Zhen,31,Resist Dark:Sukukaja:Poison Breath:Pandemic Bomb:Shibaboo:Mabufula:Zionga:Mudoon
+Raptor,Huoniao,65,Life Surge:Resist Gun:Resist Ice:High Fire Pleroma:War Cry:Mediarama:Agidyne
+Vile,Baphomet,25,Enduring Soul:Life Surge:Resist Fire:Rakunda:Charge:Grand Tack:Debilitate:Mediarahan
+Vile,Mishaguji,37,Enduring Soul:Life Surge:Gun Pleroma:Resist Fire:Charge:Heaven's Bow:Grand Tack:Rakunda
+Vile,Taotie,58,Enduring Soul:Life Surge:Resist Ice:Healing Knowhow:High Fire Pleroma:Posumudi:Concentrate
+Vile,Alciel,67,Enduring Soul:Healing Knowhow:Luster Candy:Debilitate:Tetrakarn:Mediarahan:Imposing Stance:Invitation
+Vile,Seth,80,Enduring Soul:Life Surge:Resist Fire:Null Gun:Debilitate:Charge:Rending Claws:Heaven's Bow
+Vile,Demiurge,95,Enduring Soul:Healing Knowhow:Imposing Stance:Invitation:Luster Candy:Debilitate:Drain Light:Antichthon
+Nymph,Apsaras,15,Enduring Soul:Life Surge:Healing Knowhow:Luster Candy:Debilitate:Magaon:Judgement Light:Light Pleroma
+Nymph,Senri,26,Samarecarm:Makakaja:Concentrate:Megidola:Hamaon:Ziodyne:Resist Force
+Nymph,Kikuri-Hime,36,Force Pleroma:Tarunda:Makakaja:Diarahan:Zanma:Agilao
+Nymph,Sarasvati,48,Life Surge:Healing Knowhow:Imposing Stance:War Cry:Concentrate:Judgement Light:Floral Gust
+Nymph,Peri,62,Enduring Soul:Life Surge:Healing Knowhow:Debilitate:Mediarahan:Judgement Light:Floral Gust:Magaon
+Yoma,Centaur,8,Bufu:Needle Shot
+Yoma,Agathion,12,Dia:Zionga:Agi:Zan:Mazio
+Yoma,Koppa Tengu,16,Sukukaja:Zanma
+Yoma,Karasu Tengu,24,Fire Pleroma:Force Pleroma:Magaon:Makakaja:Agilao:Zionga:Estoma
+Yoma,Dis,29,Resist Force:Resist Ice:Resist Gun:Critical Eye:Charge:Madness Nails:Berserker God
+Yoma,Xiuhtecuhtli,48,Enduring Soul:Life Surge:Resist Fire:Concentrate:Mediarama:Mahamaon:Agidyne
+Yoma,Ganesha,72,Enduring Soul:Life Surge:Healing Knowhow:Phys Pleroma:War Cry:Charge:Hades Blast:Mist Rush
+Flight,Caladrius,4,Elec Pleroma:Makakaja:Magaon:Maragi:Agilao:Zionga:Dia
+Flight,Gu Huo Niao,16,Magaon:Maragi:Zionga:Agilao:Makakaja
+Flight,Tangata Manu,22,Attack Knowhow:Makakaja:Dream Needle:Damascus Claw:Lunge:Dormina
+Flight,Tuofei,30,Gun Pleroma:Purple Smoke:Poison Claw:Media:Megidola:Diarahan
+Flight,Rukh,47,Enduring Soul:Life Surge:Healing Knowhow:Concentrate:Charge:Grand Tack:Megidolaon:Glacial Blast
+Flight,Da Peng,56,Life Surge:Resist Elec:Magaon:Mediarama:Megidola:Mabufudyne:Zandyne
+Divine,Angel,10,Life Surge:Resist Elec:Resist Dark:Light Pleroma:High Light Pleroma:Concentrate:Mediarahan:Judgement Light
+Divine,Archangel,18,Tetanus Cut:Oni-Kagura:Heat Wave:Head Crush:Magaon
+Divine,Principality,26,Tarunda:Makakaja:Media:Agilao:Bufula:Zionga
+Divine,Power,33,Enduring Soul:Healing Knowhow:High Force Pleroma:Resist Elec:Magaon:Concentrate:Judgement Light:Deadly Wind
+Divine,Virtue,41,Enduring Soul:Resist Elec:Healing Knowhow:High Force Pleroma:Concentrate:Mediarahan:Judgement Light:Deadly Wind
+Divine,Dominion,51,Enduring Soul:Charge:High Gun Pleroma:Gun Pleroma:Gun Pierce:Resist Dark:Heaven's Bow:Riot Gun
+Divine,Throne,62,Enduring Soul:High Gun Pleroma:Gun Pleroma:Gun Pierce:Resist Dark:Charge:Heaven's Bow:Riot Gun
+Divine,Cherub,71,Enduring Soul:Life Surge:Healing Knowhow:Imposing Stance:Invitation:Luster Candy:Debilitate:Mediarahan
+Divine,Angel(White Wings),83,High Light Pleroma:Life Surge:Resist Elec:Resist Dark:Light Pleroma:Concentrate:Mediarahan:Judgement Light
+Tree,Daphe,16,Tarukaja:Rakukaja:Dia:Zanma:Attack Knowhow
+Tree,Narcissus,29,Posumudi:Dia:Bufula:Zan:Wind Breath:Sexy Dance:Zionga
+Tree,Kukunochi,44,Acid Breath:Makakaja:Tetrakarn:Diarahan:Mabufula:Zanma
+Tree,Haoma,54,Life Surge:Gun Pleroma:Imposing Stance:Fog Breath:Rakunda:Charge:Grand Tack
+Tree,Yggdrasil,65,Enduring Soul:Life Surge:Resist Fire:Gun Pleroma:Charge:Heaven's Bow:Grand Tack
+Avian,Hamsa,10,Enduring Soul:Life Surge:Healing Knowhow:High Force Pleroma:Concentrate:Mediarahan:Judgement Light:Deadly Wind
+Avian,Phoenix,24,Life Surge:Resist Elec:Resist Dark:Light Pleroma:High Light Pleroma:Concentrate:Mediarahan:Judgement Light
+Avian,Feng Huang,63,Life Surge:Resist Gun:Resist Ice:War Cry:High Fire Pleroma:Mediarama:Agidyne
+Avian,Yatagarasu,52,Enduring Soul:Life Surge:Resist Gun:Resist Ice:Resist Elec:High Fire Pleroma:Concentrate:Floral Gust
+Avian,Garuda,72,Enduring Soul:Life Surge:Null Ice:Healing Knowhow:Invitation:Luster Candy:Magaon:Mediarahan
+Megami,Fortuna,11,Posumudi:Dia:Zan:Agi:Zio
+Megami,Parvati,25,Rakukaja:Sukukaja:Magaon:Media:Bufula:Zanma
+Megami,Brigid,33,Light Pleroma:Magaon:Concentrate:Judgement Light:Floral Gust:Samarecarm:Ziodyne:Mamudoon
+Megami,Scathach,39,Tarukaja:Charge:Makakaja:Life Gain:Oni-Kagura:Fang Breaker
+Megami,Ishtar,44,Enduring Soul:Life Surge:Healing Knowhow:High Force Pleroma:Luster Candy:Mediarahan:Judgement Light:Deadly Wind
+Megami,Pallas Athena,51,Life Surge:Imposing Stance:War Cry:Rakukaja:Makarakarn:Mediarama:Judgement Light
+Megami,Tlazolteotl,57,Force Pleroma:Concentrate:Acid Breath:Mediarama:Mabufudyne:Mahamaon:Floral Gust
+Megami,Anat,63,Enduring Soul:Life Surge:Resist Ice:High Dark Pleroma:Dark Pleroma:Concentrate:Mamudoon:Judgement Light
+Megami,Norn,69,Enduring Soul:Life Surge:Healing Knowhow:Imposing Stance:War Cry:Luster Candy:Mediarahan
+Megami,Lakshmi,77,Mana Surge:Life Surge:Resist Elec:Healing Knowhow:Luster Candy:Concentrate:Mediarahan:Floral Gust
+Megami,Izanami,82,Enduring Soul:Life Surge:Resist Fire:High Dark Pleroma:High Elec Pleroma:Concentrate:Dark Grudge:Thunder Gods
+Megami,Cleopatra,99,Resist Dark:High Light Pleroma:Light Pleroma:Light Pierce:Healing Knowhow:Alluring Banter:Concentrate:Dazzle Ray
+Herald,Lailah,54,Enduring Soul:Life Surge:Light Pleroma:Healing Knowhow:Luster Candy:Debilitate:Imposing Stance:Judgement Light
+Herald,Victor,61,Life Surge:Gun Pleroma:Fog Breath:Charge:Mahamaon:Heaven’s Bow:Grand Tack
+Herald,Israfel,68,Enduring Soul:Life Surge:Hellish Mask:Luster Candy:Debilitate:Concentrate:Judgement Light:Bufudyne
+Herald,Azrael,77,Enduring Soul:Life Surge:Resist Ice:High Dark Pleroma:Dark Pleroma:Concentrate:Judgement Light:Blink of Death
+Herald,Kazfiel,82,Enduring Soul:Life Surge:Resist Elec:Healing Knowhow:Debilitate:Mediarahan:Judgement Light:Floral Gust
+Herald,Sraosha,86,Drain Elec:Drain Force:High Fire Pleroma:High Elec Pleroma:Concentrate:Mediarahan:Thunder Reigh:Trisagion
+Herald,Aniel,90,Enduring Souxl:High Light Pleroma:Light Pleroma:High Elec Pleroma:Drain Force:Concentrate:Judgement Light:Thunder Reign
+Herald,Seraph,97,Resist Ice:High Fire Pleroma:High Gun Pleroma:Salvation:Concentrate:Trisagion:Charge:Riot Gun
+Herald,Merkabah,99,Resist Dark:High Gun Pleroma:Gun Pleroma:Gun Pierce:Charge:Heaven's Bow:Riot Gun:Salvation

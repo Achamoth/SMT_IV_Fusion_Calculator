@@ -249,7 +249,15 @@ public class FileOps {
       }
       //We have our desired race
       String curDemonName = tokens[1];
-      int curDemonLevel = Integer.valueOf(tokens[2]);
+      int curDemonLevel = 0;
+      try {
+        curDemonLevel = Integer.valueOf(tokens[2]);
+      }
+      catch(NumberFormatException e) {
+        logger.log(Level.INFO, "NumberFormatException reading compendium", e);
+        Runner.reportError("Invalid formatting in compendium at line : " + tokens[0] + " " + curDemonName);
+        System.exit(1);
+      }
       //Read demon's skills
       Set<String> curDemonSkillSet = new HashSet<String>();
       String[] curDemonSkills = tokens[3].split(COLON_DELIMITER);
